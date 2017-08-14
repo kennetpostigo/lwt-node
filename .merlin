@@ -1,0 +1,13 @@
+####{BSB GENERATED: NO EDIT
+FLG -ppx /Users/kennetpostigo/Projects/reason-node-b/node_modules/bs-platform/bin/bsppx.exe
+S /Users/kennetpostigo/Projects/reason-node-b/node_modules/bs-platform/lib/ocaml
+B /Users/kennetpostigo/Projects/reason-node-b/node_modules/bs-platform/lib/ocaml
+FLG -nostdlib -no-alias-deps -color always
+S examples
+B lib/bs/bytecode/examples
+S tests
+B lib/bs/bytecode/tests
+S src
+B lib/bs/bytecode/src
+PKG lwt.unix alcotest
+####BSB GENERATED: NO EDIT}

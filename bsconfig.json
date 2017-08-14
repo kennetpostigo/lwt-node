@@ -1,0 +1,31 @@
+{
+  "name": "reason-node-b",
+  "sources": ["src", "tests", "examples"],
+  "ocamlfind-dependencies": ["lwt.unix", "alcotest"],
+  "entries": [
+    {
+      "kind": "bytecode",
+      "main": "ReasonNode"
+    },
+    {
+      "kind": "native",
+      "main": "ReasonNode"
+    },
+    {
+      "kind": "bytecode",
+      "main": "Test"
+    },
+    {
+      "kind": "native",
+      "main": "Test"
+    },
+    {
+      "kind": "bytecode",
+      "main": "Example"
+    },
+    {
+      "kind": "native",
+      "main": "Example"
+    }
+  ]
+}
