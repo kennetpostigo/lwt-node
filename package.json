@@ -1,9 +1,15 @@
 {
   "name": "reason-node-b",
   "scripts": {
-    "build": "bsb",
-    "watch": "bsb -w",
-    "clean": "bsb -clean-world"
+    "buildB": "bsb -backend bytecode",
+    "buildN": "bsb -backend native",
+    "examplesB": "./lib/bs/bytecode/example.byte",
+    "testsB": "./lib/bs/bytecode/test.byte",
+    "cleanB": "bsb -backend bytecode -clean-world",
+    "cleanN": "bsb -backend native -clean-world",
+    "devTest": "npm run cleanB && npm run buildB && npm run testsB",
+    "devExample": "npm run cleanB && npm run buildB && npm run examplesB",
+    "watch": "bsb -w"
   },
   "devDependencies": {
     "bs-platform": "github:bsansouci/bsb-native"
