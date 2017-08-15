@@ -1,7 +1,7 @@
 ####{BSB GENERATED: NO EDIT
-FLG -ppx /Users/kennetpostigo/Projects/reason-node-b/node_modules/bs-platform/bin/bsppx.exe
-S /Users/kennetpostigo/Projects/reason-node-b/node_modules/bs-platform/lib/ocaml
-B /Users/kennetpostigo/Projects/reason-node-b/node_modules/bs-platform/lib/ocaml
+FLG -ppx /Users/kennetpostigo/Projects/reason-node/node_modules/bs-platform/bin/bsppx.exe
+S /Users/kennetpostigo/Projects/reason-node/node_modules/bs-platform/lib/ocaml/bytecode
+B /Users/kennetpostigo/Projects/reason-node/node_modules/bs-platform/lib/ocaml/bytecode
 FLG -nostdlib -no-alias-deps -color always
 S examples
 B lib/bs/bytecode/examples

@@ -2,8 +2,8 @@
   "name": "reason-node-b",
   "scripts": {
     "build": "bsb",
-    "clean": "bsb -clean-world",
-    "watch": "bsb -make-world -w"
+    "watch": "bsb -w",
+    "clean": "bsb -clean-world"
   },
   "devDependencies": {
     "bs-platform": "github:bsansouci/bsb-native"
