@@ -1,8 +1,7 @@
 let access path mode callback => {
   Lwt.catch
     (fun () => Lwt_unix.access path [mode])
-    (
-      fun
+    (fun
       | Unix.Unix_error error_code _ _ => {
           callback error_code;
           Lwt.return ()
@@ -25,8 +24,7 @@ let appendFileSync file data options => {
 let chmod path mode callback => {
   Lwt.catch
     (fun () => Lwt_unix.chmod path mode)
-    (
-      fun
+    (fun
       | Unix.Unix_error error_code _ _ => {
           callback error_code;
           Lwt.return ()
@@ -40,8 +38,7 @@ let chmodSync path mode => Unix.chmod path mode;
 let chown path uid gid callback => {
   Lwt.catch
     (fun () => Lwt_unix.chown path uid gid)
-    (
-      fun
+    (fun
       | Unix.Unix_error error_code _ _ => {
           callback error_code;
           Lwt.return ()
