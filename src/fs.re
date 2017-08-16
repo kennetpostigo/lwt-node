@@ -101,7 +101,18 @@ let fchown fd uid gid callback => {
 
 let fchownSync fd uid gid => Unix.fchown fd uid gid;
 
-let fdatasync fd callback => ();
+let fdatasync fd callback => {
+  Lwt.try_bind
+    (fun () => Lwt_unix.fdatasync fd)
+    (fun () => callback Ok)
+    (fun
+      | Unix.Unix_error error_code _ _ => {
+          callback (Err error_code);
+          Lwt.return ();
+        }
+      | exn => Lwt.fail exn
+    );
+};
 
 let fdatasyncSync fd => ();
 
@@ -120,7 +131,18 @@ let fstat fd callback => {
 
 let fstatSync fd => Unix.fstat fd;
 
-let fsync fd callback => ();
+let fsync fd callback => {
+  Lwt.try_bind
+    (fun () => Lwt_unix.fsync fd)
+    (fun () => callback Ok)
+    (fun
+      | Unix.Unix_error error_code _ _ => {
+          callback (Err error_code);
+          Lwt.return ();
+        }
+      | exn => Lwt.fail exn
+    );
+};
 
 let fsyncSync fd => ();
 
