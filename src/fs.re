@@ -18,14 +18,9 @@ let access path mode callback => {
 
 let accessSync path mode => Unix.access path [mode];
 
-let appendFile file data options callback => {
-  /* let dataLength = String.length data;
-  Lwt_unix.write_string file data  */
-};
+let appendFile file data options callback => ();
 
-let appendFileSync file data options => {
-
-};
+let appendFileSync file data options => ();
 
 let chmod path mode callback => {
   Lwt.try_bind
@@ -57,9 +52,20 @@ let chown path uid gid callback => {
 
 let chownSync path uid gid => Unix.chown path uid gid;
 
-let close fd callback => ();
+let close fd callback => {
+  Lwt.try_bind
+    (fun () => Lwt_unix.close fd)
+    (fun () => callback Ok)
+    (fun
+      | Unix.Unix_error error_code _ _ => {
+          callback (Err error_code);
+          Lwt.return ();
+        }
+      | exn => Lwt.fail exn
+    );
+};
 
-let closeSync fd => ();
+let closeSync fd => Unix.close fd;
 
 let createReadStream path options => ();
 
@@ -99,9 +105,20 @@ let fdatasync fd callback => ();
 
 let fdatasyncSync fd => ();
 
-let fstat fd callback => ();
+let fstat fd callback => {
+  Lwt.try_bind
+    (fun () => Lwt_unix.fstat fd)
+    (fun stats => callback Ok stats)
+    (fun
+      | Unix.Unix_error error_code _ _ => {
+          callback (Err error_code);
+          Lwt.return ();
+        }
+      | exn => Lwt.fail exn
+    );
+};
 
-let fstatSync fd => ();
+let fstatSync fd => Unix.fstat fd;
 
 let fsync fd callback => ();
 
@@ -122,20 +139,9 @@ let ftruncate fd len callback => {
 
 let ftruncateSync fd len => Unix.ftruncate fd len;
 
-let futimes fd atime mtime callack => {
-  /* Lwt.try_bind
-    (fun () => Lwt_unix.utimes fd atim mtime)
-    (fun () => callback Ok)
-    (fun
-      | Unix.Unix_error error_code _ _ => {
-          callback (Err error_code);
-          Lwt.return ();
-        }
-      | exn => Lwt.fail exn
-    ); */
-};
+let futimes fd atime mtime callack => ();
 
-let futimesSync fd atime mtime => /*Unix.utimes fd atime mtime*/ ();
+let futimesSync fd atime mtime => ();
 
 let lchmod path mode callback => ();
 
@@ -209,64 +215,201 @@ let _open path flags mode callback => {
 
 let openSync path flags mode => Unix.openfile path flags mode;
 
-let read fd buffer offset length position callback => ();
+let read fd buffer offset length position callback => {
+  Lwt.try_bind
+    (fun () => Lwt_unix.read fd buffer offset length)
+    (fun buff => callback Ok buff)
+    (fun
+      | Unix.Unix_error error_code _ _ => {
+          callback (Err error_code);
+          Lwt.return ();
+        }
+      | exn => Lwt.fail exn
+    );
+};
 
-let readSync fd buffer offset length position => ();
+let readSync fd buffer offset length position => Unix.read fd buffer offset length;
 
-let readdir path options callback => ();
+let readdir path callback => {
+  Lwt.try_bind
+    (fun () => Lwt_unix.readdir path)
+    (fun nextEntry => callback Ok nextEntry)
+    (fun
+      | Unix.Unix_error error_code _ _ => {
+          callback (Err error_code);
+          Lwt.return ();
+        }
+      | exn => Lwt.fail exn
+    );
+};
 
-let readdirSync path options => ();
+let readdirSync path => Unix.readdir path;
 
 let readFile path options callback => ();
 
 let readFileSync path options => ();
 
-let readLink path options callback => ();
+let readLink path callback => {
+  Lwt.try_bind
+    (fun () => Lwt_unix.readlink path)
+    (fun contents => callback Ok contents)
+    (fun
+      | Unix.Unix_error error_code _ _ => {
+          callback (Err error_code);
+          Lwt.return ();
+        }
+      | exn => Lwt.fail exn
+    );
+};
 
-let readLinkSync path options => ();
+let readLinkSync path => Unix.readlink path;
 
 let realpath path options callback => ();
 
-let realpathSynch path options => ();
+let realpathSync path options => ();
 
-let rename oldPath newPath callback => ();
+let rename oldPath newPath callback => {
+  Lwt.try_bind
+    (fun () => Lwt_unix.rename oldPath newPath)
+    (fun () => callback Ok)
+    (fun
+      | Unix.Unix_error error_code _ _ => {
+          callback (Err error_code);
+          Lwt.return ();
+        }
+      | exn => Lwt.fail exn
+    );
+};
 
-let renameSync oldPath newPath => ();
+let renameSync oldPath newPath => Unix.rename oldPath newPath;
 
-let rmdir path callback => ();
+let rmdir path callback => {
+  Lwt.try_bind
+    (fun () => Lwt_unix.rmdir path)
+    (fun () => callback Ok)
+    (fun
+      | Unix.Unix_error error_code _ _ => {
+          callback (Err error_code);
+          Lwt.return ();
+        }
+      | exn => Lwt.fail exn
+    );
+};
 
-let rmdirSync path => ();
+let rmdirSync path => Unix.rmdir path;
 
-let stat path callback => ();
+let stat path callback => {
+  Lwt.try_bind
+    (fun () => Lwt_unix.stat path)
+    (fun stats => callback Ok stats)
+    (fun
+      | Unix.Unix_error error_code _ _ => {
+          callback (Err error_code);
+          Lwt.return ();
+        }
+      | exn => Lwt.fail exn
+    );
+};
 
-let statSync path => ();
+let statSync path => Unix.stat path;
 
-let symlink target path _type callback => ();
+let symlink target path callback => {
+  Lwt.try_bind
+    (fun () => Lwt_unix.symlink target path)
+    (fun () => callback Ok)
+    (fun
+      | Unix.Unix_error error_code _ _ => {
+          callback (Err error_code);
+          Lwt.return ();
+        }
+      | exn => Lwt.fail exn
+    );
+};
 
-let symlinkSync target path _type => ();
+let symlinkSync target path => Unix.symlink target path;
 
-let truncate path len callback => ();
+let truncate path len callback => {
+  Lwt.try_bind
+    (fun () => Lwt_unix.truncate path len)
+    (fun () => callback Ok)
+    (fun
+      | Unix.Unix_error error_code _ _ => {
+          callback (Err error_code);
+          Lwt.return ();
+        }
+      | exn => Lwt.fail exn
+    );
+};
 
-let truncateSync path len => ();
+let truncateSync path len => Unix.truncate path len;
 
-let unlink path callback => ();
+let unlink path callback => {
+  Lwt.try_bind
+    (fun () => Lwt_unix.unlink path)
+    (fun () => callback Ok)
+    (fun
+      | Unix.Unix_error error_code _ _ => {
+          callback (Err error_code);
+          Lwt.return ();
+        }
+      | exn => Lwt.fail exn
+    );
+};
 
-let unlinkSync path => ();
+let unlinkSync path => Unix.unlink path;
 
 let unwatchFile filename listener => ();
 
-let utimes path atime mtime callback => ();
+let utimes path atime mtime callback => {
+  Lwt.try_bind
+    (fun () => Lwt_unix.utimes path atime mtime)
+    (fun () => callback Ok)
+    (fun
+      | Unix.Unix_error error_code _ _ => {
+          callback (Err error_code);
+          Lwt.return ();
+        }
+      | exn => Lwt.fail exn
+    );
+};
 
-let utimesSync path atime mtime => ();
+let utimesSync path atime mtime => Unix.utimes path atime mtime;
 
 let watch filename options listener => ();
 
 let watchFile filename options listener => ();
 
-let write fd string position encoding callback => ();
+let write fd buffer offset length callback => {
+  Lwt.try_bind
+    (fun () => Lwt_unix.write fd buffer offset length)
+    (fun buff => callback Ok buff)
+    (fun
+      | Unix.Unix_error error_code _ _ => {
+          callback (Err error_code);
+          Lwt.return ();
+        }
+      | exn => Lwt.fail exn
+    );
+};
+
+let writeSync fd buffer offset length => Unix.write fd buffer offset length;
+
+
+let writeString fd string offset length callback => {
+  Lwt.try_bind
+    (fun () => Lwt_unix.write_string fd string offset length)
+    (fun str => callback Ok str)
+    (fun
+      | Unix.Unix_error error_code _ _ => {
+          callback (Err error_code);
+          Lwt.return ();
+        }
+      | exn => Lwt.fail exn
+    );
+};
+
+let writeStringSync fd string offset length => Unix.write_substring fd string offset length;
 
 let writeFile file data options callbback => ();
 
 let writeFileSync file data options => ();
-
-let writeSync fd string position encoding => ();
