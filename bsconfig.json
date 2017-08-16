@@ -1,7 +1,7 @@
 {
   "name": "reason-node-b",
   "sources": ["src", "tests", "examples"],
-  "ocamlfind-dependencies": ["lwt.unix", "alcotest"],
+  "ocamlfind-dependencies": ["lwt.unix", "alcotest", "bisect_ppx"],
   "entries": [
     {
       "kind": "bytecode",

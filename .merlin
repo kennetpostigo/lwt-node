@@ -9,5 +9,5 @@ S tests
 B lib/bs/bytecode/tests
 S src
 B lib/bs/bytecode/src
-PKG lwt.unix alcotest
+PKG lwt.unix alcotest bisect_ppx
 ####BSB GENERATED: NO EDIT}
