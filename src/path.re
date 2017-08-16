@@ -100,13 +100,9 @@ let relative from::from _to::_to => {
 
 /*
 CASES
-  - '/home/user/dir'            => { root: '/', dir: '/home/user', base: 'dir', ext: '', name: 'dir' }
-  - '.'                         => { root: '', dir: '', base: '.', ext: '', name: '.' }
   - './'                        => { root: '', dir: '', base: '.', ext: '', name: '.' }
   - '/'                         => { root: '/', dir: '/', base: '', ext: '', name: '' }
-  - '/home/user/dir/file.name/' => { root: '/', dir: '/home/user/dir',base: 'file.name', ext: '.name', name: 'file' }
   - 'home/user/..///file.name/' => { root: '', dir: 'home/user/..///', base: 'file.name', ext: '.name', name: 'file' }
-  - 'm'                         => { root: '', dir: '', base: 'm', ext: '', name: 'm' }
 */
 let parse path::path => {
   let root = path.[0] == '/' ? Some "/" : None;
