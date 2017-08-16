@@ -1,8 +1,3 @@
-/*
-Anton RECOMMENDATION
-try%lwt Lwt_unix.access "foo" [perms] with Unix_error (error_code, _, _) -> ...
-*/
-
 let access path mode callback => {
   Lwt.catch
     (fun () => Lwt_unix.access path [mode])
