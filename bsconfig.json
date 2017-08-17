@@ -1,5 +1,5 @@
 {
-  "name": "reason-node-b",
+  "name": "reason-node",
   "sources": ["src", "tests", "examples"],
   "ocamlfind-dependencies": ["lwt.unix", "alcotest", "bisect_ppx"],
   "entries": [

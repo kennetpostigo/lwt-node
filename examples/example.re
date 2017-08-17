@@ -1,6 +1,5 @@
 open ReasonNode;
 
-
 let generateString po::(po : Path.pathObject) expected path=> {
   let dir = ref "None";
   let root = ref "None";
@@ -48,17 +47,12 @@ generateString (Path.parse "/home/user/dir/file.name/") "{ root: '/', dir: '/hom
 generateString (Path.parse "home/user/..///file.name/") "{ root: None, dir: 'home/user/..///', base: 'file.name', ext: '.name', name: 'file' }" "home/user/..///file.name/";
 generateString (Path.parse "m") "{ root: None, dir: None, base: 'm', ext: None, name: 'm' }" "m";
 
-type fsErr =
-| Ok
-| Err Unix.error;
 
-Fs.mkdir "testDirAsync0" 416  (fun err => {
-  switch err {
-  | Ok => print_string "\n\n====OK====\n\n"
-  | Err e => print_string "\n\n====ERR====\n\n"
-  | _ => print_string "\n\n====_====\n\n"
-  };
-  print_int (6 + 2);
-});
+Node.run {
+  Fs.mkdir "testDirAsync0" 416  (Fs.(fun
+    | Ok => print_string "\n\n====OK====\n\n"
+    | Err e => print_string "\n\n====ERR====\n\n"
+  ));
+};
 
-/* Fs.mkdirSync "testDirSync0" 416; */
+Fs.mkdirSync "testDirSync0" 416;

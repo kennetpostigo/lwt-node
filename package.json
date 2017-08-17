@@ -1,11 +1,11 @@
 {
-  "name": "reason-node-b",
+  "name": "reason-node",
   "scripts": {
     "build": "bsb -backend bytecode",
     "coverage": "bisect-ppx-report -I build/ -html coverage/ bisect*.out",
     "cleanCov": "rm -rf testDir* && rm -rf bisect*.out && rm -rf coverage",
     "examples": "./lib/bs/bytecode/example.byte",
-    "tests": "./lib/bs/bytecode/test.byte",
+    "test": "./lib/bs/bytecode/test.byte",
     "cleanB": "bsb -backend bytecode -clean-world",
     "cleanN": "bsb -backend native -clean-world",
     "devTest": "npm run cleanB && npm run build && npm run testsB",
