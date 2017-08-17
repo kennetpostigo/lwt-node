@@ -3,6 +3,7 @@
   "scripts": {
     "build": "bsb -backend bytecode",
     "coverage": "bisect-ppx-report -I build/ -html coverage/ bisect*.out",
+    "coverageReport": "open -a \"Google Chrome\" ./coverage/index.html",
     "cleanCov": "rm -rf testDir* && rm -rf bisect*.out && rm -rf coverage",
     "examples": "./lib/bs/bytecode/example.byte",
     "test": "./lib/bs/bytecode/test.byte",
