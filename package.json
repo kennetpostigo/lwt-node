@@ -2,6 +2,8 @@
   "name": "reason-node-b",
   "scripts": {
     "build": "bsb -backend bytecode",
+    "coverage": "bisect-ppx-report -I build/ -html coverage/ bisect*.out",
+    "cleanCov": "rm -rf testDir* && rm -rf bisect*.out && rm -rf coverage",
     "examples": "./lib/bs/bytecode/example.byte",
     "tests": "./lib/bs/bytecode/test.byte",
     "cleanB": "bsb -backend bytecode -clean-world",

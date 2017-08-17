@@ -47,3 +47,18 @@ generateString (Path.parse "/") "{ root: '/', dir: '/', base: None, ext: None, n
 generateString (Path.parse "/home/user/dir/file.name/") "{ root: '/', dir: '/home/user/dir',base: 'file.name', ext: '.name', name: 'file' }" "/home/user/dir/file.name/";
 generateString (Path.parse "home/user/..///file.name/") "{ root: None, dir: 'home/user/..///', base: 'file.name', ext: '.name', name: 'file' }" "home/user/..///file.name/";
 generateString (Path.parse "m") "{ root: None, dir: None, base: 'm', ext: None, name: 'm' }" "m";
+
+type fsErr =
+| Ok
+| Err Unix.error;
+
+Fs.mkdir "testDirAsync0" 416  (fun err => {
+  switch err {
+  | Ok => print_string "\n\n====OK====\n\n"
+  | Err e => print_string "\n\n====ERR====\n\n"
+  | _ => print_string "\n\n====_====\n\n"
+  };
+  print_int (6 + 2);
+});
+
+/* Fs.mkdirSync "testDirSync0" 416; */
