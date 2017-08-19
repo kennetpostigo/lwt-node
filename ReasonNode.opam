@@ -1,0 +1,24 @@
+opam-version: "1.2"
+name: "ReasonNode"
+version: "0.1.0"
+maintainer: "Kennet Postigo <kennetfpostigo@gmail.com>"
+authors: [
+  "Kennet Postigo <kennetfpostigo@gmail.com>"
+]
+license: "MIT"
+homepage: "https://github.com/kennetpostigo/reason-node
+doc: "https://kennetpostigo.github.io/reason-node/"
+bug-reports: "https://github.com/kennetpostigo/reason-node/issues"
+dev-repo: "git://github.com/kennetpostigo/reason-node.git"
+tags: [ "reason" "node" ]
+build: [
+  ["jbuilder" "build" "-p" name "-j" jobs]
+]
+depends: [
+  "jbuilder" {build}
+  "reason"  {= "2.0.0"}
+  "alcotest"
+  "lwt"
+  "bisect_ppx"
+]
+available: [ ocaml-version >= "4.02" & ocaml-version < "4.05" ]

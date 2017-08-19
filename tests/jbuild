@@ -1,0 +1,10 @@
+(jbuild_version 1)
+
+(executable
+ ((name test)
+  (libraries (ReasonNode alcotest bisect_ppx))))
+
+(alias
+ ((name runtest)
+  (deps (test.exe))
+  (action (run ${<}))))
