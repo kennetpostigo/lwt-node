@@ -5,6 +5,6 @@
   (libraries (ReasonNode alcotest bisect_ppx))))
 
 (alias
- ((name runtest)
+ ((name tests)
   (deps (test.exe))
   (action (run ${<}))))
