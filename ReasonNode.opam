@@ -6,7 +6,7 @@ authors: [
   "Kennet Postigo <kennetfpostigo@gmail.com>"
 ]
 license: "MIT"
-homepage: "https://github.com/kennetpostigo/reason-node
+homepage: "https://github.com/kennetpostigo/reason-node"
 doc: "https://kennetpostigo.github.io/reason-node/"
 bug-reports: "https://github.com/kennetpostigo/reason-node/issues"
 dev-repo: "git://github.com/kennetpostigo/reason-node.git"
@@ -16,7 +16,7 @@ build: [
 ]
 depends: [
   "jbuilder" {build}
-  "reason"  {= "2.0.0"}
+  "reason"  {= "1.13.6"}
   "alcotest"
   "lwt"
   "bisect_ppx"

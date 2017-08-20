@@ -1,6 +1,6 @@
 (jbuild_version 1)
 
 (executable
- ((name examples)
+ ((name example)
   (public_name examples)
   (libraries (ReasonNode))))

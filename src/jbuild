@@ -3,4 +3,4 @@
 (library
  ((name ReasonNode)
   (public_name ReasonNode)
-  (libraries (lwt))))
+  (libraries (lwt.unix))))
