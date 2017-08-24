@@ -145,15 +145,15 @@ let parse path::path => {
           print_string "hasSlash => false => hasDot => true\n";
           let dotIndex = String.rindex p '.';
           dir := None;
-          base := Some path;
+          base := Some p;
           ext := (pathLength === 1 && p.[0] == '.') ? None : Some (extname p);
           name := Some (String.sub p 0 (pathLength - dotIndex));
         }
       | false => {
           print_string "hasSlash => false => hasDot => false\n";
-          dir := None;
-          base := Some p;
-          name := Some p;
+          dir := (path == "/") ? Some path : None;
+          base := (p == "") ? None : Some p;
+          name := (p == "") ? None : Some p;
           ext := None;
         }
       }
