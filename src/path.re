@@ -112,29 +112,22 @@ let parse path::path => {
   | true => {
       switch hasDot {
       | true => {
-          print_string "hasSlash => true => hasDot => true\n";
           dir := (pathLength == 1 ? None : Some (String.sub p 0 (String.rindex_from p (pathLength - 1) '/')));
           base := Some (String.sub p (String.rindex p '/' + 1) (pathLength - (String.rindex p '/' + 1)));
           name := Some (String.sub p (String.rindex p '/' + 1) (pathLength - String.rindex p '.' - 1));
           ext := Some (extname p);
         }
       | false => {
-          print_string "hasSlash => true => hasDot => false\n";
           dir := (pathLength == 1 ? None : Some (String.sub p 0 (String.rindex_from p (pathLength - 1) '/')));
-          print_string "not dir\n";
           base := Some (String.sub p (String.rindex p '/' + 1) (pathLength - (String.rindex p '/' + 1)));
-          print_string "not base\n";
           name := Some (String.sub path (String.rindex p '/' + 1) (pathLength - (String.rindex p '/' + 1)));
-          print_string "name name\n";
           ext := None;
-          print_string "finished\n";
         }
       }
     }
   | false => {
       switch hasDot {
       | true => {
-          print_string "hasSlash => false => hasDot => true\n";
           let dotIndex = String.rindex p '.';
           dir := None;
           base := Some p;
@@ -142,7 +135,6 @@ let parse path::path => {
           name := Some (String.sub p 0 (pathLength - dotIndex));
         }
       | false => {
-          print_string "hasSlash => false => hasDot => false\n";
           dir := (path == "/") ? Some path : None;
           base := (p == "") ? None : Some p;
           name := (p == "") ? None : Some p;
