@@ -96,14 +96,6 @@ let relative from::from _to::_to => {
 
 };
 
-
-
-/*
-CASES
-  - './'                        => { root: '', dir: '', base: '.', ext: '', name: '.' }
-  - '/'                         => { root: '/', dir: '/', base: '', ext: '', name: '' }
-  - 'home/user/..///file.name/' => { root: '', dir: 'home/user/..///', base: 'file.name', ext: '.name', name: 'file' }
-*/
 let parse path::path => {
   let root = path.[0] == '/' ? Some "/" : None;
   let dir = ref None;
