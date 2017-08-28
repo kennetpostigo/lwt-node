@@ -1,0 +1,9 @@
+.edit {
+  display: flex;
+  background: #FD7E6A;
+  color: #fff;
+  border: none;
+  padding: 5px;
+  border-radius: 3px;
+  margin: 5px;
+}

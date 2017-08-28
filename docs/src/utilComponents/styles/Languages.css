@@ -1,0 +1,9 @@
+.languages {
+  display: flex;
+  background: #F2F2F2;
+  color: #000;
+  border: none;
+  padding: 5px;
+  border-radius: 3px;
+  margin: 5px;
+}

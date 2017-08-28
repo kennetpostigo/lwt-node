@@ -47,11 +47,11 @@ generateString (Path.parse "./") "{ root: None, dir: None, base: '.', ext: None,
 generateString (Path.parse "/") "{ root: '/', dir: '/', base: None, ext: None, name: None }" "/";
 generateString (Path.parse "home/user/..///file.name/") "{ root: None, dir: 'home/user/..//', base: 'file.name', ext: '.name', name: 'file' }" "home/user/..///file.name/";
 
-/* Node.run {
-  Fs.mkdir "testDirAsync0" 416  (Fs.(fun
+Node.run {
+  Fs.mkdir "testDirAsync0" 416 (Fs.(fun
     | Ok => print_string "\n\n====OK====\n\n"
     | Err e => print_string "\n\n====ERR====\n\n"
   ));
 };
 
-Fs.mkdirSync "testDirSync0" 416; */
+/* Fs.mkdirSync "testDirSync0" 416; */
