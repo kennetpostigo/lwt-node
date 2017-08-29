@@ -1,5 +1,5 @@
 let () =
-  Alcotest.run argv::[| "--verose" |] "Renode" [
+  Alcotest.run argv::[| "--verbose" |] "Renode" [
     ("PathTests", PathTests.pathTestSet),
     ("RenodeUtilsTests", RenodeUtilsTests.utilsTestSet)
   ];
