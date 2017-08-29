@@ -2,7 +2,7 @@
 
 ### Operators
 
-+ `Path.basename path ext` 
++ `Path.basename path ext`
 
   returns the last postion of a `path`, similar to the Unix `basename` command.
 
@@ -10,9 +10,9 @@
   type basename = path::string => ext::string? => string;
   ```
 
-+ `Path.delimeter`
++ `Path.delimiter`
 
-  returns the platform specific delimeter, `:` for unix and `;` for windows.
+  returns the platform-specific delimiter, `:` for unix and `;` for windows.
 
 + `Path.dirname path`
 
@@ -54,14 +54,14 @@
 + `Path.join paths`
 
   returns a string containing all the `paths` segments joined togther delimited by the seperator. Zero-length `path` segments are ignored. If the joined path string is a zero-length string then "." will be returned. representing the current working directory.
-  
+
   ```reason
   type join = paths::list string => string;
   ```
 
 + `Path.normalize path`
 
-  returns a string of the normalized `path`, resolving `..` and `.` segments. When multiple delimeters are found they are replaced by a single delimeters. Trailing seperators are preserved.
+  returns a string of the normalized `path`, resolving `..` and `.` segments. When multiple delimiters are found they are replaced by a single delimiters. Trailing seperators are preserved.
 
   ```reason
   type normalize = path::string => string;

@@ -10,7 +10,7 @@ let basenameExt () =>
     "quux"
     (Path.basename ext::".html" path::"/foo/bar/baz/asdf/quux.html");
 
-let delimeter () => Alcotest.(check string) "Path.delimeter" ":" Path.delimeter;
+let delimiter () => Alcotest.(check string) "Path.delimiter" ":" Path.delimiter;
 
 let extname () => Alcotest.(check string) "Path.extname" ".html" (Path.extname "foo/bar/lol.html");
 
@@ -119,7 +119,7 @@ CASES
 let pathTestSet = [
   ("Path.basename without ext arg", `Slow, basenameNoExt),
   ("Path.basename with ext arg", `Slow, basenameExt),
-  ("Path.delimeter", `Slow, delimeter),
+  ("Path.delimiter", `Slow, delimiter),
   ("Path.extname", `Slow, extname),
   ("Path.extname with a relative path", `Slow, extnameWithRelativePath),
   ("Path.extname moving up a directory", `Slow, extnameMovingUpADirectory),

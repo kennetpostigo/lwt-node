@@ -8,7 +8,7 @@ let basename ext::ext="" path::path => {
   }
 };
 
-let delimeter = ":";
+let delimiter = ":";
 
 let sep = Filename.dir_sep;
 

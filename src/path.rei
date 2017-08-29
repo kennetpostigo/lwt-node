@@ -1,6 +1,6 @@
 let basename : ext::string? => path::string => string;
 
-let delimeter : string;
+let delimiter : string;
 
 let sep : string;
 
