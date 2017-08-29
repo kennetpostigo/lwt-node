@@ -65,22 +65,24 @@ class Landing extends Component {
               Here is a nice and simple example, we are creating a directory in
               our file-system.
             </p>
-            <button className="btn">
-              <p>See API</p>
-            </button>
+            <Link to="/api">
+              <button className="btn">
+                <p>See API</p>
+              </button>
+            </Link>
           </div>
           <div className="code-container">
             <Code>
               {`open ReasonNode;
 
-  Node.run {
-    Fs.mkdir "testDirAsync0" 416 (Fs.(
-      fun
-      | Ok => print_string "Created Dir"
-      | Err e => print_string "Error :("
-      )
-    );
-  };`}
+Node.run {
+  Fs.mkdir "testDirAsync0" 416 (Fs.(
+    fun
+    | Ok => print_string "Created Dir"
+    | Err e => print_string "Error :("
+    )
+  );
+};`}
             </Code>
           </div>
         </div>

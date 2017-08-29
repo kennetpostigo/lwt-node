@@ -1,4 +1,4 @@
-// nodes canvas code originally authored by Sam Sacone
+// originally authored by sam saccone
 export default function run() {
   var width = window.innerWidth;
   var height = 460;
@@ -28,30 +28,31 @@ export default function run() {
     }
   }
 
+  function generateConnection(i) {
+    var connectTo = ~~(Math.random() * orbs.length);
+    if (orbs[i].connections.indexOf(orbs[connectTo]) !== -1) {
+      generateConnection(i);
+    } else {
+      orbs[i].connections.push(orbs[connectTo]);
+    }
+  }
+
   function generateOrbConnections() {
-    for (var i = 0; i < orbs.length; ++i) {
-      var connections = ~~(Math.random() * 20);
-      (function generateConnection() {
-        var connectTo = ~~(Math.random() * orbs.length);
-        if (orbs[i].connections.indexOf(orbs[connectTo]) != -1) {
-          generateConnection();
-        } else {
-          orbs[i].connections.push(orbs[connectTo]);
-        }
-      })();
+    for (let i = 0; i < orbs.length; ++i) {
+      generateConnection(i);
     }
   }
 
   function orb() {
     this.radius = 15;
     this.connections = [];
-    this.color = ["rgba(255,255,255, 0.45)"];
+    this.color = ["rgba(255,255,255, 0.7)"];
     this.x = ~~(Math.random() * (elm.width - this.radius) + this.radius);
     this.y = ~~(Math.random() * (elm.height - this.radius) + this.radius);
     this.xVelocity =
-      ~~(Math.random() * 5) * (~~(Math.random() * 2) == 0 ? -1 : 1);
+      ~~(Math.random() * 5) * (~~(Math.random() * 2) === 0 ? -1 : 1);
     this.yVelocity =
-      ~~(Math.random() * 2) * (~~(Math.random() * 2) == 0 ? -1 : 1);
+      ~~(Math.random() * 2) * (~~(Math.random() * 2) === 0 ? -1 : 1);
 
     return this;
   }
