@@ -16,7 +16,7 @@ function CodeBlock(props) {
         }
       ]}
     >
-      {props.literal}
+      {props.literal || props.children}
     </Codehighlighter>
   );
 }

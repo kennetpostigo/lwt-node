@@ -3,11 +3,12 @@ import asyncMarkdown from "./../utilComponents/AsyncMarkdown";
 // import md from "./../markdown/path.md";
 
 const loadMd = m => {
-  var Markdown = asyncMarkdown(() =>
-    import(`./../markdown/${m}.md`).then(md =>
+  var Markdown = asyncMarkdown(() => {
+    return import(`./../markdown/${m || "gettingStarted"}.md`).then(md =>
       fetch(md).then(res => res.text(), err => console.log(err))
-    )
-  );
+    );
+  });
+
   return <Markdown />;
 };
 
