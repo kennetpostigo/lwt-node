@@ -1,9 +1,11 @@
-import React from 'react';
-import { Link as RLink } from 'react-router-dom';
+import React from "react";
+import { Link as RLink } from "react-router-dom";
 
 function Link(props) {
   return (
-    <RLink className="link normalize" to={props.href}>{props.children}</RLink>
+    <RLink className="link normalize" to={props.href}>
+      {props.children}
+    </RLink>
   );
 }
 

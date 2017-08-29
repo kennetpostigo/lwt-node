@@ -1,9 +1,13 @@
 import React from "react";
+import NavDrawer from "./NavDrawer";
+import Content from "./Content";
+import "./styles/Api.css";
 
 function Api(props) {
   return (
-    <div>
-      <p>THE API</p>
+    <div className="api">
+      <NavDrawer />
+      <Content module={props.match.params.module} />
     </div>
   );
 }

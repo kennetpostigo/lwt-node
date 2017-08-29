@@ -22,7 +22,8 @@ class App extends Component {
       <Router>
         <div>
           <Route exact path="/" component={Landing} />
-          <Route path="/api" component={Api} />
+          <Route exact path="/api" component={Api} />
+          <Route path="/api/:module" component={Api} />
         </div>
       </Router>
     );

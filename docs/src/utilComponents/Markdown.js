@@ -1,7 +1,8 @@
-import React from 'react';
-import ReactMarkdown from 'react-markdown';
-import CodeBlock from './CodeBlock.js';
-import Link from './Link.js';
+import React from "react";
+import ReactMarkdown from "react-markdown";
+import CodeBlock from "./CodeBlock.js";
+import Link from "./Link.js";
+import Heading from "./H1.js";
 
 function Markdown(props) {
   return (
@@ -9,7 +10,8 @@ function Markdown(props) {
       source={props.md}
       renderers={Object.assign({}, ReactMarkdown.renderers, {
         CodeBlock,
-        Link
+        Link,
+        Heading
       })}
     />
   );
