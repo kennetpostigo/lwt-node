@@ -49,8 +49,11 @@ generateString (Path.parse "home/user/..///file.name/") "{ root: None, dir: 'hom
 
 Node.run {
   Fs.mkdir "testDirAsync0" 416 (Fs.(fun
-    | Ok => print_string "\n\n====OK====\n\n"
-    | Err e => print_string "\n\n====ERR====\n\n"
+    | Ok => {
+        let x = 3 * 9;
+        prerr_endline("\n\n" ^ (string_of_int x) ^ "\n\n");
+      }
+    | Err e => prerr_endline "\n\n====ERR====\n\n"
   ));
 };
 

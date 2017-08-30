@@ -240,7 +240,7 @@ let lstatSync path => Unix.lstat path;
 
 let mkdir path mode callback => {
   Lwt.on_any
-    (Lwt.wrap (fun () => Lwt_unix.mkdir path mode))
+    (Lwt_unix.mkdir path mode)
     (fun _ => {
       callback Ok;
      ();
