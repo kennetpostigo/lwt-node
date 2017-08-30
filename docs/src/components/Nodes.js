@@ -28,6 +28,14 @@ export default function run() {
     }
   }
 
+  window.addEventListener("resize", resize);
+
+  function resize() {
+    width = window.innerWidth;
+    elm.setAttribute("width", width * pixelDensity);
+    elm.style.width = width + "px";
+  }
+
   function generateConnection(i) {
     var connectTo = ~~(Math.random() * orbs.length);
     if (orbs[i].connections.indexOf(orbs[connectTo]) !== -1) {

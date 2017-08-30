@@ -1,6 +1,6 @@
 import React from "react";
 import asyncMarkdown from "./../utilComponents/AsyncMarkdown";
-// import md from "./../markdown/path.md";
+import "./styles/Content.css";
 
 const loadMd = m => {
   var Markdown = asyncMarkdown(() => {
@@ -14,7 +14,7 @@ const loadMd = m => {
 
 function Content(props) {
   return (
-    <div>
+    <div className="content">
       {loadMd(props.module)}
     </div>
   );

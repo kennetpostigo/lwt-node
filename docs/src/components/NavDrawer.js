@@ -22,7 +22,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#access"
+          to="/api/fs/access"
         >
           access
         </Link>
@@ -31,7 +31,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#accessSync"
+          to="/api/fs/accessSync"
         >
           accessSync
         </Link>
@@ -40,7 +40,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#appendFile"
+          to="/api/fs/appendFile"
         >
           appendFile
         </Link>
@@ -49,7 +49,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#appendFileSync"
+          to="/api/fs/appendFileSync"
         >
           appendFileSync
         </Link>
@@ -58,7 +58,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#chmod"
+          to="/api/fs/chmod"
         >
           chmod
         </Link>
@@ -67,7 +67,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#chmodSync"
+          to="/api/fs/chmodSync"
         >
           chmodSync
         </Link>
@@ -76,7 +76,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#chown"
+          to="/api/fs/chown"
         >
           chown
         </Link>
@@ -85,7 +85,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#chownSync"
+          to="/api/fs/chownSync"
         >
           chownSync
         </Link>
@@ -94,7 +94,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#close"
+          to="/api/fs/close"
         >
           close
         </Link>
@@ -103,7 +103,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#closeSync"
+          to="/api/fs/closeSync"
         >
           closeSync
         </Link>
@@ -112,7 +112,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#createReadStream"
+          to="/api/fs/createReadStream"
         >
           createReadStream
         </Link>
@@ -121,7 +121,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#createWriteStream"
+          to="/api/fs/createWriteStream"
         >
           createWriteStream
         </Link>
@@ -130,7 +130,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#fchmod"
+          to="/api/fs/fchmod"
         >
           fchmod
         </Link>
@@ -139,7 +139,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#fchmodSync"
+          to="/api/fs/fchmodSync"
         >
           fchmodSync
         </Link>
@@ -148,7 +148,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#fchown"
+          to="/api/fs/fchown"
         >
           fchown
         </Link>
@@ -157,7 +157,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#fchownSync"
+          to="/api/fs/fchownSync"
         >
           fchownSync
         </Link>
@@ -166,7 +166,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#fdatasync"
+          to="/api/fs/fdatasync"
         >
           fdatasync
         </Link>
@@ -175,7 +175,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#fdatasyncSync"
+          to="/api/fs/fdatasyncSync"
         >
           fdatasyncSync
         </Link>
@@ -184,7 +184,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#fstat"
+          to="/api/fs/fstat"
         >
           fstat
         </Link>
@@ -193,7 +193,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#fstatSync"
+          to="/api/fs/fstatSync"
         >
           fstatSync
         </Link>
@@ -202,7 +202,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#fsync"
+          to="/api/fs/fsync"
         >
           fsync
         </Link>
@@ -211,7 +211,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#fsyncSync"
+          to="/api/fs/fsyncSync"
         >
           fsyncSync
         </Link>
@@ -220,7 +220,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#ftruncate"
+          to="/api/fs/ftruncate"
         >
           ftruncate
         </Link>
@@ -229,7 +229,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#ftruncateSync"
+          to="/api/fs/ftruncateSync"
         >
           ftruncateSync
         </Link>
@@ -238,7 +238,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#futimes"
+          to="/api/fs/futimes"
         >
           futimes
         </Link>
@@ -247,7 +247,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#futimesSync"
+          to="/api/fs/futimesSync"
         >
           futimesSync
         </Link>
@@ -256,7 +256,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#lchmod"
+          to="/api/fs/lchmod"
         >
           lchmod
         </Link>
@@ -265,7 +265,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#lchmodSync"
+          to="/api/fs/lchmodSync"
         >
           lchmodSync
         </Link>
@@ -274,7 +274,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#lchown"
+          to="/api/fs/lchown"
         >
           lchown
         </Link>
@@ -283,7 +283,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#lchownSync"
+          to="/api/fs/lchownSync"
         >
           lchownSync
         </Link>
@@ -292,7 +292,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#link"
+          to="/api/fs/link"
         >
           link
         </Link>
@@ -301,7 +301,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#linkSync"
+          to="/api/fs/linkSync"
         >
           linkSync
         </Link>
@@ -310,7 +310,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#lstat"
+          to="/api/fs/lstat"
         >
           lstat
         </Link>
@@ -319,7 +319,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#lstatSync"
+          to="/api/fs/lstatSync"
         >
           lstatSync
         </Link>
@@ -328,7 +328,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#mkdir"
+          to="/api/fs/mkdir"
         >
           mkdir
         </Link>
@@ -337,7 +337,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#mkdirSync"
+          to="/api/fs/mkdirSync"
         >
           mkdirSync
         </Link>
@@ -346,7 +346,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#mkdtemp"
+          to="/api/fs/mkdtemp"
         >
           mkdtemp
         </Link>
@@ -355,7 +355,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#mkdtempSync"
+          to="/api/fs/mkdtempSync"
         >
           mkdtempSync
         </Link>
@@ -364,7 +364,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#_open"
+          to="/api/fs/_open"
         >
           _open
         </Link>
@@ -373,7 +373,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#openSync"
+          to="/api/fs/openSync"
         >
           openSync
         </Link>
@@ -382,7 +382,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#read"
+          to="/api/fs/read"
         >
           read
         </Link>
@@ -391,7 +391,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#readSync"
+          to="/api/fs/readSync"
         >
           readSync
         </Link>
@@ -400,7 +400,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#readdir"
+          to="/api/fs/readdir"
         >
           readdir
         </Link>
@@ -409,7 +409,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#readdirSync"
+          to="/api/fs/readdirSync"
         >
           readdirSync
         </Link>
@@ -418,7 +418,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#readFile"
+          to="/api/fs/readFile"
         >
           readFile
         </Link>
@@ -427,7 +427,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#readFileSync"
+          to="/api/fs/readFileSync"
         >
           readFileSync
         </Link>
@@ -436,7 +436,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#readLink"
+          to="/api/fs/readLink"
         >
           readLink
         </Link>
@@ -445,7 +445,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#readLinkSync"
+          to="/api/fs/readLinkSync"
         >
           readLinkSync
         </Link>
@@ -454,7 +454,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#realpath"
+          to="/api/fs/realpath"
         >
           realpath
         </Link>
@@ -463,7 +463,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#realpathSync"
+          to="/api/fs/realpathSync"
         >
           realpathSync
         </Link>
@@ -472,7 +472,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#rename"
+          to="/api/fs/rename"
         >
           rename
         </Link>
@@ -481,7 +481,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#renameSync"
+          to="/api/fs/renameSync"
         >
           renameSync
         </Link>
@@ -490,7 +490,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#rmdir"
+          to="/api/fs/rmdir"
         >
           rmdir
         </Link>
@@ -499,7 +499,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#rmdirSync"
+          to="/api/fs/rmdirSync"
         >
           rmdirSync
         </Link>
@@ -508,7 +508,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#stat"
+          to="/api/fs/stat"
         >
           stat
         </Link>
@@ -517,7 +517,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#statSync"
+          to="/api/fs/statSync"
         >
           statSync
         </Link>
@@ -526,7 +526,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#symlink"
+          to="/api/fs/symlink"
         >
           symlink
         </Link>
@@ -535,7 +535,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#symlinkSync"
+          to="/api/fs/symlinkSync"
         >
           symlinkSync
         </Link>
@@ -544,7 +544,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#truncate"
+          to="/api/fs/truncate"
         >
           truncate
         </Link>
@@ -553,7 +553,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#truncateSync"
+          to="/api/path/truncateSync"
         >
           truncateSync
         </Link>
@@ -562,7 +562,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#unlink"
+          to="/api/path/unlink"
         >
           unlink
         </Link>
@@ -571,7 +571,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#unlinkSync"
+          to="/api/path/unlinkSync"
         >
           unlinkSync
         </Link>
@@ -580,7 +580,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#unwatchFile"
+          to="/api/path/unwatchFile"
         >
           unwatchFile
         </Link>
@@ -589,7 +589,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#utimes"
+          to="/api/path/utimes"
         >
           utimes
         </Link>
@@ -598,7 +598,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#utimesSync"
+          to="/api/path/utimesSync"
         >
           utimesSync
         </Link>
@@ -607,7 +607,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#watch"
+          to="/api/path/watch"
         >
           watch
         </Link>
@@ -616,7 +616,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#watchFile"
+          to="/api/path/watchFile"
         >
           watchFile
         </Link>
@@ -625,7 +625,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#write"
+          to="/api/path/write"
         >
           write
         </Link>
@@ -634,7 +634,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#writeSync"
+          to="/api/path/writeSync"
         >
           writeSync
         </Link>
@@ -643,7 +643,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#writeString"
+          to="/api/path/writeString"
         >
           writeString
         </Link>
@@ -652,7 +652,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#writeStringSync"
+          to="/api/path/writeStringSync"
         >
           writeStringSync
         </Link>
@@ -661,7 +661,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#writeFile"
+          to="/api/path/writeFile"
         >
           writeFile
         </Link>
@@ -670,7 +670,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#writeFileSync"
+          to="/api/path/writeFileSync"
         >
           writeFileSync
         </Link>
@@ -691,7 +691,7 @@ function Navbar(props) {
             let el = document.getElementById("basename");
             el.scrollIntoView();
           }}
-          to="/api/path#basename"
+          to="/api/path/basename"
         >
           basename
         </Link>
@@ -700,7 +700,7 @@ function Navbar(props) {
             let el = document.getElementById("delimeter");
             el.scrollIntoView();
           }}
-          to="/api/path#delimeter"
+          to="/api/path/delimeter"
         >
           delimeter
         </Link>
@@ -709,7 +709,7 @@ function Navbar(props) {
             let el = document.getElementById("dirname");
             el.scrollIntoView();
           }}
-          to="/api/path#dirname"
+          to="/api/path/dirname"
         >
           dirname
         </Link>
@@ -718,7 +718,7 @@ function Navbar(props) {
             let el = document.getElementById("extname");
             el.scrollIntoView();
           }}
-          to="/api/path#extname"
+          to="/api/path/extname"
         >
           extname
         </Link>
@@ -727,16 +727,17 @@ function Navbar(props) {
             let el = document.getElementById("format");
             el.scrollIntoView();
           }}
-          to="/api/path#format"
+          to="/api/path/format"
         >
           format
         </Link>
         <Link
           onClick={() => {
             let el = document.getElementById("isAbsolute");
+            el.focus();
             el.scrollIntoView();
           }}
-          to="/api/path#isAbsolute"
+          to="/api/path/isAbsolute"
         >
           isAbsolute
         </Link>
@@ -745,7 +746,7 @@ function Navbar(props) {
             let el = document.getElementById("join");
             el.scrollIntoView();
           }}
-          to="/api/path#join"
+          to="/api/path/join"
         >
           join
         </Link>
@@ -754,16 +755,17 @@ function Navbar(props) {
             let el = document.getElementById("normalize");
             el.scrollIntoView();
           }}
-          to="/api/path#normalize"
+          to="/api/path/normalize"
         >
           normalize
         </Link>
         <Link
           onClick={() => {
             let el = document.getElementById("parse");
+            console.log(el);
             el.scrollIntoView();
           }}
-          to="/api/path#parse"
+          to="/api/path/parse"
         >
           parse
         </Link>
@@ -772,7 +774,7 @@ function Navbar(props) {
             let el = document.getElementById("relative");
             el.scrollIntoView();
           }}
-          to="/api/path#relative"
+          to="/api/path/relative"
         >
           relative
         </Link>
@@ -781,7 +783,7 @@ function Navbar(props) {
             let el = document.getElementById("resolve");
             el.scrollIntoView();
           }}
-          to="/api/path#resolve"
+          to="/api/path/resolve"
         >
           resolve
         </Link>
@@ -790,7 +792,7 @@ function Navbar(props) {
             let el = document.getElementById("sep");
             el.scrollIntoView();
           }}
-          to="/api/path#sep"
+          to="/api/path/sep"
         >
           sep
         </Link>

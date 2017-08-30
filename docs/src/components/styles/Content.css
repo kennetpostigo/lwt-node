@@ -1,0 +1,15 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  padding-top: 0px;
+  padding-left: 15%;
+  padding-right: 15%;
+  height: 100vh;
+  overflow: scroll;
+}
+
+.content p {
+  font-size: 16px;
+  line-height: 1.5;
+}

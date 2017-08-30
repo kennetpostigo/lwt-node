@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import asyncComponent from "./utilComponents/AsyncComponent.js";
 
 const Landing = asyncComponent(() =>
@@ -22,8 +22,11 @@ class App extends Component {
       <Router>
         <div>
           <Route exact path="/" component={Landing} />
-          <Route exact path="/api" component={Api} />
-          <Route path="/api/:module" component={Api} />
+          <Switch>
+            <Route exact path="/api" component={Api} />
+            <Route exact path="/api/:module" component={Api} />
+            <Route exact path="/api/:module/:section" component={Api} />
+          </Switch>
         </div>
       </Router>
     );

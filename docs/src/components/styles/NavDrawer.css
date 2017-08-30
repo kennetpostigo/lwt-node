@@ -1,7 +1,14 @@
-.nav-drawer,
 .nav-drawer .section {
   display: flex;
   flex-direction: column;
+}
+
+.nav-drawer {
+  background-color: #f6f4f4;
+  padding: 20px;
+  width: 200px;
+  height: 100vh;
+  overflow-y: scroll;
 }
 
 .nav-drawer .section .module {
