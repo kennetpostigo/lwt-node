@@ -3,4 +3,5 @@
 (library
  ((name ReasonNode)
   (public_name ReasonNode)
-  (libraries (lwt.unix))))
+  (libraries (lwt.unix))
+  (preprocess (pps (bisect_ppx -conditional)))))

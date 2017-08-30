@@ -2,8 +2,7 @@
 
 (executable
  ((name test)
-  (libraries (ReasonNode alcotest))
-    (preprocess (pps (bisect_ppx -conditional)))))
+  (libraries (ReasonNode alcotest))))
 
 (alias
  ((name runtest)

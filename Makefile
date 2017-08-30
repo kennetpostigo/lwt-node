@@ -7,12 +7,14 @@ run: build
 test:
 	jbuilder runtest
 
-coverage:
-	rm -rf bisect*.out
+.PHONY: coverage
+coverage: clean
 	BISECT_ENABLE=YES jbuilder build
 	jbuilder runtest
-	bisect-ppx-report -I build/ -html coverage/ bisect*.out
-	open -a "Google Chrome" ./coverage/index.html
+	bisect-ppx-report -ignore-missing-files -I _build/default/ -html coverage/ \
+	    _build/default/tests/bisect*.out
+	@echo See ./coverage/index.html
 
 clean:
+	rm -f _build/default/tests/bisect*.out
 	rm -rf _build *.install
