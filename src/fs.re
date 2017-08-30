@@ -4,7 +4,7 @@ type fsErr =
 
 let access path mode callback => {
   Lwt.on_any
-    (Lwt.wrap (fun () => Lwt_unix.access path [mode]))
+    (Lwt_unix.access path [mode])
     (fun _ => {
       callback Ok;
       ()
@@ -26,7 +26,7 @@ let appendFileSync file data options =>();
 
 let chmod path mode callback => {
   Lwt.on_any
-    (Lwt.wrap (fun () => Lwt_unix.chmod path mode))
+    (Lwt_unix.chmod path mode)
     (fun _ => {
       callback Ok;
      ();
@@ -44,7 +44,7 @@ let chmodSync path mode => Unix.chmod path mode;
 
 let chown path uid gid callback => {
   Lwt.on_any
-    (Lwt.wrap (fun () => Lwt_unix.chown path uid gid))
+    (Lwt_unix.chown path uid gid)
     (fun _ => {
       callback Ok;
      ();
@@ -62,7 +62,7 @@ let chownSync path uid gid => Unix.chown path uid gid;
 
 let close fd callback => {
   Lwt.on_any
-    (Lwt.wrap (fun () => Lwt_unix.close fd))
+    (Lwt_unix.close fd)
     (fun _ => {
       callback Ok;
      ();
@@ -84,7 +84,7 @@ let createWriteStream path options =>();
 
 let fchmod fd mode callback => {
   Lwt.on_any
-    (Lwt.wrap (fun () => Lwt_unix.fchmod fd mode))
+    (Lwt_unix.fchmod fd mode)
     (fun _ => {
       callback Ok;
      ();
@@ -102,7 +102,7 @@ let fchmodSync fd mode => Unix.fchmod fd mode;
 
 let fchown fd uid gid callback => {
   Lwt.on_any
-    (Lwt.wrap (fun () => Lwt_unix.fchown fd uid gid))
+    (Lwt_unix.fchown fd uid gid)
     (fun _ => {
       callback Ok;
      ();
@@ -120,7 +120,7 @@ let fchownSync fd uid gid => Unix.fchown fd uid gid;
 
 let fdatasync fd callback => {
   Lwt.on_any
-    (Lwt.wrap (fun () => Lwt_unix.fdatasync fd))
+    (Lwt_unix.fdatasync fd)
     (fun _ => {
       callback Ok;
      ();
@@ -138,7 +138,7 @@ let fdatasyncSync fd =>();
 
 let fstat fd callback => {
   Lwt.on_any
-    (Lwt.wrap(fun () => Lwt_unix.fstat fd))
+    (Lwt_unix.fstat fd)
     (fun stats => {
       callback Ok (Some stats);
       ();
@@ -156,7 +156,7 @@ let fstatSync fd => Unix.fstat fd;
 
 let fsync fd callback => {
   Lwt.on_any
-    (Lwt.wrap (fun () => Lwt_unix.fsync fd))
+    (Lwt_unix.fsync fd)
     (fun _ => {
       callback Ok;
       ();
@@ -174,7 +174,7 @@ let fsyncSync fd =>();
 
 let ftruncate fd len callback => {
   Lwt.on_any
-    (Lwt.wrap (fun () => Lwt_unix.ftruncate fd len))
+    (Lwt_unix.ftruncate fd len)
     (fun _ => {
       callback Ok;
       ();
@@ -204,7 +204,7 @@ let lchownSync path uid gid =>();
 
 let link existingPath newPath callback => {
   Lwt.on_any
-    (Lwt.wrap (fun () => Lwt_unix.link existingPath newPath))
+    (Lwt_unix.link existingPath newPath)
     (fun _ => {
       callback Ok;
       ();
@@ -222,7 +222,7 @@ let linkSync existingPath newPath => Unix.link existingPath newPath;
 
 let lstat path callback => {
   Lwt.on_any
-    (Lwt.wrap (fun () => Lwt_unix.lstat path))
+    (Lwt_unix.lstat path)
     (fun stats => {
       callback Ok (Some stats);
       ();
@@ -262,7 +262,7 @@ let mkdtempSync prefix options =>();
 
 let _open path flags mode callback => {
   Lwt.on_any
-    (Lwt.wrap (fun () => Lwt_unix.openfile path flags mode))
+    (Lwt_unix.openfile path flags mode)
     (fun fd => {
       callback Ok (Some fd);
       ();
@@ -280,7 +280,7 @@ let openSync path flags mode => Unix.openfile path flags mode;
 
 let read fd buffer offset length position callback => {
   Lwt.on_any
-    (Lwt.wrap (fun () => Lwt_unix.read fd buffer offset length))
+    (Lwt_unix.read fd buffer offset length)
     (fun buff => {
       callback Ok (Some buff);
       ();
@@ -298,7 +298,7 @@ let readSync fd buffer offset length position => Unix.read fd buffer offset leng
 
 let readdir path callback => {
   Lwt.on_any
-    (Lwt.wrap (fun () => Lwt_unix.readdir path))
+    (Lwt_unix.readdir path)
     (fun nextEntry => {
       callback Ok (Some nextEntry);
       ();
@@ -320,7 +320,7 @@ let readFileSync path options =>();
 
 let readLink path callback => {
   Lwt.on_any
-    (Lwt.wrap (fun () => Lwt_unix.readlink path))
+    (Lwt_unix.readlink path)
     (fun contents => {
       callback Ok (Some contents);
       ();
@@ -342,7 +342,7 @@ let realpathSync path options =>();
 
 let rename oldPath newPath callback => {
   Lwt.on_any
-    (Lwt.wrap (fun () => Lwt_unix.rename oldPath newPath))
+    (Lwt_unix.rename oldPath newPath)
     (fun _ => {
       callback Ok;
       ();
@@ -360,7 +360,7 @@ let renameSync oldPath newPath => Unix.rename oldPath newPath;
 
 let rmdir path callback => {
   Lwt.on_any
-    (Lwt.wrap (fun () => Lwt_unix.rmdir path))
+    (Lwt_unix.rmdir path)
     (fun _ => {
       callback Ok;
       ();
@@ -378,7 +378,7 @@ let rmdirSync path => Unix.rmdir path;
 
 let stat path callback => {
   Lwt.on_any
-    (Lwt.wrap (fun () => Lwt_unix.stat path))
+    (Lwt_unix.stat path)
     (fun stats => {
       callback Ok (Some stats);
       ();
@@ -396,7 +396,7 @@ let statSync path => Unix.stat path;
 
 let symlink target path callback => {
   Lwt.on_any
-    (Lwt.wrap (fun () => Lwt_unix.symlink target path))
+    (Lwt_unix.symlink target path)
     (fun _ => {
       callback Ok;
       ();
@@ -414,7 +414,7 @@ let symlinkSync target path => Unix.symlink target path;
 
 let truncate path len callback => {
   Lwt.on_any
-    (Lwt.wrap (fun () => Lwt_unix.truncate path len))
+    (Lwt_unix.truncate path len)
     (fun _ => {
       callback Ok;
       ();
@@ -432,7 +432,7 @@ let truncateSync path len => Unix.truncate path len;
 
 let unlink path callback => {
   Lwt.on_any
-    (Lwt.wrap (fun () => Lwt_unix.unlink path))
+    (Lwt_unix.unlink path)
     (fun _ => {
       callback Ok;
       ();
@@ -452,7 +452,7 @@ let unwatchFile filename listener =>();
 
 let utimes path atime mtime callback => {
   Lwt.on_any
-    (Lwt.wrap (fun () => Lwt_unix.utimes path atime mtime))
+    (Lwt_unix.utimes path atime mtime)
     (fun _ => {
       callback Ok;
      ();
@@ -474,7 +474,7 @@ let watchFile filename options listener =>();
 
 let write fd buffer offset length callback => {
   Lwt.on_any
-    (Lwt.wrap (fun () => Lwt_unix.write fd buffer offset length))
+    (Lwt_unix.write fd buffer offset length)
     (fun buff => {
       callback Ok (Some buff);
      ();
@@ -493,7 +493,7 @@ let writeSync fd buffer offset length => Unix.write fd buffer offset length;
 
 let writeString fd string offset length callback => {
   Lwt.on_any
-    (Lwt.wrap (fun () => Lwt_unix.write_string fd string offset length))
+    (Lwt_unix.write_string fd string offset length)
     (fun str => {
       callback Ok (Some str);
      ();
