@@ -3,488 +3,488 @@ type fsErr =
 | Err Unix.error;
 
 let access path mode callback => {
-  Lwt.try_bind
-    (fun () => Lwt_unix.access path [mode])
-    (fun () => {
+  Lwt.on_any
+    (Lwt.wrap (fun () => Lwt_unix.access path [mode]))
+    (fun _ => {
       callback Ok;
-      Lwt.return ();
+      ()
     })
     (fun
       | Unix.Unix_error e _ _ => {
           (callback (Err e));
-          Lwt.return ();
+         ();
         }
-      | exn => Lwt.fail exn
+      | exn => ()
     );
 };
 
 let accessSync path mode => Unix.access path [mode];
 
-let appendFile file data options callback => ();
+let appendFile file data options callback =>();
 
-let appendFileSync file data options => ();
+let appendFileSync file data options =>();
 
 let chmod path mode callback => {
-  Lwt.try_bind
-    (fun () => Lwt_unix.chmod path mode)
-    (fun () => {
+  Lwt.on_any
+    (Lwt.wrap (fun () => Lwt_unix.chmod path mode))
+    (fun _ => {
       callback Ok;
-      Lwt.return ();
+     ();
     })
     (fun
       | Unix.Unix_error e _ _ => {
-          (callback (Err e));
-          Lwt.return ();
+          callback (Err e);
+         ();
         }
-      | exn => Lwt.fail exn
+      | exn => ()
     );
 };
 
 let chmodSync path mode => Unix.chmod path mode;
 
 let chown path uid gid callback => {
-  Lwt.try_bind
-    (fun () => Lwt_unix.chown path uid gid)
-    (fun () => {
+  Lwt.on_any
+    (Lwt.wrap (fun () => Lwt_unix.chown path uid gid))
+    (fun _ => {
       callback Ok;
-      Lwt.return ();
+     ();
     })
     (fun
       | Unix.Unix_error e _ _ => {
           (callback (Err e));
-          Lwt.return ();
+         ();
         }
-      | exn => Lwt.fail exn
+      | exn => ()
     );
 };
 
 let chownSync path uid gid => Unix.chown path uid gid;
 
 let close fd callback => {
-  Lwt.try_bind
-    (fun () => Lwt_unix.close fd)
-    (fun () => {
+  Lwt.on_any
+    (Lwt.wrap (fun () => Lwt_unix.close fd))
+    (fun _ => {
       callback Ok;
-      Lwt.return ();
+     ();
     })
     (fun
       | Unix.Unix_error e _ _ => {
           callback (Err e);
-          Lwt.return ();
+         ();
         }
-      | exn => Lwt.fail exn
+      | exn => ()
     );
 };
 
 let closeSync fd => Unix.close fd;
 
-let createReadStream path options => ();
+let createReadStream path options =>();
 
-let createWriteStream path options => ();
+let createWriteStream path options =>();
 
 let fchmod fd mode callback => {
-  Lwt.try_bind
-    (fun () => Lwt_unix.fchmod fd mode)
-    (fun () => {
+  Lwt.on_any
+    (Lwt.wrap (fun () => Lwt_unix.fchmod fd mode))
+    (fun _ => {
       callback Ok;
-      Lwt.return ();
+     ();
     })
     (fun
       | Unix.Unix_error e _ _ => {
           callback (Err e);
-          Lwt.return ();
+         ();
         }
-      | exn => Lwt.fail exn
+      | exn => ()
     );
 };
 
 let fchmodSync fd mode => Unix.fchmod fd mode;
 
 let fchown fd uid gid callback => {
-  Lwt.try_bind
-    (fun () => Lwt_unix.fchown fd uid gid)
-    (fun () => {
+  Lwt.on_any
+    (Lwt.wrap (fun () => Lwt_unix.fchown fd uid gid))
+    (fun _ => {
       callback Ok;
-      Lwt.return ();
+     ();
     })
     (fun
       | Unix.Unix_error e _ _ => {
           callback (Err e);
-          Lwt.return ();
+         ();
         }
-      | exn => Lwt.fail exn
+      | exn => ()
     );
 };
 
 let fchownSync fd uid gid => Unix.fchown fd uid gid;
 
 let fdatasync fd callback => {
-  Lwt.try_bind
-    (fun () => Lwt_unix.fdatasync fd)
-    (fun () => {
+  Lwt.on_any
+    (Lwt.wrap (fun () => Lwt_unix.fdatasync fd))
+    (fun _ => {
       callback Ok;
-      Lwt.return ();
+     ();
     })
     (fun
       | Unix.Unix_error e _ _ => {
           callback (Err e);
-          Lwt.return ();
+         ();
         }
-      | exn => Lwt.fail exn
+      | exn => ()
     );
 };
 
-let fdatasyncSync fd => ();
+let fdatasyncSync fd =>();
 
 let fstat fd callback => {
-  Lwt.try_bind
-    (fun () => Lwt_unix.fstat fd)
+  Lwt.on_any
+    (Lwt.wrap(fun () => Lwt_unix.fstat fd))
     (fun stats => {
       callback Ok (Some stats);
-      Lwt.return ();
+      ();
     })
     (fun
       | Unix.Unix_error e _ _ => {
           callback (Err e) None;
-          Lwt.return ();
+          ();
         }
-      | exn => Lwt.fail exn
+      | exn => ()
     );
 };
 
 let fstatSync fd => Unix.fstat fd;
 
 let fsync fd callback => {
-  Lwt.try_bind
-    (fun () => Lwt_unix.fsync fd)
-    (fun () => {
+  Lwt.on_any
+    (Lwt.wrap (fun () => Lwt_unix.fsync fd))
+    (fun _ => {
       callback Ok;
-      Lwt.return ();
+      ();
     })
     (fun
       | Unix.Unix_error error_code _ _ => {
           callback (Err error_code);
-          Lwt.return ();
+          ();
         }
-      | exn => Lwt.fail exn
+      | exn => ()
     );
 };
 
-let fsyncSync fd => ();
+let fsyncSync fd =>();
 
 let ftruncate fd len callback => {
-  Lwt.try_bind
-    (fun () => Lwt_unix.ftruncate fd len)
-    (fun () => {
+  Lwt.on_any
+    (Lwt.wrap (fun () => Lwt_unix.ftruncate fd len))
+    (fun _ => {
       callback Ok;
-      Lwt.return ();
+      ();
     })
     (fun
       | Unix.Unix_error error_code _ _ => {
           callback (Err error_code);
-          Lwt.return ();
+          ();
         }
-      | exn => Lwt.fail exn
+      | exn => ()
     );
 };
 
 let ftruncateSync fd len => Unix.ftruncate fd len;
 
-let futimes fd atime mtime callack => ();
+let futimes fd atime mtime callack =>();
 
-let futimesSync fd atime mtime => ();
+let futimesSync fd atime mtime =>();
 
-let lchmod path mode callback => ();
+let lchmod path mode callback =>();
 
-let lchmodSync path mode => ();
+let lchmodSync path mode =>();
 
-let lchown path uid gid callack => ();
+let lchown path uid gid callack =>();
 
-let lchownSync path uid gid => ();
+let lchownSync path uid gid =>();
 
 let link existingPath newPath callback => {
-  Lwt.try_bind
-    (fun () => Lwt_unix.link existingPath newPath)
-    (fun () => {
+  Lwt.on_any
+    (Lwt.wrap (fun () => Lwt_unix.link existingPath newPath))
+    (fun _ => {
       callback Ok;
-      Lwt.return ();
+      ();
     })
     (fun
       | Unix.Unix_error error_code _ _ => {
           callback (Err error_code);
-          Lwt.return ();
+          ();
         }
-      | exn => Lwt.fail exn
+      | exn => ()
     );
 };
 
 let linkSync existingPath newPath => Unix.link existingPath newPath;
 
 let lstat path callback => {
-  Lwt.try_bind
-    (fun () => Lwt_unix.lstat path)
+  Lwt.on_any
+    (Lwt.wrap (fun () => Lwt_unix.lstat path))
     (fun stats => {
       callback Ok (Some stats);
-      Lwt.return ();
+      ();
     })
     (fun
       | Unix.Unix_error e _ _ => {
           callback (Err e) None;
-          Lwt.return ();
+          ();
         }
-      | exn => Lwt.fail exn
+      | exn => ()
     );
 };
 
 let lstatSync path => Unix.lstat path;
 
 let mkdir path mode callback => {
-  Lwt.try_bind
-    (fun () => Lwt_unix.mkdir path mode)
-    (fun () => {
+  Lwt.on_any
+    (Lwt.wrap (fun () => Lwt_unix.mkdir path mode))
+    (fun _ => {
       callback Ok;
-      Lwt.return ();
+     ();
     })
     (fun
       | Unix.Unix_error e _ _ => {
           callback (Err e);
-          Lwt.return ();
+          ();
         }
-      | exn => Lwt.fail exn
+      | exn => ()
     );
 };
 
 let mkdirSync path mode => Unix.mkdir path mode;
 
-let mkdtemp prefix options callback => ();
+let mkdtemp prefix options callback =>();
 
-let mkdtempSync prefix options => ();
+let mkdtempSync prefix options =>();
 
 let _open path flags mode callback => {
-  Lwt.try_bind
-    (fun () => Lwt_unix.openfile path flags mode)
+  Lwt.on_any
+    (Lwt.wrap (fun () => Lwt_unix.openfile path flags mode))
     (fun fd => {
       callback Ok (Some fd);
-      Lwt.return ();
+      ();
     })
     (fun
       | Unix.Unix_error e _ _ => {
           callback (Err e) None;
-          Lwt.return ();
+          ();
         }
-      | exn => Lwt.fail exn
+      | exn => ()
     );
 };
 
 let openSync path flags mode => Unix.openfile path flags mode;
 
 let read fd buffer offset length position callback => {
-  Lwt.try_bind
-    (fun () => Lwt_unix.read fd buffer offset length)
+  Lwt.on_any
+    (Lwt.wrap (fun () => Lwt_unix.read fd buffer offset length))
     (fun buff => {
       callback Ok (Some buff);
-      Lwt.return ();
+      ();
     })
     (fun
       | Unix.Unix_error e _ _ => {
           callback (Err e) None;
-          Lwt.return ();
+          ();
         }
-      | exn => Lwt.fail exn
+      | exn => ()
     );
 };
 
 let readSync fd buffer offset length position => Unix.read fd buffer offset length;
 
 let readdir path callback => {
-  Lwt.try_bind
-    (fun () => Lwt_unix.readdir path)
+  Lwt.on_any
+    (Lwt.wrap (fun () => Lwt_unix.readdir path))
     (fun nextEntry => {
       callback Ok (Some nextEntry);
-      Lwt.return ();
+      ();
     })
     (fun
       | Unix.Unix_error error_code _ _ => {
           callback (Err error_code) None;
-          Lwt.return ();
+          ();
         }
-      | exn => Lwt.fail exn
+      | exn => ()
     );
 };
 
 let readdirSync path => Unix.readdir path;
 
-let readFile path options callback => ();
+let readFile path options callback =>();
 
-let readFileSync path options => ();
+let readFileSync path options =>();
 
 let readLink path callback => {
-  Lwt.try_bind
-    (fun () => Lwt_unix.readlink path)
+  Lwt.on_any
+    (Lwt.wrap (fun () => Lwt_unix.readlink path))
     (fun contents => {
       callback Ok (Some contents);
-      Lwt.return ();
+      ();
     })
     (fun
       | Unix.Unix_error error_code _ _ => {
           callback (Err error_code) None;
-          Lwt.return ();
+          ();
         }
-      | exn => Lwt.fail exn
+      | exn => ()
     );
 };
 
 let readLinkSync path => Unix.readlink path;
 
-let realpath path options callback => ();
+let realpath path options callback =>();
 
-let realpathSync path options => ();
+let realpathSync path options =>();
 
 let rename oldPath newPath callback => {
-  Lwt.try_bind
-    (fun () => Lwt_unix.rename oldPath newPath)
-    (fun () => {
+  Lwt.on_any
+    (Lwt.wrap (fun () => Lwt_unix.rename oldPath newPath))
+    (fun _ => {
       callback Ok;
-      Lwt.return ();
+      ();
     })
     (fun
       | Unix.Unix_error error_code _ _ => {
           callback (Err error_code);
-          Lwt.return ();
+          ();
         }
-      | exn => Lwt.fail exn
+      | exn => ()
     );
 };
 
 let renameSync oldPath newPath => Unix.rename oldPath newPath;
 
 let rmdir path callback => {
-  Lwt.try_bind
-    (fun () => Lwt_unix.rmdir path)
-    (fun () => {
+  Lwt.on_any
+    (Lwt.wrap (fun () => Lwt_unix.rmdir path))
+    (fun _ => {
       callback Ok;
-      Lwt.return ();
+      ();
     })
     (fun
       | Unix.Unix_error error_code _ _ => {
           callback (Err error_code);
-          Lwt.return ();
+          ();
         }
-      | exn => Lwt.fail exn
+      | exn => ()
     );
 };
 
 let rmdirSync path => Unix.rmdir path;
 
 let stat path callback => {
-  Lwt.try_bind
-    (fun () => Lwt_unix.stat path)
+  Lwt.on_any
+    (Lwt.wrap (fun () => Lwt_unix.stat path))
     (fun stats => {
       callback Ok (Some stats);
-      Lwt.return ();
+      ();
     })
     (fun
       | Unix.Unix_error error_code _ _ => {
           callback (Err error_code) None;
-          Lwt.return ();
+          ();
         }
-      | exn => Lwt.fail exn
+      | exn => ()
     );
 };
 
 let statSync path => Unix.stat path;
 
 let symlink target path callback => {
-  Lwt.try_bind
-    (fun () => Lwt_unix.symlink target path)
-    (fun () => {
+  Lwt.on_any
+    (Lwt.wrap (fun () => Lwt_unix.symlink target path))
+    (fun _ => {
       callback Ok;
-      Lwt.return ();
+      ();
     })
     (fun
       | Unix.Unix_error error_code _ _ => {
           callback (Err error_code);
-          Lwt.return ();
+          ();
         }
-      | exn => Lwt.fail exn
+      | exn => ()
     );
 };
 
 let symlinkSync target path => Unix.symlink target path;
 
 let truncate path len callback => {
-  Lwt.try_bind
-    (fun () => Lwt_unix.truncate path len)
-    (fun () => {
+  Lwt.on_any
+    (Lwt.wrap (fun () => Lwt_unix.truncate path len))
+    (fun _ => {
       callback Ok;
-      Lwt.return ();
+      ();
     })
     (fun
       | Unix.Unix_error error_code _ _ => {
           callback (Err error_code);
-          Lwt.return ();
+          ();
         }
-      | exn => Lwt.fail exn
+      | exn => ()
     );
 };
 
 let truncateSync path len => Unix.truncate path len;
 
 let unlink path callback => {
-  Lwt.try_bind
-    (fun () => Lwt_unix.unlink path)
-    (fun () => {
+  Lwt.on_any
+    (Lwt.wrap (fun () => Lwt_unix.unlink path))
+    (fun _ => {
       callback Ok;
-      Lwt.return ();
+      ();
     })
     (fun
       | Unix.Unix_error error_code _ _ => {
           callback (Err error_code);
-          Lwt.return ();
+          ();
         }
-      | exn => Lwt.fail exn
+      | exn => ()
     );
 };
 
 let unlinkSync path => Unix.unlink path;
 
-let unwatchFile filename listener => ();
+let unwatchFile filename listener =>();
 
 let utimes path atime mtime callback => {
-  Lwt.try_bind
-    (fun () => Lwt_unix.utimes path atime mtime)
-    (fun () => {
+  Lwt.on_any
+    (Lwt.wrap (fun () => Lwt_unix.utimes path atime mtime))
+    (fun _ => {
       callback Ok;
-      Lwt.return ();
+     ();
     })
     (fun
       | Unix.Unix_error error_code _ _ => {
           callback (Err error_code);
-          Lwt.return ();
+         ();
         }
-      | exn => Lwt.fail exn
+      | exn => ()
     );
 };
 
 let utimesSync path atime mtime => Unix.utimes path atime mtime;
 
-let watch filename options listener => ();
+let watch filename options listener =>();
 
-let watchFile filename options listener => ();
+let watchFile filename options listener =>();
 
 let write fd buffer offset length callback => {
-  Lwt.try_bind
-    (fun () => Lwt_unix.write fd buffer offset length)
+  Lwt.on_any
+    (Lwt.wrap (fun () => Lwt_unix.write fd buffer offset length))
     (fun buff => {
       callback Ok (Some buff);
-      Lwt.return ();
+     ();
     })
     (fun
       | Unix.Unix_error error_code _ _ => {
           callback (Err error_code) None;
-          Lwt.return ();
+         ();
         }
-      | exn => Lwt.fail exn
+      | exn => ()
     );
 };
 
@@ -492,23 +492,23 @@ let writeSync fd buffer offset length => Unix.write fd buffer offset length;
 
 
 let writeString fd string offset length callback => {
-  Lwt.try_bind
-    (fun () => Lwt_unix.write_string fd string offset length)
+  Lwt.on_any
+    (Lwt.wrap (fun () => Lwt_unix.write_string fd string offset length))
     (fun str => {
       callback Ok (Some str);
-      Lwt.return ();
+     ();
     })
     (fun
       | Unix.Unix_error error_code _ _ => {
           callback (Err error_code) None;
-          Lwt.return ();
+         ();
         }
-      | exn => Lwt.fail exn
+      | exn => ()
     );
 };
 
 let writeStringSync fd string offset length => Unix.write_substring fd string offset length;
 
-let writeFile file data options callbback => ();
+let writeFile file data options callbback =>();
 
-let writeFileSync file data options => ();
+let writeFileSync file data options =>();
