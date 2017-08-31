@@ -4,15 +4,15 @@ type fsErr =
 
 let access: path::string => mode::Lwt_unix.access_permission => callback::(fsErr => 'a) => unit;
 
-let accesSync: path::string => mode::Unix.access_permission => unit;
+let accessSync: path::string => mode::Unix.access_permission => unit;
 
-let appendFile: file::'a => data::'b => optios::'c => callback::'d => unit;
+let appendFile: file::'a => data::'b => options::'c => callback::'d => unit;
 
-let appendFileSync: file::'a => data::'b => optios::'c => unit;
+let appendFileSync: file::'a => data::'b => options::'c => unit;
 
 let chmod: path::string => mode::Lwt_unix.file_perm => callback::(fsErr => 'a) => unit;
 
-let chmodeSync: path::string => mode::Unix.file_perm => unit;
+let chmodSync: path::string => mode::Unix.file_perm => unit;
 
 let chown: path::string => uid::int => gid::int => callback::(fsErr => 'a) => unit;
 
@@ -38,9 +38,9 @@ let fdatasync: fd::Lwt_unix.file_descr => callback::(fsErr => 'a) => unit;
 
 let fdatasyncSync: fd::Unix.file_descr => unit;
 
-let fstat: fd::Lwt_unix.file_descr => callback::(fsErr => 'a) => unit;
+let fstat: fd::Lwt_unix.file_descr => callback::(fsErr => option Lwt_unix.stats => 'a) => unit;
 
-let fstatSync: fd::Unix.file_descr => 'a;
+let fstatSync: fd::Unix.file_descr => Unix.stats;
 
 let fsync: fd::Lwt_unix.file_descr => callback::(fsErr => 'a) => unit;
 
@@ -66,9 +66,9 @@ let link: existingPath::string => newPath::string => callback::(fsErr => 'a) => 
 
 let linkSync: existingPath::string => newPath::string => unit;
 
-let lstat: path::string => callback::(fsErr => 'a) => unit;
+let lstat: path::string => callback::(fsErr => option Lwt_unix.stats => 'a) => unit;
 
-let lstatSync: path::string => 'a;
+let lstatSync: path::string => Unix.stats;
 
 let mkdir: path::string => mode::Lwt_unix.file_perm => callback::(fsErr => 'a) => unit;
 
@@ -78,6 +78,72 @@ let mkdtemp: prefix::'a => options::'b => callback::(fsErr => 'c) => unit;
 
 let mkdtempSync: prefix::'a => options::'b => unit;
 
-let _open: path::string => flags::Lwt_unix.open_flag => mode::Lwt_unix.file_perm => callback::(fsErr => 'a) => unit;
+let _open: path::string => flags::list Lwt_unix.open_flag => mode::Lwt_unix.file_perm => callback::(fsErr => option Lwt_unix.file_descr => 'a) => unit;
 
-let openSync: path::string => flags::Lwt_unix.open_flag => mode::Lwt_unix.file_perm => unit;
+let openSync: path::string => flags::list Unix.open_flag => mode::Unix.file_perm => Unix.file_descr;
+
+let read: fd::Lwt_unix.file_descr => buffer::bytes => offset::int => length::int => callback::(fsErr => option int => 'a) => unit;
+
+let readSync: fd::Unix.file_descr => buffer::bytes => offset::int => length::int => int;
+
+let readdir: path::Lwt_unix.dir_handle => callback::(fsErr => option string => 'a) => unit;
+
+let readdirSync: path::Unix.dir_handle => string;
+
+let readFile: path::string => options::'a => callback::(fsErr => 'b) => unit;
+
+let readFileSync: path::'a => options::'b => unit;
+
+let readLink: path::string => callback::(fsErr => option string =>'a) => unit;
+
+let readLinkSync: path::string => string;
+
+let realpath: path::string => options::'a => callback::(fsErr => 'b) => unit;
+
+let realpathSync: path::'a => options::'b => unit;
+
+let rename: oldPath::string => newPath::string => callback::(fsErr => 'a) => unit;
+
+let renameSync: oldPath::string => newPath::string => unit;
+
+let rmdir: path::string => callback::(fsErr => 'a) => unit;
+
+let rmdirSync: path::string => unit;
+
+let stat: path::string => callback::(fsErr => option Lwt_unix.stats => 'a) => unit;
+
+let statSync: path::string => Lwt_unix.stats;
+
+let symlink: target::string => path::string => callback::(fsErr => 'a) => unit;
+
+let symlinkSync: target::string => path::string => unit;
+
+let truncate: path::string => len::int => callback::(fsErr => 'a) => unit;
+
+let truncateSync: path::string => len::int => unit;
+
+let unlink: path::string => callback::(fsErr => 'a) => unit;
+
+let unlinkSync: path::string => unit;
+
+let unwatchFile: filename::'a => listener::'b => unit;
+
+let utimes: path::string => atime::float => mtime::float => callback::(fsErr => 'a) => unit;
+
+let utimesSync: path::string => atime::float => mtime::float => unit;
+
+let watch: filename::'a => options::'b => listener::'c => unit;
+
+let watchFile: filename::'a => options::'b => listener::'c => unit;
+
+let write: fd::Lwt_unix.file_descr => buffer::bytes => offset::int => length::int => callback::(fsErr => option int => 'a) => unit;
+
+let writeSync: fd::Unix.file_descr => buffer::bytes => offset::int => length::int => int;
+
+let writeString: fd::Lwt_unix.file_descr => string::string => offset::int => length::int => callback::(fsErr => option int => 'a) => unit;
+
+let writeStringSync: fd::Unix.file_descr => string::string => offset::int => length::int => int;
+
+let writeFile: file::'a => data::'b => options::'c => callback::(fsErr => 'd) => unit;
+
+let writeFileSync: file::'a => data::'b => options::'c => unit;
