@@ -20,9 +20,9 @@ let access path mode callback => {
 
 let accessSync path mode => Unix.access path [mode];
 
-let appendFile file data options callback =>();
+let appendFile file data options callback => ();
 
-let appendFileSync file data options =>();
+let appendFileSync file data options => ();
 
 let chmod path mode callback => {
   Lwt.on_any
@@ -78,9 +78,9 @@ let close fd callback => {
 
 let closeSync fd => Unix.close fd;
 
-let createReadStream path options =>();
+let createReadStream path options => ();
 
-let createWriteStream path options =>();
+let createWriteStream path options => ();
 
 let fchmod fd mode callback => {
   Lwt.on_any
@@ -134,7 +134,7 @@ let fdatasync fd callback => {
     );
 };
 
-let fdatasyncSync fd =>();
+let fdatasyncSync fd => ();
 
 let fstat fd callback => {
   Lwt.on_any
@@ -170,7 +170,7 @@ let fsync fd callback => {
     );
 };
 
-let fsyncSync fd =>();
+let fsyncSync fd => ();
 
 let ftruncate fd len callback => {
   Lwt.on_any
@@ -190,17 +190,17 @@ let ftruncate fd len callback => {
 
 let ftruncateSync fd len => Unix.ftruncate fd len;
 
-let futimes fd atime mtime callack =>();
+let futimes fd atime mtime callback => ();
 
-let futimesSync fd atime mtime =>();
+let futimesSync fd atime mtime => ();
 
-let lchmod path mode callback =>();
+let lchmod path mode callback => ();
 
-let lchmodSync path mode =>();
+let lchmodSync path mode => ();
 
-let lchown path uid gid callack =>();
+let lchown path uid gid callback => ();
 
-let lchownSync path uid gid =>();
+let lchownSync path uid gid => ();
 
 let link existingPath newPath callback => {
   Lwt.on_any
@@ -256,9 +256,9 @@ let mkdir path mode callback => {
 
 let mkdirSync path mode => Unix.mkdir path mode;
 
-let mkdtemp prefix options callback =>();
+let mkdtemp prefix options callback => ();
 
-let mkdtempSync prefix options =>();
+let mkdtempSync prefix options => ();
 
 let _open path flags mode callback => {
   Lwt.on_any
@@ -314,9 +314,9 @@ let readdir path callback => {
 
 let readdirSync path => Unix.readdir path;
 
-let readFile path options callback =>();
+let readFile path options callback => ();
 
-let readFileSync path options =>();
+let readFileSync path options => ();
 
 let readLink path callback => {
   Lwt.on_any
@@ -336,9 +336,9 @@ let readLink path callback => {
 
 let readLinkSync path => Unix.readlink path;
 
-let realpath path options callback =>();
+let realpath path options callback => ();
 
-let realpathSync path options =>();
+let realpathSync path options => ();
 
 let rename oldPath newPath callback => {
   Lwt.on_any
@@ -448,7 +448,7 @@ let unlink path callback => {
 
 let unlinkSync path => Unix.unlink path;
 
-let unwatchFile filename listener =>();
+let unwatchFile filename listener => ();
 
 let utimes path atime mtime callback => {
   Lwt.on_any
@@ -468,9 +468,9 @@ let utimes path atime mtime callback => {
 
 let utimesSync path atime mtime => Unix.utimes path atime mtime;
 
-let watch filename options listener =>();
+let watch filename options listener => ();
 
-let watchFile filename options listener =>();
+let watchFile filename options listener => ();
 
 let write fd buffer offset length callback => {
   Lwt.on_any
@@ -509,6 +509,6 @@ let writeString fd string offset length callback => {
 
 let writeStringSync fd string offset length => Unix.write_substring fd string offset length;
 
-let writeFile file data options callbback =>();
+let writeFile file data options callbback => ();
 
-let writeFileSync file data options =>();
+let writeFileSync file data options => ();
