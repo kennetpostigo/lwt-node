@@ -40,7 +40,7 @@ let fdatasyncSync: fd::Unix.file_descr => unit;
 
 let fstat: fd::Lwt_unix.file_descr => callback::(fsErr => 'a) => unit;
 
-let fstatSync: fd::Unix.file_descr => unit;
+let fstatSync: fd::Unix.file_descr => 'a;
 
 let fsync: fd::Lwt_unix.file_descr => callback::(fsErr => 'a) => unit;
 
@@ -53,3 +53,31 @@ let ftruncateSync: fd::Unix.file_descr => len::int => unit;
 let futimes: fd::Lwt_unix.file_descr => atime::'a => mtime::'b => callback::(fsErr => 'a) => unit;
 
 let futimesSync: fd::Unix.file_descr => atime::'a => mtime::'b => unit;
+
+let lchmod: path::string => mode::'a => callback::(fsErr => 'b) => unit;
+
+let lchmodSync: path::string => mode::'a => unit;
+
+let lchown: path::string => uid::int => gid::int => callback::(fsErr => 'a) => unit;
+
+let lchownSync: path::string => uid::int => gid::int => unit;
+
+let link: existingPath::string => newPath::string => callback::(fsErr => 'a) => unit;
+
+let linkSync: existingPath::string => newPath::string => unit;
+
+let lstat: path::string => callback::(fsErr => 'a) => unit;
+
+let lstatSync: path::string => 'a;
+
+let mkdir: path::string => mode::Lwt_unix.file_perm => callback::(fsErr => 'a) => unit;
+
+let mkdirSync: path::string => mode::Unix.file_perm => unit;
+
+let mkdtemp: prefix::'a => options::'b => callback::(fsErr => 'c) => unit;
+
+let mkdtempSync: prefix::'a => options::'b => unit;
+
+let _open: path::string => flags::Lwt_unix.open_flag => mode::Lwt_unix.file_perm => callback::(fsErr => 'a) => unit;
+
+let openSync: path::string => flags::Lwt_unix.open_flag => mode::Lwt_unix.file_perm => unit;
