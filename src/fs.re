@@ -2,7 +2,34 @@ type fsErr =
 | Ok
 | Err Unix.error;
 
-let access path::path mode::mode callback::callback => {
+type async = Async_Constructor;
+type sync = Sync_Constructor;
+
+type fileDescr _ =
+  | AsyncFileDescr Lwt_unix.file_descr :fileDescr async
+  | SyncFileDescr Unix.file_descr :fileDescr sync;
+
+type accessPerm _ =
+  | AsyncAccessPerm Lwt_unix.access_permission :accessPerm async
+  | SyncAccessPerm Unix.access_permission :accessPerm sync;
+
+type filePerm _ =
+  | AsyncFilePerm Lwt_unix.file_perm :filePerm async
+  | SyncFilePerm Unix.file_perm :filePerm sync;
+
+type stats _ =
+  | AsyncStats Lwt_unix.stats :stats async
+  | SyncStats Unix.stats :stats sync;
+
+type dirHandle _ =
+  | AsyncDirHandle Lwt_unix.dir_handle :dirHandle async
+  | SyncDirHandle Unix.dir_handle :dirHandle sync;
+
+type openFlag _ =
+  | AsyncOpenFlag Lwt_unix.open_flag :openFlag async
+  | SyncOpenFlag Unix.open_flag :openFlag sync;
+
+let access path::path mode::(AsyncAccessPerm mode) callback::callback => {
   Lwt.on_any
     (Lwt_unix.access path [mode])
     (fun _ => {
@@ -18,13 +45,13 @@ let access path::path mode::mode callback::callback => {
     );
 };
 
-let accessSync path::path mode::mode => Unix.access path [mode];
+let accessSync path::path mode::(SyncAccessPerm mode) => Unix.access path [mode];
 
 let appendFile file::file data::data options::options callback::callback => ();
 
 let appendFileSync file::file data::data options::options => ();
 
-let chmod path::path mode::mode callback::callback => {
+let chmod path::path mode::(AsyncFilePerm mode) callback::callback => {
   Lwt.on_any
     (Lwt_unix.chmod path mode)
     (fun _ => {
@@ -40,7 +67,7 @@ let chmod path::path mode::mode callback::callback => {
     );
 };
 
-let chmodSync path::path mode::mode => Unix.chmod path mode;
+let chmodSync path::path mode::(SyncFilePerm mode) => Unix.chmod path mode;
 
 let chown path::path uid::uid gid::gid callback::callback => {
   Lwt.on_any
@@ -60,7 +87,7 @@ let chown path::path uid::uid gid::gid callback::callback => {
 
 let chownSync path::path uid::uid gid::gid => Unix.chown path uid gid;
 
-let close fd::fd callback::callback => {
+let close fd::(AsyncFileDescr fd) callback::callback => {
   Lwt.on_any
     (Lwt_unix.close fd)
     (fun _ => {
@@ -76,13 +103,13 @@ let close fd::fd callback::callback => {
     );
 };
 
-let closeSync fd::fd => Unix.close fd;
+let closeSync fd::(SyncFileDescr fd) => Unix.close fd;
 
 let createReadStream path::path options::options => ();
 
 let createWriteStream path::path options::options => ();
 
-let fchmod fd::fd mode::mode callback::callback => {
+let fchmod fd::(AsyncFileDescr fd) mode::(AsyncFilePerm mode) callback::callback => {
   Lwt.on_any
     (Lwt_unix.fchmod fd mode)
     (fun _ => {
@@ -98,9 +125,9 @@ let fchmod fd::fd mode::mode callback::callback => {
     );
 };
 
-let fchmodSync fd::fd mode::mode => Unix.fchmod fd mode;
+let fchmodSync fd::(SyncFileDescr fd) mode::(SyncFilePerm mode) => Unix.fchmod fd mode;
 
-let fchown fd::fd uid::uid gid::gid callback::callback => {
+let fchown fd::(AsyncFileDescr fd) uid::uid gid::gid callback::callback => {
   Lwt.on_any
     (Lwt_unix.fchown fd uid gid)
     (fun _ => {
@@ -116,9 +143,9 @@ let fchown fd::fd uid::uid gid::gid callback::callback => {
     );
 };
 
-let fchownSync fd::fd uid::uid gid::gid => Unix.fchown fd uid gid;
+let fchownSync fd::(SyncFileDescr fd) uid::uid gid::gid => Unix.fchown fd uid gid;
 
-let fdatasync fd::fd callback::callback => {
+let fdatasync fd::(AsyncFileDescr fd) callback::callback => {
   Lwt.on_any
     (Lwt_unix.fdatasync fd)
     (fun _ => {
@@ -134,9 +161,9 @@ let fdatasync fd::fd callback::callback => {
     );
 };
 
-let fdatasyncSync fd::fd => ();
+let fdatasyncSync fd::(SyncFileDescr fd) => ();
 
-let fstat fd::fd callback::callback => {
+let fstat fd::(AsyncFileDescr fd) callback::callback => {
   Lwt.on_any
     (Lwt_unix.fstat fd)
     (fun stats => {
@@ -152,9 +179,9 @@ let fstat fd::fd callback::callback => {
     );
 };
 
-let fstatSync fd::fd => Unix.fstat fd;
+let fstatSync fd::(SyncFileDescr fd) => Unix.fstat fd;
 
-let fsync fd::fd callback::callback => {
+let fsync fd::(AsyncFileDescr fd) callback::callback => {
   Lwt.on_any
     (Lwt_unix.fsync fd)
     (fun _ => {
@@ -170,9 +197,9 @@ let fsync fd::fd callback::callback => {
     );
 };
 
-let fsyncSync fd::fd => ();
+let fsyncSync fd::(SyncFileDescr fd) => ();
 
-let ftruncate fd::fd len::len callback::callback => {
+let ftruncate fd::(AsyncFileDescr fd) len::len callback::callback => {
   Lwt.on_any
     (Lwt_unix.ftruncate fd len)
     (fun _ => {
@@ -188,11 +215,11 @@ let ftruncate fd::fd len::len callback::callback => {
     );
 };
 
-let ftruncateSync fd::fd len::len => Unix.ftruncate fd len;
+let ftruncateSync fd::(SyncFileDescr fd) len::len => Unix.ftruncate fd len;
 
-let futimes fd::fd atime::atime mtime::mtime callback::callback => ();
+let futimes fd::(AsyncFileDescr fd) atime::atime mtime::mtime callback::callback => ();
 
-let futimesSync fd::fd atime::atime mtime::mtime => ();
+let futimesSync fd::(SyncFileDescr fd) atime::atime mtime::mtime => ();
 
 let lchmod path::path mode::mode callback::callback => ();
 
@@ -238,7 +265,7 @@ let lstat path::path callback::callback => {
 
 let lstatSync path::path => Unix.lstat path;
 
-let mkdir path::path mode::mode callback::callback => {
+let mkdir path::path mode::(AsyncFilePerm mode) callback::callback => {
   Lwt.on_any
     (Lwt_unix.mkdir path mode)
     (fun _ => {
@@ -254,17 +281,17 @@ let mkdir path::path mode::mode callback::callback => {
     );
 };
 
-let mkdirSync path::path mode::mode => Unix.mkdir path mode;
+let mkdirSync path::path mode::(SyncFilePerm mode) => Unix.mkdir path mode;
 
 let mkdtemp prefix::prefix options::options callback::callback => ();
 
 let mkdtempSync prefix::prefix options::options => ();
 
-let _open path::path flags::flags mode::mode callback::callback => {
+let _open path::path flags::flags mode::(AsyncFilePerm mode) callback::callback => {
   Lwt.on_any
     (Lwt_unix.openfile path flags mode)
     (fun fd => {
-      callback Ok (Some fd);
+      callback Ok (Some (AsyncFileDescr fd));
       ();
     })
     (fun
@@ -276,9 +303,9 @@ let _open path::path flags::flags mode::mode callback::callback => {
     );
 };
 
-let openSync path::path flags::flags mode::mode => Unix.openfile path flags mode;
+let openSync path::path flags::flags mode::(SyncFilePerm mode) => Unix.openfile path flags mode;
 
-let read fd::fd buffer::buffer offset::offset length::length callback::callback => {
+let read fd::(AsyncFileDescr fd) buffer::buffer offset::offset length::length callback::callback => {
   Lwt.on_any
     (Lwt_unix.read fd buffer offset length)
     (fun buff => {
@@ -294,9 +321,9 @@ let read fd::fd buffer::buffer offset::offset length::length callback::callback 
     );
 };
 
-let readSync fd::fd buffer::buffer offset::offset length::length => Unix.read fd buffer offset length;
+let readSync fd::(SyncFileDescr fd) buffer::buffer offset::offset length::length => Unix.read fd buffer offset length;
 
-let readdir path::path callback::callback => {
+let readdir path::(AsyncDirHandle path) callback::callback => {
   Lwt.on_any
     (Lwt_unix.readdir path)
     (fun nextEntry => {
@@ -312,7 +339,7 @@ let readdir path::path callback::callback => {
     );
 };
 
-let readdirSync path::path => Unix.readdir path;
+let readdirSync path::(SyncDirHandle path) => Unix.readdir path;
 
 let readFile path::path options::options callback::callback => ();
 
@@ -472,7 +499,7 @@ let watch filename::filename options::options listener::listener => ();
 
 let watchFile filename::filename options::options listener::listener => ();
 
-let write fd::fd buffer::buffer offset::offset length::length callback::callback => {
+let write fd::(AsyncFileDescr fd) buffer::buffer offset::offset length::length callback::callback => {
   Lwt.on_any
     (Lwt_unix.write fd buffer offset length)
     (fun buff => {
@@ -488,10 +515,10 @@ let write fd::fd buffer::buffer offset::offset length::length callback::callback
     );
 };
 
-let writeSync fd::fd buffer::buffer offset::offset length::length => Unix.write fd buffer offset length;
+let writeSync fd::(SyncFileDescr fd) buffer::buffer offset::offset length::length => Unix.write fd buffer offset length;
 
 
-let writeString fd::fd string::string offset::offset length::length callback::callback => {
+let writeString fd::(AsyncFileDescr fd) string::string offset::offset length::length callback::callback => {
   Lwt.on_any
     (Lwt_unix.write_string fd string offset length)
     (fun str => {
@@ -507,7 +534,7 @@ let writeString fd::fd string::string offset::offset length::length callback::ca
     );
 };
 
-let writeStringSync fd::fd string::string offset::offset length::length => Unix.write_substring fd string offset length;
+let writeStringSync fd::(SyncFileDescr fd) string::string offset::offset length::length => Unix.write_substring fd string offset length;
 
 let writeFile file::file data::data options::options callback::callback => ();
 

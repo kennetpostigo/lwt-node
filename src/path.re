@@ -12,7 +12,7 @@ let delimeter = ":";
 
 let sep = Filename.dir_sep;
 
-let dirname ::path => Filename.dirname path;
+let dirname path::path => Filename.dirname path;
 
 let extname path::(path: string) => {
   let pathLength = String.length path;

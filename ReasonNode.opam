@@ -16,7 +16,7 @@ build: [
 ]
 depends: [
   "jbuilder" {build}
-  "reason"  {= "1.13.6"}
+  "reason"  {= "1.13.7"}
   "alcotest"
   "lwt"
   "bisect_ppx"
