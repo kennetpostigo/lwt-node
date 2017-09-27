@@ -48,7 +48,7 @@ generateString (Path.parse "/") "{ root: '/', dir: '/', base: None, ext: None, n
 generateString (Path.parse "home/user/..///file.name/") "{ root: None, dir: 'home/user/..//', base: 'file.name', ext: '.name', name: 'file' }" "home/user/..///file.name/";
 
 Node.run {
-  Fs.mkdir "testDirAsync0" (Fs.AsyncFilePerm 416) (Fs.(fun
+  Fs.mkdir "testDirAsync0" 416 (Fs.(fun
     | Ok => {
         let x = 3 * 9;
         prerr_endline("\n\n" ^ (string_of_int x) ^ "\n\n");
