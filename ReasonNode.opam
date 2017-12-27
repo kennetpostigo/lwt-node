@@ -15,10 +15,11 @@ build: [
   ["jbuilder" "build" "-p" name "-j" jobs]
 ]
 depends: [
-  "jbuilder" {build}
-  "reason"  {= "1.13.7"}
-  "alcotest"
   "lwt"
+  "cohttp"
+  "reason"  {= "3.0.0"}
+  "jbuilder" {build}
+  "alcotest"
   "bisect_ppx"
 ]
-available: [ ocaml-version >= "4.02" & ocaml-version < "4.05" ]
+available: [ ocaml-version >= "4.03" & ocaml-version < "4.05" ]
