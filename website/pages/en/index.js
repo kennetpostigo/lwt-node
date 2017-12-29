@@ -126,8 +126,7 @@ open ReasonNode
 
 Node.run(
   Fs.mkdir(
-    "testDirAsync0",
-    Fs.(
+    "myDir", Fs.(
       fun
       | Ok => prerr_endline("Dir Created!"))
       | Err(e) => prerr_endline("Something went wrong")

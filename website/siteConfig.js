@@ -28,8 +28,8 @@ const siteConfig = {
   favicon: "img/favicon.png",
   /* colors for website */
   colors: {
-    primaryColor: "#FF8585",
-    secondaryColor: "#E87474"
+    primaryColor: "#FF7070",
+    secondaryColor: "#ED5C5C"
   },
   // This copyright info is used in /core/Footer.js and blog rss/atom feeds.
   copyright:
