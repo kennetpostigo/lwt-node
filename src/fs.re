@@ -31,12 +31,12 @@ let access = (~path, ~mode, ~callback) =>
     Lwt_unix.access(path, [mode]),
     (_) => {
       callback(Ok);
-      ()
+      ();
     },
     fun
     | Unix.Unix_error(e, _, _) => {
         callback(Err(e));
-        ()
+        ();
       }
     | exn => ()
   );
@@ -52,12 +52,12 @@ let chmod = (~path, ~mode, ~callback) =>
     Lwt_unix.chmod(path, mode),
     (_) => {
       callback(Ok);
-      ()
+      ();
     },
     fun
     | Unix.Unix_error(e, _, _) => {
         callback(Err(e));
-        ()
+        ();
       }
     | exn => ()
   );
@@ -69,12 +69,12 @@ let chown = (~path, ~uid, ~gid, ~callback) =>
     Lwt_unix.chown(path, uid, gid),
     (_) => {
       callback(Ok);
-      ()
+      ();
     },
     fun
     | Unix.Unix_error(e, _, _) => {
         callback(Err(e));
-        ()
+        ();
       }
     | exn => ()
   );
@@ -86,12 +86,12 @@ let close = (~fd, ~callback) =>
     Lwt_unix.close(fd),
     (_) => {
       callback(Ok);
-      ()
+      ();
     },
     fun
     | Unix.Unix_error(e, _, _) => {
         callback(Err(e));
-        ()
+        ();
       }
     | exn => ()
   );
@@ -107,12 +107,12 @@ let fchmod = (~fd, ~mode, ~callback) =>
     Lwt_unix.fchmod(fd, mode),
     (_) => {
       callback(Ok);
-      ()
+      ();
     },
     fun
     | Unix.Unix_error(e, _, _) => {
         callback(Err(e));
-        ()
+        ();
       }
     | exn => ()
   );
@@ -124,12 +124,12 @@ let fchown = (~fd, ~uid, ~gid, ~callback) =>
     Lwt_unix.fchown(fd, uid, gid),
     (_) => {
       callback(Ok);
-      ()
+      ();
     },
     fun
     | Unix.Unix_error(e, _, _) => {
         callback(Err(e));
-        ()
+        ();
       }
     | exn => ()
   );
@@ -141,12 +141,12 @@ let fdatasync = (~fd, ~callback) =>
     Lwt_unix.fdatasync(fd),
     (_) => {
       callback(Ok);
-      ()
+      ();
     },
     fun
     | Unix.Unix_error(e, _, _) => {
         callback(Err(e));
-        ()
+        ();
       }
     | exn => ()
   );
@@ -156,14 +156,14 @@ let fdatasyncSync = (~fd) => ();
 let fstat = (~fd, ~callback) =>
   Lwt.on_any(
     Lwt_unix.fstat(fd),
-    (stats) => {
+    stats => {
       callback(Ok, Some(stats));
-      ()
+      ();
     },
     fun
     | Unix.Unix_error(e, _, _) => {
         callback(Err(e), None);
-        ()
+        ();
       }
     | exn => ()
   );
@@ -175,12 +175,12 @@ let fsync = (~fd, ~callback) =>
     Lwt_unix.fsync(fd),
     (_) => {
       callback(Ok);
-      ()
+      ();
     },
     fun
     | Unix.Unix_error(error_code, _, _) => {
         callback(Err(error_code));
-        ()
+        ();
       }
     | exn => ()
   );
@@ -192,12 +192,12 @@ let ftruncate = (~fd, ~len, ~callback) =>
     Lwt_unix.ftruncate(fd, len),
     (_) => {
       callback(Ok);
-      ()
+      ();
     },
     fun
     | Unix.Unix_error(error_code, _, _) => {
         callback(Err(error_code));
-        ()
+        ();
       }
     | exn => ()
   );
@@ -221,12 +221,12 @@ let link = (~existingPath, ~newPath, ~callback) =>
     Lwt_unix.link(existingPath, newPath),
     (_) => {
       callback(Ok);
-      ()
+      ();
     },
     fun
     | Unix.Unix_error(error_code, _, _) => {
         callback(Err(error_code));
-        ()
+        ();
       }
     | exn => ()
   );
@@ -236,14 +236,14 @@ let linkSync = (~existingPath, ~newPath) => Unix.link(existingPath, newPath);
 let lstat = (~path, ~callback) =>
   Lwt.on_any(
     Lwt_unix.lstat(path),
-    (stats) => {
+    stats => {
       callback(Ok, Some(stats));
-      ()
+      ();
     },
     fun
     | Unix.Unix_error(e, _, _) => {
         callback(Err(e), None);
-        ()
+        ();
       }
     | exn => ()
   );
@@ -255,12 +255,12 @@ let mkdir = (~path, ~mode, ~callback) =>
     Lwt_unix.mkdir(path, mode),
     (_) => {
       callback(Ok);
-      ()
+      ();
     },
     fun
     | Unix.Unix_error(e, _, _) => {
         callback(Err(e));
-        ()
+        ();
       }
     | exn => ()
   );
@@ -274,14 +274,14 @@ let mkdtempSync = (~prefix, ~options) => ();
 let _open = (~path, ~flags, ~mode, ~callback) =>
   Lwt.on_any(
     Lwt_unix.openfile(path, flags, mode),
-    (fd) => {
+    fd => {
       callback(Ok, Some(fd));
-      ()
+      ();
     },
     fun
     | Unix.Unix_error(e, _, _) => {
         callback(Err(e), None);
-        ()
+        ();
       }
     | exn => ()
   );
@@ -291,31 +291,32 @@ let openSync = (~path, ~flags, ~mode) => Unix.openfile(path, flags, mode);
 let read = (~fd, ~buffer, ~offset, ~length, ~callback) =>
   Lwt.on_any(
     Lwt_unix.read(fd, buffer, offset, length),
-    (buff) => {
+    buff => {
       callback(Ok, Some(buff));
-      ()
+      ();
     },
     fun
     | Unix.Unix_error(e, _, _) => {
         callback(Err(e), None);
-        ()
+        ();
       }
     | exn => ()
   );
 
-let readSync = (~fd, ~buffer, ~offset, ~length) => Unix.read(fd, buffer, offset, length);
+let readSync = (~fd, ~buffer, ~offset, ~length) =>
+  Unix.read(fd, buffer, offset, length);
 
 let readdir = (~path, ~callback) =>
   Lwt.on_any(
     Lwt_unix.readdir(path),
-    (nextEntry) => {
+    nextEntry => {
       callback(Ok, Some(nextEntry));
-      ()
+      ();
     },
     fun
     | Unix.Unix_error(error_code, _, _) => {
         callback(Err(error_code), None);
-        ()
+        ();
       }
     | exn => ()
   );
@@ -329,14 +330,14 @@ let readFileSync = (~path, ~options) => ();
 let readLink = (~path, ~callback) =>
   Lwt.on_any(
     Lwt_unix.readlink(path),
-    (contents) => {
+    contents => {
       callback(Ok, Some(contents));
-      ()
+      ();
     },
     fun
     | Unix.Unix_error(error_code, _, _) => {
         callback(Err(error_code), None);
-        ()
+        ();
       }
     | exn => ()
   );
@@ -352,12 +353,12 @@ let rename = (~oldPath, ~newPath, ~callback) =>
     Lwt_unix.rename(oldPath, newPath),
     (_) => {
       callback(Ok);
-      ()
+      ();
     },
     fun
     | Unix.Unix_error(error_code, _, _) => {
         callback(Err(error_code));
-        ()
+        ();
       }
     | exn => ()
   );
@@ -369,12 +370,12 @@ let rmdir = (~path, ~callback) =>
     Lwt_unix.rmdir(path),
     (_) => {
       callback(Ok);
-      ()
+      ();
     },
     fun
     | Unix.Unix_error(error_code, _, _) => {
         callback(Err(error_code));
-        ()
+        ();
       }
     | exn => ()
   );
@@ -384,14 +385,14 @@ let rmdirSync = (~path) => Unix.rmdir(path);
 let stat = (~path, ~callback) =>
   Lwt.on_any(
     Lwt_unix.stat(path),
-    (stats) => {
+    stats => {
       callback(Ok, Some(stats));
-      ()
+      ();
     },
     fun
     | Unix.Unix_error(error_code, _, _) => {
         callback(Err(error_code), None);
-        ()
+        ();
       }
     | exn => ()
   );
@@ -403,12 +404,12 @@ let symlink = (~target, ~path, ~callback) =>
     Lwt_unix.symlink(target, path),
     (_) => {
       callback(Ok);
-      ()
+      ();
     },
     fun
     | Unix.Unix_error(error_code, _, _) => {
         callback(Err(error_code));
-        ()
+        ();
       }
     | exn => ()
   );
@@ -420,12 +421,12 @@ let truncate = (~path, ~len, ~callback) =>
     Lwt_unix.truncate(path, len),
     (_) => {
       callback(Ok);
-      ()
+      ();
     },
     fun
     | Unix.Unix_error(error_code, _, _) => {
         callback(Err(error_code));
-        ()
+        ();
       }
     | exn => ()
   );
@@ -437,12 +438,12 @@ let unlink = (~path, ~callback) =>
     Lwt_unix.unlink(path),
     (_) => {
       callback(Ok);
-      ()
+      ();
     },
     fun
     | Unix.Unix_error(error_code, _, _) => {
         callback(Err(error_code));
-        ()
+        ();
       }
     | exn => ()
   );
@@ -456,12 +457,12 @@ let utimes = (~path, ~atime, ~mtime, ~callback) =>
     Lwt_unix.utimes(path, atime, mtime),
     (_) => {
       callback(Ok);
-      ()
+      ();
     },
     fun
     | Unix.Unix_error(error_code, _, _) => {
         callback(Err(error_code));
-        ()
+        ();
       }
     | exn => ()
   );
@@ -475,31 +476,32 @@ let watchFile = (~filename, ~options, ~listener) => ();
 let write = (~fd, ~buffer, ~offset, ~length, ~callback) =>
   Lwt.on_any(
     Lwt_unix.write(fd, buffer, offset, length),
-    (buff) => {
+    buff => {
       callback(Ok, Some(buff));
-      ()
+      ();
     },
     fun
     | Unix.Unix_error(error_code, _, _) => {
         callback(Err(error_code), None);
-        ()
+        ();
       }
     | exn => ()
   );
 
-let writeSync = (~fd, ~buffer, ~offset, ~length) => Unix.write(fd, buffer, offset, length);
+let writeSync = (~fd, ~buffer, ~offset, ~length) =>
+  Unix.write(fd, buffer, offset, length);
 
 let writeString = (~fd, ~string, ~offset, ~length, ~callback) =>
   Lwt.on_any(
     Lwt_unix.write_string(fd, string, offset, length),
-    (str) => {
+    str => {
       callback(Ok, Some(str));
-      ()
+      ();
     },
     fun
     | Unix.Unix_error(error_code, _, _) => {
         callback(Err(error_code), None);
-        ()
+        ();
       }
     | exn => ()
   );
