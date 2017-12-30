@@ -1,0 +1,19 @@
+<html><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Reason Node · A Node.js-like API for ReasonML</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta property="og:title" content="Reason Node · A Node.js-like API for ReasonML"/><meta property="og:type" content="website"/><meta property="og:url" content="https://kennetpostigo.github.io/reason-node/index.html"/><meta property="og:description" content="A Node.js-like API for ReasonML"/><link rel="shortcut icon" href="/img/favicon.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/arduino-light.min.css"/><link rel="alternate" type="application/atom+xml" href="https://kennetpostigo.github.io/reason-node/blog/atom.xml" title="Reason Node Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://kennetpostigo.github.io/reason-node/blog/feed.xml" title="Reason Node Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/></head><body><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/reasonNode.svg"/><h2 class="headerTitle">Reason Node</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li><a href="/docs/installation.html" target="_self">Docs</a></li><li><a href="/docs/doc4.html" target="_self">API</a></li><li><a href="/help.html" target="_self">Help</a></li><li><a href="/blog" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div><div class="homeContainer hero"><div class="homeSplashFade"><div class="wrapper homeWrapper"><div><img src="/img/reasonNodeHero.svg"/></div><div class="inner"><h2 class="projectTitle"><small>A Node.js-like API for ReasonML</small></h2><div class="section promoSection"><div class="promoRow"><div class="pluginRowBlock"><div class="pluginWrapper buttonWrapper"><a class="button" href="#try" target="_self">Get Started</a></div><div class="pluginWrapper buttonWrapper"><a class="button" href="/docs/installation.html" target="_self">Docs</a></div></div></div></div></div></div></div></div><div class="mainContainer"><div class="paddedContainer"><div class="container paddingBottom paddingTop"><div class="wrapper"><div class="gridBlock"><div class="blockElement alignCenter threeByGridBlock"><div class="blockContent"><h2><div><span><p>Native Performance</p>
+</span></div></h2><div><span><p>Reason runs in the native environment, ocaml-opt provides blazing fast startup and execution.</p>
+</span></div></div></div><div class="blockElement alignCenter threeByGridBlock"><div class="blockContent"><h2><div><span><p>Familiar API</p>
+</span></div></h2><div><span><p>The same Node.js API that you know and love, get started painlessly!</p>
+</span></div></div></div><div class="blockElement alignCenter threeByGridBlock"><div class="blockContent"><h2><div><span><p>Fun Types</p>
+</span></div></h2><div><span><p>Reason provides a nice and fun type system, making writing and refactoring your code easy and fun!</p>
+</span></div></div></div></div></div></div></div><div class="quickStart paddingBottom"><div><h2>Quick Start</h2><div><span><pre><code class="hljs css reason">open ReasonNode
+
+Node.run(
+  Fs.mkdir(
+    <span class="hljs-string">"myDir"</span>, Fs.(
+      <span class="hljs-keyword">fun</span>
+      | <span class="hljs-type">Ok</span> =&gt; prerr_endline(<span class="hljs-string">"Dir Created!"</span>))
+      | <span class="hljs-type">Err</span>(e) =&gt; prerr_endline(<span class="hljs-string">"Something went wrong"</span>)
+    )
+  )
+);
+</code></pre>
+</span></div></div></div></div></div></div></body></html>
