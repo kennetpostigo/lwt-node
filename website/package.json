@@ -3,10 +3,16 @@
     "examples": "docusaurus-examples",
     "start": "docusaurus-start",
     "build": "docusaurus-build",
-    "publish-gh-pages": "docusaurus-publish",
+    "publish-gh-pages":
+      "GIT_USER=kennetpostigo CURRENT_BRANCH=master docusaurus-publish",
     "write-translations": "docusaurus-write-translations",
     "version": "docusaurus-version",
     "rename-version": "docusaurus-rename-version"
+  },
+  "author": "Kennet Postigo <kennetfpostigo@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kennetpostigo/reason-node.git"
   },
   "dependencies": {
     "resaurus": "rickyvetter/resaurus"

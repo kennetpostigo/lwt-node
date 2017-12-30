@@ -1,4 +1,4 @@
-<svg class="reasonNodeHero" width="825" height="211" viewBox="0 0 825 211" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="825" height="211" viewBox="0 0 825 211" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <title>reason-node</title>
 <desc>Created using Figma</desc>
 <g id="Canvas" transform="translate(295 319)">
@@ -6,10 +6,10 @@
 <g id="text and rect">
 <g id="Logo">
 <g id="Vector">
-<use xlink:href="#path0_stroke" transform="translate(-288 -311)" fill="#FF8585"/>
+<use xlink:href="#path0_stroke" transform="translate(-288 -311)" fill="#FF7070"/>
 </g>
 <g id="RE">
-<use xlink:href="#path1_fill" transform="translate(-264.325 -266.079)" fill="#FF8585"/>
+<use xlink:href="#path1_fill" transform="translate(-264.325 -266.079)" fill="#FF7070"/>
 </g>
 </g>
 <g id="Rectangle 2">

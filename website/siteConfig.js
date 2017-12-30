@@ -12,8 +12,10 @@ const users = [
 const siteConfig = {
   title: "Reason Node" /* title for your website */,
   tagline: "A Node.js-like API for ReasonML",
-  url: "https://facebook.github.io" /* your website url */,
-  baseUrl: "/" /* base url for your project */,
+  url: "https://kennetpostigo.github.io/reason-node" /* your website url */,
+  editUrl: "https://github.com/kennetpostigo/reason-node/tree/master/doc/",
+  baseUrl: "/reason-node/" /* base url for your project */,
+  organizationName: "kennetpostigo",
   projectName: "reason-node",
   headerLinks: [
     { doc: "installation", label: "Docs" },
@@ -32,10 +34,7 @@ const siteConfig = {
     secondaryColor: "#ED5C5C"
   },
   // This copyright info is used in /core/Footer.js and blog rss/atom feeds.
-  copyright:
-    "Copyright © " +
-    new Date().getFullYear() +
-    " Your Name or Your Company Name",
+  copyright: "Copyright © " + new Date().getFullYear() + "Reason Training",
   // organizationName: 'deltice', // or set an env variable ORGANIZATION_NAME
   // projectName: 'test-site', // or set an env variable PROJECT_NAME
   scripts: ["https://buttons.github.io/buttons.js"],
