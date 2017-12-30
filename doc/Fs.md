@@ -1,158 +1,157 @@
-![reason-fs](./../assets/reason-fs.png)
+---
+id: fs
+title: Fs
+sidebar_label: Fs
+---
 
-### Operators
+### `Fs.access path mode callback`
 
-+ `Fs.access path mode callback`
+### `Fs.accessSync path mode`
 
-+ `Fs.accessSync path mode`
+### `Fs.appendFile file data options callback`
 
-+ `Fs.appendFile file data options callback`
+### `Fs.appendFileSync file data options`
 
-+ `Fs.appendFileSync file data options`
+### `Fs.chmod path mode callback`
 
-+ `Fs.chmod path mode callback`
+### `Fs.chmodSync path mode`
 
-+ `Fs.chmodSync path mode`
+### `Fs.chown path uid gid callback`
 
-+ `Fs.chown path uid gid callback`
+### `Fs.chownSync path uid gid`
 
-+ `Fs.chownSync path uid gid`
+### `Fs.close fd callback`
 
-+ `Fs.close fd callback`
+### `Fs.closeSync fd`
 
-+ `Fs.closeSync fd`
+### `Fs.constants`
 
-+ `Fs.constants`
+### `Fs.createReadStream path options`
 
-+ `Fs.createReadStream path options`
+### `Fs.createWriteStream path options`
 
-+ `Fs.createWriteStream path options`
+### `Fs.exists path callback`
 
-+ `Fs.exists path callback`
+### `Fs.existsSync path`
 
-+ `Fs.existsSync path`
+### `Fs.fchmod fd mode callback`
 
-+ `Fs.fchmod fd mode callback`
+### `Fs.fchmodSync fd mode`
 
-+ `Fs.fchmodSync fd mode`
+### `Fs.fchown fd uid gid callback`
 
-+ `Fs.fchown fd uid gid callback`
+### `Fs.fchownSync fd uid gid`
 
-+ `Fs.fchownSync fd uid gid`
+### `Fs.fdatasync fd callback`
 
-+ `Fs.fdatasync fd callback`
+### `Fs.fdatasyncSync fd`
 
-+ `Fs.fdatasyncSync fd`
+### `Fs.fstat fd callback`
 
-+ `Fs.fstat fd callback`
+### `Fs.fstatSync fd`
 
-+ `Fs.fstatSync fd`
+### `Fs.fsync fd callback`
 
-+ `Fs.fsync fd callback`
+### `Fs.fsyncSync fd`
 
-+ `Fs.fsyncSync fd`
+### `Fs.ftruncate fd len callback`
 
-+ `Fs.ftruncate fd len callback`
+### `Fs.ftruncateSync fd len`
 
-+ `Fs.ftruncateSync fd len`
+### `Fs.futimes fd atime mtime callback`
 
-+ `Fs.futimes fd atime mtime callback`
+### `Fs.futimesSync fd atime mtime`
 
-+ `Fs.futimesSync fd atime mtime`
+### `Fs.lchmod path mode callback`
 
-+ `Fs.lchmod path mode callback`
+### `Fs.lchmodSync path mode`
 
-+ `Fs.lchmodSync path mode`
+### `Fs.lchown path uid gid callback`
 
-+ `Fs.lchown path uid gid callback`
+### `Fs.lchownSync path uid gid`
 
-+ `Fs.lchownSync path uid gid`
+### `Fs.link existingPath newPath callback`
 
-+ `Fs.link existingPath newPath callback`
+### `Fs.linkSync existingPath newPath`
 
-+ `Fs.linkSync existingPath newPath`
+### `Fs.lstat path callback`
 
-+ `Fs.lstat path callback`
+### `Fs.lstatSync path`
 
-+ `Fs.lstatSync path`
+### `Fs.mkdir path mode callback`
 
-+ `Fs.mkdir path mode callback`
+### `Fs.mkdirSync path mode`
 
-+ `Fs.mkdirSync path mode`
+### `Fs.mkdtemp prefix options callback`
 
-+ `Fs.mkdtemp prefix options callback`
+### `Fs.mkdtempSync prefix options`
 
-+ `Fs.mkdtempSync prefix options`
+### `Fs.open path flags mode callback`
 
-+ `Fs.open path flags mode callback`
+### `Fs.openSync path flags mode`
 
-+ `Fs.openSync path flags mode`
+### `Fs.read fd buffer offset length position callback`
 
-+ `Fs.read fd buffer offset length position callback`
+### `Fs.readdir path options callback`
 
-+ `Fs.readdir path options callback`
+### `Fs.readdirSync path options`
 
-+ `Fs.readdirSync path options`
+### `Fs.readFile file options callback`
 
-+ `Fs.readFile file options callback`
+### `Fs.readFileSync path options`
 
-+ `Fs.readFileSync path options`
+### `Fs.readlink path options callback`
 
-+ `Fs.readlink path options callback`
+### `Fs.readlinkSync path options`
 
-+ `Fs.readlinkSync path options`
+### `Fs.readSync fd buffer offset length position`
 
-+ `Fs.readSync fd buffer offset length position`
+### `Fs.realpath path options callback`
 
-+ `Fs.realpath path options callback`
+### `Fs.realpathSync path options`
 
-+ `Fs.realpathSync path options`
+### `Fs.rename oldPath newPath callback`
 
-+ `Fs.rename oldPath newPath callback`
+### `Fs.renameSync oldPath newPath`
 
-+ `Fs.renameSync oldPath newPath`
+### `Fs.rmdir path callback`
 
-+ `Fs.rmdir path callback`
+### `Fs.rmdirSync path`
 
-+ `Fs.rmdirSync path`
+### `Fs.stat path callback`
 
-+ `Fs.stat path callback`
+### `Fs.statSync path`
 
-+ `Fs.statSync path`
+### `Fs.symlink target path type callback`
 
-+ `Fs.symlink target path type callback`
+### `Fs.symlinkSync target path type`
 
-+ `Fs.symlinkSync target path type`
+### `Fs.truncate path len callback`
 
-+ `Fs.truncate path len callback`
+### `Fs.truncateSync path len`
 
-+ `Fs.truncateSync path len`
+### `Fs.unlink path callback`
 
-+ `Fs.unlink path callback`
+### `Fs.unlinkSync path`
 
-+ `Fs.unlinkSync path`
+### `Fs.unwatchFile filename listener`
 
-+ `Fs.unwatchFile filename listener`
+### `Fs.utimes path atime mtime callback`
 
-+ `Fs.utimes path atime mtime callback`
+### `Fs.utimesSync path atime mtime`
 
-+ `Fs.utimesSync path atime mtime`
+### `Fs.watch filename options listener`
 
-+ `Fs.watch filename options listener`
+### `Fs.watchFile filename options listener`
 
-+ `Fs.watchFile filename options listener`
+### `Fs.write fd buffer offset length position callback`
 
-+ `Fs.write fd buffer offset length position callback`
+### `Fs.write fd string position encoding callback`
 
-+ `Fs.write fd string position encoding callback`
+### `Fs.writeFile file data options callback`
 
-+ `Fs.writeFile file data options callback`
+### `Fs.writeFileSync file data options`
 
-+ `Fs.writeFileSync file data options`
+### `Fs.writeSync fd buffer offset length position`
 
-+ `Fs.writeSync fd buffer offset length position`
-
-+ `Fs.writeSync fd string position encoding`
-
-## License
-MIT
+### `Fs.writeSync fd string position encoding`

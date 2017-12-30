@@ -1,101 +1,113 @@
-![reason-path](./../assets/reason-path.png)
+---
+id: path
+title: Path
+sidebar_label: Path
+---
 
-### Operators
+### `Path.delimeter`
 
-+ `Path.basename path ext` 
+returns the platform specific delimeter, `:` for unix and `;` for windows.
 
-  returns the last postion of a `path`, similar to the Unix `basename` command.
+### `Path.sep`
 
-  ```reason
-  type basename = path::string => ext::string? => string;
-  ```
+Provides the platform-specific path segment separator. Either `/` on unix or `\` on windows.
 
-+ `Path.delimeter`
+### `Path.basename(path, ext)`
 
-  returns the platform specific delimeter, `:` for unix and `;` for windows.
+returns the last postion of a `path`, similar to the Unix `basename` command.
 
-+ `Path.dirname path`
+```reason
+let basename: (~ext: string=?, ~path: string) => string;
+```
 
-  returns the directory name of a `path`, similar to the Unix `dirname` command.
+### `Path.dirname(path)`
 
-  ```reason
-  type dirname = path::string => string;
-  ```
+returns the directory name of a `path`, similar to the Unix `dirname` command.
 
-+ `Path.extname path`
+```reason
+type dirname = path::string => string;
+```
 
-  returns the extension of the `path` from the last occurence of the `.` charachter to end of string in the last portion of the path.
+### `Path.extname(path)`
 
-  ```reason
-  type extname = path::string ;
-  ```
+returns the extension of the `path` from the last occurence of the `.` charachter to end of string in the last portion of the path.
 
-+ `Path.format pathObject`
+```reason
+let extname: (~path: string) => string;
+```
 
-  returns a path string from an object. This is the opposite of `path.parse`. When providing properties to the `pathObject` remember that there are combinations where one property has priority over another:
+### `Path.format(pathObject)`
 
-    + `pathObject.root` is ignored if `pathObject.dir` is provided
+returns a path string from an object. This is the opposite of `path.parse`. When providing properties to the `pathObject` remember that there are combinations where one property has priority over another:
 
-    + `pathObject.ext` and `pathObject.name` are ignored if `pathObject.base` exists.
+* `pathObject.root` is ignored if `pathObject.dir` is provided
 
-  ```reason
-  type pathObject = {dir: string, root: string, base: string, name: string, ext: string};
-  type format = pathObject::pathObject => string;
-  ```
+* `pathObject.ext` and `pathObject.name` are ignored if `pathObject.base` exists.
 
-+ `Path.isAbsolute path`
+```reason
+type pathObject = {
+  dir: option(string),
+  root: option(string),
+  base: option(string),
+  name: option(string),
+  ext: option(string)
+};
 
-  returns a boolean that determines if `path` is an absolute path. If the given `path` is a zero-length string, `false` will be returned.
+let format: (~pathObject: pathObject) => string;
+```
 
-  ```reason
-  type isAbsolute = path::string => boolean;
-  ```
+### `Path.isAbsolute(path)`
 
-+ `Path.join paths`
+returns a boolean that determines if `path` is an absolute path. If the given `path` is a zero-length string, `false` will be returned.
 
-  returns a string containing all the `paths` segments joined togther delimited by the seperator. Zero-length `path` segments are ignored. If the joined path string is a zero-length string then "." will be returned. representing the current working directory.
-  
-  ```reason
-  type join = paths::list string => string;
-  ```
+```reason
+let isAbsolute: (~path: string) => bool;
+```
 
-+ `Path.normalize path`
+### `Path.join(paths)`
 
-  returns a string of the normalized `path`, resolving `..` and `.` segments. When multiple delimeters are found they are replaced by a single delimeters. Trailing seperators are preserved.
+returns a string containing all the `paths` segments joined togther delimited by the seperator. Zero-length `path` segments are ignored. If the joined path string is a zero-length string then "." will be returned. representing the current working directory.
 
-  ```reason
-  type normalize = path::string => string;
-  ```
+```reason
+let join: (~paths: list(string)) => string;
+```
 
-+ `Path.parse path`
+### `Path.normalize(path)`
 
-  returns an record whose fields represent a significant elements of the `path`. The returned record will have the following properties:
+returns a string of the normalized `path`, resolving `..` and `.` segments. When multiple delimeters are found they are replaced by a single delimeters. Trailing seperators are preserved.
 
-  ```reason
-  type pathObject = {dir: string, root: string, base: string, name: string, ext: string};
-  type parse = path::string => pathObject;
-  ```
+```reason
+let normalize: (~path: string) => string;
+```
 
-+ `Path.relative from to`
+### `Path.parse(path)`
 
-  returns the relative path `from` to `to`. If `from` and `to` each resolve to the same path after calling `resolve` on each, a zero-length string is returned. If a zero-length string is passed as from or to, the current working directory will be used instead of the zero-length strings.
+returns an record whose fields represent a significant elements of the `path`. The returned record will have the following properties:
 
-  ```reason
-  type relative = from::string => to::string => string
-  ```
+```reason
+type pathObject = {
+  dir: option(string),
+  root: option(string),
+  base: option(string),
+  name: option(string),
+  ext: option(string)
+};
 
+let parse: (~path: string) => pathObject;
+```
 
-+ `Path.resolve paths`
+### `Path.relative(from, to)`
 
-  returns a string that resolves a sequence of paths or path segments into an an absolute path. The given sequence is processed from right to ledt, with each subsequent path prepended until an absolute path is constructed.If after processing all given `path` segments an absolute path is not generated, the current working directory is used. The resulting path is normalized and trailing slashes are removed unless the path is resolved to the root directory. Zero-length `path` segments are ignored. If no path segments are passed, `resolve` will return the absolute path of the current working directory.
+returns the relative path `from` to `to`. If `from` and `to` each resolve to the same path after calling `resolve` on each, a zero-length string is returned. If a zero-length string is passed as from or to, the current working directory will be used instead of the zero-length strings.
 
-  ```reason
-  type resolve = paths::list string => string
-  ```
+```reason
+let relative: (~from: string, ~_to: string) => string;
+```
 
-+ `Path.sep`
-  Provides the platform-specific path segment separator. Either `/` on unix or `\` on windows.
+### `Path.resolve(paths)`
 
+returns a string that resolves a sequence of paths or path segments into an an absolute path. The given sequence is processed from right to ledt, with each subsequent path prepended until an absolute path is constructed.If after processing all given `path` segments an absolute path is not generated, the current working directory is used. The resulting path is normalized and trailing slashes are removed unless the path is resolved to the root directory. Zero-length `path` segments are ignored. If no path segments are passed, `resolve` will return the absolute path of the current working directory.
 
-### License
-MIT
+```reason
+let resolve: (~paths: list(string)) => string;
+```

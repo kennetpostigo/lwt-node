@@ -1,96 +1,95 @@
-![reason-process](./../assets/reason-process.png)
+---
+id: process
+title: Process
+sidebar_label: Process
+---
 
-### Operators
+### `Process.abort`
 
-+ `Process.abort`
+### `Process.arch`
 
-+ `Process.arch`
+### `Process.argv`
 
-+ `Process.argv`
+### `Process.argv`
 
-+ `Process.argv`
+### `Process.channel`
 
-+ `Process.channel`
+### `Process.chdir directory`
 
-+ `Process.chdir directory`
+### `Process.config`
 
-+ `Process.config`
+### `Process.connected`
 
-+ `Process.connected`
+### `Process.cpuUsage previousValue`
 
-+ `Process.cpuUsage previousValue`
+### `Process.cwd`
 
-+ `Process.cwd`
+### `Process.disconnect`
 
-+ `Process.disconnect`
+### `Process.emitWarning warning name ctor`
 
-+ `Process.emitWarning warning name ctor`
+### `Process.env`
 
-+ `Process.env`
+### `Process.execArgv`
 
-+ `Process.execArgv`
+### `Process.execPath`
 
-+ `Process.execPath`
+### `Process.exit code`
 
-+ `Process.exit code`
+### `Process.exitCode`
 
-+ `Process.exitCode`
+### `Process.getegid`
 
-+ `Process.getegid`
+### `Process.geteuid`
 
-+ `Process.geteuid`
+### `Process.getgid`
 
-+ `Process.getgid`
+### `Process.getgroups`
 
-+ `Process.getgroups`
+### `Process.getuid`
 
-+ `Process.getuid`
+### `Process.hrtime time`
 
-+ `Process.hrtime time`
+### `Process.initgroups user extra_group`
 
-+ `Process.initgroups user extra_group`
+### `Process.kill pid signal`
 
-+ `Process.kill pid signal`
+### `Process.mainModule`
 
-+ `Process.mainModule`
+### `Process.memoryUsage`
 
-+ `Process.memoryUsage`
+### `Process.nextTick callback args`
 
-+ `Process.nextTick callback args`
+### `Process.pid`
 
-+ `Process.pid`
+### `Process.platform`
 
-+ `Process.platform`
+### `Process.release`
 
-+ `Process.release`
+### `Process.send message sendHandle options callback`
 
-+ `Process.send message sendHandle options callback`
+### `Process.setegid id`
 
-+ `Process.setegid id`
+### `Process.seteuid id`
 
-+ `Process.seteuid id`
+### `Process.setgid id`
 
-+ `Process.setgid id`
+### `Process.setgroups groups groups`
 
-+ `Process.setgroups groups groups`
+### `Process.uid id`
 
-+ `Process.uid id`
+### `Process.stderr`
 
-+ `Process.stderr`
+### `Process.stdin`
 
-+ `Process.stdin`
+### `Process.stdout`
 
-+ `Process.stdout`
+### `Process.title`
 
-+ `Process.title`
+### `Process.unmask mask`
 
-+ `Process.unmask mask`
+### `Process.uptime`
 
-+ `Process.uptime`
+### `Process.version`
 
-+ `Process.version`
-
-+ `Process.versions`
-
-## License
-MIT
+### `Process.versions`
