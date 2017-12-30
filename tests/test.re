@@ -1,5 +1,6 @@
 let () =
-  Alcotest.run argv::[| "--verose" |] "Renode" [
-    ("PathTests", PathTests.pathTestSet),
-    ("RenodeUtilsTests", RenodeUtilsTests.utilsTestSet)
-  ];
+  Alcotest.run(
+    ~argv=[|"--verbose --color"|],
+    "Renode",
+    [("PathTests", PathTests.pathTestSet), ("RenodeUtilsTests", RenodeUtilsTests.utilsTestSet)]
+  );

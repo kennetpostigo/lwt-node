@@ -1,176 +1,227 @@
 type fsErr =
-| Ok
-| Err Unix.error;
+  | Ok
+  | Err(Unix.error);
 
-type async = Async_Constructor;
-type sync = Sync_Constructor;
+type asyncFileDescr = Lwt_unix.file_descr;
 
-type fileDescr _ =
-  | AsyncFileDescr Lwt_unix.file_descr :fileDescr async
-  | SyncFileDescr Unix.file_descr :fileDescr sync;
+type syncFileDescr = Unix.file_descr;
 
-type accessPerm _ =
-  | AsyncAccessPerm Lwt_unix.access_permission :accessPerm async
-  | SyncAccessPerm Unix.access_permission :accessPerm sync;
+type asyncFilePerm = Lwt_unix.file_perm;
 
-type filePerm _ =
-  | AsyncFilePerm Lwt_unix.file_perm :filePerm async
-  | SyncFilePerm Unix.file_perm :filePerm sync;
+type syncFilePerm = Unix.file_perm;
 
-type stats _ =
-  | AsyncStats Lwt_unix.stats :stats async
-  | SyncStats Unix.stats :stats sync;
+type asyncAccessPerm = Lwt_unix.access_permission;
 
-type dirHandle _ =
-  | AsyncDirHandle Lwt_unix.dir_handle :dirHandle async
-  | SyncDirHandle Unix.dir_handle :dirHandle sync;
+type syncAccessPerm = Unix.access_permission;
 
-type openFlag _ =
-  | AsyncOpenFlag Lwt_unix.open_flag :openFlag async
-  | SyncOpenFlag Unix.open_flag :openFlag sync;
+type asyncStats = Lwt_unix.stats;
 
-let access: path::string => mode::(accessPerm async) => callback::(fsErr => 'a) => unit;
+type syncStats = Unix.stats;
 
-let accessSync: path::string => mode::(accessPerm sync) => unit;
+type asyncDirHandle = Lwt_unix.dir_handle;
 
-let appendFile: file::'a => data::'b => options::'c => callback::'d => unit;
+type syncDirHandle = Unix.dir_handle;
 
-let appendFileSync: file::'a => data::'b => options::'c => unit;
+type asyncOpenFlag = Lwt_unix.open_flag;
 
-let chmod: path::string => mode::(filePerm async) => callback::(fsErr => 'a) => unit;
+type syncOpenFlag = Unix.open_flag;
 
-let chmodSync: path::string => mode::(filePerm sync) => unit;
+let access:
+  (~path: string, ~mode: asyncAccessPerm, ~callback: fsErr => 'a) => unit;
 
-let chown: path::string => uid::int => gid::int => callback::(fsErr => 'a) => unit;
+let accessSync: (~path: string, ~mode: syncAccessPerm) => unit;
 
-let chownSync: path::string => uid::int => gid::int => unit;
+let appendFile: (~file: 'a, ~data: 'b, ~options: 'c, ~callback: 'd) => unit;
 
-let close: fd::(fileDescr async) => callback::(fsErr=> 'a) => unit;
+let appendFileSync: (~file: 'a, ~data: 'b, ~options: 'c) => unit;
 
-let closeSync: fd::(fileDescr sync) => unit;
+let chmod:
+  (~path: string, ~mode: asyncFilePerm, ~callback: fsErr => 'a) => unit;
 
-let createReadStream: path::string => options::'a => unit;
+let chmodSync: (~path: string, ~mode: syncFilePerm) => unit;
 
-let createWriteStream: path::string => options::'a => unit;
+let chown:
+  (~path: string, ~uid: int, ~gid: int, ~callback: fsErr => 'a) => unit;
 
-let fchmod: fd::(fileDescr async) => mode::(filePerm async) => callback::(fsErr => 'a) => unit;
+let chownSync: (~path: string, ~uid: int, ~gid: int) => unit;
 
-let fchmodSync: fd::(fileDescr sync) => mode::(filePerm sync) => unit;
+let close: (~fd: asyncFileDescr, ~callback: fsErr => 'a) => unit;
 
-let fchown: fd::(fileDescr async) => uid::int => gid::int => callback::(fsErr => 'a) => unit;
+let closeSync: (~fd: syncFileDescr) => unit;
 
-let fchownSync: fd::(fileDescr sync) => uid::int => gid::int => unit;
+let createReadStream: (~path: string, ~options: 'a) => unit;
 
-let fdatasync: fd::(fileDescr async) => callback::(fsErr => 'a) => unit;
+let createWriteStream: (~path: string, ~options: 'a) => unit;
 
-let fdatasyncSync: fd::(fileDescr sync) => unit;
+let fchmod:
+  (~fd: asyncFileDescr, ~mode: asyncFilePerm, ~callback: fsErr => 'a) => unit;
 
-let fstat: fd::(fileDescr async) => callback::(fsErr => option Lwt_unix.stats => 'a) => unit;
+let fchmodSync: (~fd: syncFileDescr, ~mode: syncFilePerm) => unit;
 
-let fstatSync: fd::(fileDescr sync) => Unix.stats;
+let fchown:
+  (~fd: asyncFileDescr, ~uid: int, ~gid: int, ~callback: fsErr => 'a) => unit;
 
-let fsync: fd::(fileDescr async) => callback::(fsErr => 'a) => unit;
+let fchownSync: (~fd: syncFileDescr, ~uid: int, ~gid: int) => unit;
 
-let fsyncSync: fd::(fileDescr sync) => unit;
+let fdatasync: (~fd: asyncFileDescr, ~callback: fsErr => 'a) => unit;
 
-let ftruncate: fd::(fileDescr async) => len::int => callback::(fsErr => 'a) => unit;
+let fdatasyncSync: (~fd: syncFileDescr) => unit;
 
-let ftruncateSync: fd::(fileDescr sync) => len::int => unit;
+let fstat:
+  (~fd: asyncFileDescr, ~callback: (fsErr, option(asyncStats)) => 'a) => unit;
 
-let futimes: fd::(fileDescr async) => atime::'a => mtime::'b => callback::(fsErr => 'a) => unit;
+let fstatSync: (~fd: syncFileDescr) => syncStats;
 
-let futimesSync: fd::(fileDescr sync) => atime::'a => mtime::'b => unit;
+let fsync: (~fd: asyncFileDescr, ~callback: fsErr => 'a) => unit;
 
-let lchmod: path::string => mode::'a => callback::(fsErr => 'b) => unit;
+let fsyncSync: (~fd: syncFileDescr) => unit;
 
-let lchmodSync: path::string => mode::'a => unit;
+let ftruncate:
+  (~fd: asyncFileDescr, ~len: int, ~callback: fsErr => 'a) => unit;
 
-let lchown: path::string => uid::int => gid::int => callback::(fsErr => 'a) => unit;
+let ftruncateSync: (~fd: syncFileDescr, ~len: int) => unit;
 
-let lchownSync: path::string => uid::int => gid::int => unit;
+let futimes:
+  (~fd: asyncFileDescr, ~atime: 'a, ~mtime: 'b, ~callback: fsErr => 'a) => unit;
 
-let link: existingPath::string => newPath::string => callback::(fsErr => 'a) => unit;
+let futimesSync: (~fd: syncFileDescr, ~atime: 'a, ~mtime: 'b) => unit;
 
-let linkSync: existingPath::string => newPath::string => unit;
+let lchmod: (~path: string, ~mode: 'a, ~callback: fsErr => 'b) => unit;
 
-let lstat: path::string => callback::(fsErr => option Lwt_unix.stats => 'a) => unit;
+let lchmodSync: (~path: string, ~mode: 'a) => unit;
 
-let lstatSync: path::string => Unix.stats;
+let lchown:
+  (~path: string, ~uid: int, ~gid: int, ~callback: fsErr => 'a) => unit;
 
-let mkdir: path::string => mode::(filePerm async) => callback::(fsErr => 'a) => unit;
+let lchownSync: (~path: string, ~uid: int, ~gid: int) => unit;
 
-let mkdirSync: path::string => mode::(filePerm sync) => unit;
+let link:
+  (~existingPath: string, ~newPath: string, ~callback: fsErr => 'a) => unit;
 
-let mkdtemp: prefix::'a => options::'b => callback::(fsErr => 'c) => unit;
+let linkSync: (~existingPath: string, ~newPath: string) => unit;
 
-let mkdtempSync: prefix::'a => options::'b => unit;
+let lstat:
+  (~path: string, ~callback: (fsErr, option(asyncStats)) => 'a) => unit;
 
-let _open: path::string => flags::(list Lwt_unix.open_flag) => mode::(filePerm async) => callback::(fsErr => option (fileDescr async) => 'a) => unit;
+let lstatSync: (~path: string) => syncStats;
 
-let openSync: path::string => flags::(list Unix.open_flag) => mode::(filePerm sync) => Unix.file_descr;
+let mkdir:
+  (~path: string, ~mode: asyncFilePerm, ~callback: fsErr => 'a) => unit;
 
-let read: fd::(fileDescr async) => buffer::bytes => offset::int => length::int => callback::(fsErr => option int => 'a) => unit;
+let mkdirSync: (~path: string, ~mode: syncFilePerm) => unit;
 
-let readSync: fd::(fileDescr sync) => buffer::bytes => offset::int => length::int => int;
+let mkdtemp: (~prefix: 'a, ~options: 'b, ~callback: fsErr => 'c) => unit;
 
-let readdir: path::(dirHandle async) => callback::(fsErr => option string => 'a) => unit;
+let mkdtempSync: (~prefix: 'a, ~options: 'b) => unit;
 
-let readdirSync: path::(dirHandle sync) => string;
+let _open:
+  (
+    ~path: string,
+    ~flags: list(asyncOpenFlag),
+    ~mode: asyncFilePerm,
+    ~callback: (fsErr, option(asyncFileDescr)) => 'a
+  ) =>
+  unit;
 
-let readFile: path::string => options::'a => callback::(fsErr => 'b) => unit;
+let openSync:
+  (~path: string, ~flags: list(syncOpenFlag), ~mode: syncFilePerm) =>
+  syncFileDescr;
 
-let readFileSync: path::'a => options::'b => unit;
+let read:
+  (
+    ~fd: asyncFileDescr,
+    ~buffer: bytes,
+    ~offset: int,
+    ~length: int,
+    ~callback: (fsErr, option(int)) => 'a
+  ) =>
+  unit;
 
-let readLink: path::string => callback::(fsErr => option string =>'a) => unit;
+let readSync:
+  (~fd: syncFileDescr, ~buffer: bytes, ~offset: int, ~length: int) => int;
 
-let readLinkSync: path::string => string;
+let readdir:
+  (~path: asyncDirHandle, ~callback: (fsErr, option(string)) => 'a) => unit;
 
-let realpath: path::string => options::'a => callback::(fsErr => 'b) => unit;
+let readdirSync: (~path: syncDirHandle) => string;
 
-let realpathSync: path::'a => options::'b => unit;
+let readFile: (~path: string, ~options: 'a, ~callback: fsErr => 'b) => unit;
 
-let rename: oldPath::string => newPath::string => callback::(fsErr => 'a) => unit;
+let readFileSync: (~path: 'a, ~options: 'b) => unit;
 
-let renameSync: oldPath::string => newPath::string => unit;
+let readLink:
+  (~path: string, ~callback: (fsErr, option(string)) => 'a) => unit;
 
-let rmdir: path::string => callback::(fsErr => 'a) => unit;
+let readLinkSync: (~path: string) => string;
 
-let rmdirSync: path::string => unit;
+let realpath: (~path: string, ~options: 'a, ~callback: fsErr => 'b) => unit;
 
-let stat: path::string => callback::(fsErr => option Lwt_unix.stats => 'a) => unit;
+let realpathSync: (~path: 'a, ~options: 'b) => unit;
 
-let statSync: path::string => Unix.stats;
+let rename:
+  (~oldPath: string, ~newPath: string, ~callback: fsErr => 'a) => unit;
 
-let symlink: target::string => path::string => callback::(fsErr => 'a) => unit;
+let renameSync: (~oldPath: string, ~newPath: string) => unit;
 
-let symlinkSync: target::string => path::string => unit;
+let rmdir: (~path: string, ~callback: fsErr => 'a) => unit;
 
-let truncate: path::string => len::int => callback::(fsErr => 'a) => unit;
+let rmdirSync: (~path: string) => unit;
 
-let truncateSync: path::string => len::int => unit;
+let stat:
+  (~path: string, ~callback: (fsErr, option(asyncStats)) => 'a) => unit;
 
-let unlink: path::string => callback::(fsErr => 'a) => unit;
+let statSync: (~path: string) => syncStats;
 
-let unlinkSync: path::string => unit;
+let symlink: (~target: string, ~path: string, ~callback: fsErr => 'a) => unit;
 
-let unwatchFile: filename::'a => listener::'b => unit;
+let symlinkSync: (~target: string, ~path: string) => unit;
 
-let utimes: path::string => atime::float => mtime::float => callback::(fsErr => 'a) => unit;
+let truncate: (~path: string, ~len: int, ~callback: fsErr => 'a) => unit;
 
-let utimesSync: path::string => atime::float => mtime::float => unit;
+let truncateSync: (~path: string, ~len: int) => unit;
 
-let watch: filename::'a => options::'b => listener::'c => unit;
+let unlink: (~path: string, ~callback: fsErr => 'a) => unit;
 
-let watchFile: filename::'a => options::'b => listener::'c => unit;
+let unlinkSync: (~path: string) => unit;
 
-let write: fd::(fileDescr async) => buffer::bytes => offset::int => length::int => callback::(fsErr => option int => 'a) => unit;
+let unwatchFile: (~filename: 'a, ~listener: 'b) => unit;
 
-let writeSync: fd::(fileDescr sync) => buffer::bytes => offset::int => length::int => int;
+let utimes:
+  (~path: string, ~atime: float, ~mtime: float, ~callback: fsErr => 'a) => unit;
 
-let writeString: fd::(fileDescr async) => string::string => offset::int => length::int => callback::(fsErr => option int => 'a) => unit;
+let utimesSync: (~path: string, ~atime: float, ~mtime: float) => unit;
 
-let writeStringSync: fd::(fileDescr sync) => string::string => offset::int => length::int => int;
+let watch: (~filename: 'a, ~options: 'b, ~listener: 'c) => unit;
 
-let writeFile: file::'a => data::'b => options::'c => callback::(fsErr => 'd) => unit;
+let watchFile: (~filename: 'a, ~options: 'b, ~listener: 'c) => unit;
 
-let writeFileSync: file::'a => data::'b => options::'c => unit;
+let write:
+  (
+    ~fd: asyncFileDescr,
+    ~buffer: bytes,
+    ~offset: int,
+    ~length: int,
+    ~callback: (fsErr, option(int)) => 'a
+  ) =>
+  unit;
+
+let writeSync:
+  (~fd: syncFileDescr, ~buffer: bytes, ~offset: int, ~length: int) => int;
+
+let writeString:
+  (
+    ~fd: asyncFileDescr,
+    ~string: string,
+    ~offset: int,
+    ~length: int,
+    ~callback: (fsErr, option(int)) => 'a
+  ) =>
+  unit;
+
+let writeStringSync:
+  (~fd: syncFileDescr, ~string: string, ~offset: int, ~length: int) => int;
+
+let writeFile:
+  (~file: 'a, ~data: 'b, ~options: 'c, ~callback: fsErr => 'd) => unit;
+
+let writeFileSync: (~file: 'a, ~data: 'b, ~options: 'c) => unit;
