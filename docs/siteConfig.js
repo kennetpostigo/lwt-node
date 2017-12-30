@@ -12,7 +12,8 @@ const users = [
 const siteConfig = {
   title: "Reason Node" /* title for your website */,
   tagline: "A Node.js-like API for ReasonML",
-  url: "https://facebook.github.io" /* your website url */,
+  url: "https://kennetpostigo.github.io/reason-node" /* your website url */,
+  editUrl: "https://github.com/kennetpostigo/reason-node/tree/master/doc/",
   baseUrl: "/" /* base url for your project */,
   organizationName: "kennetpostigo",
   projectName: "reason-node",

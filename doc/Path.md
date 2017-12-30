@@ -25,7 +25,7 @@ let basename: (~ext: string=?, ~path: string) => string;
 returns the directory name of a `path`, similar to the Unix `dirname` command.
 
 ```reason
-type dirname = path::string => string;
+let dirname: (~path: string) => string;
 ```
 
 ### `Path.extname(path)`
