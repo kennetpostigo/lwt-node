@@ -14,7 +14,7 @@ const siteConfig = {
   tagline: "A Node.js-like API for ReasonML",
   url: "https://kennetpostigo.github.io/reason-node" /* your website url */,
   editUrl: "https://github.com/kennetpostigo/reason-node/tree/master/doc/",
-  baseUrl: "/" /* base url for your project */,
+  baseUrl: "/reason-node/" /* base url for your project */,
   organizationName: "kennetpostigo",
   projectName: "reason-node",
   headerLinks: [
