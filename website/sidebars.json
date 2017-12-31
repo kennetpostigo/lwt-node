@@ -2,8 +2,5 @@
   "docs": {
     "Getting Started": ["whatWhy", "installation", "introExample"],
     "API": ["fs", "path", "process"]
-  },
-  "docs-other": {
-    "First Category": ["doc4", "doc5"]
   }
 }

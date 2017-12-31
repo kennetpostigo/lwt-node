@@ -4,8 +4,6 @@
     "next": "Next",
     "previous": "Previous",
     "tagline": "A Node.js-like API for ReasonML",
-    "doc4": "Other Document",
-    "doc5": "Fifth Document",
     "fs": "Fs",
     "Fs": "Fs",
     "installation": "Installation",
@@ -23,8 +21,7 @@
     "Blog": "Blog",
     "GitHub": "GitHub",
     "Getting Started": "Getting Started",
-    "API": "API",
-    "First Category": "First Category"
+    "API": "API"
   },
   "pages-strings": {
     "Help Translate|recruit community translators for your project": "Help Translate",
