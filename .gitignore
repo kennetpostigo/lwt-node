@@ -22,6 +22,7 @@ yarn-error.log*
 
 lib
 node_modules
+build
 _build
 coverage
 bisect*.out
