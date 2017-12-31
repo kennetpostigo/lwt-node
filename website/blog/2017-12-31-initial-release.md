@@ -5,7 +5,7 @@ authorURL: http://twitter.com/kennetpostigo
 authorFBID: 1370308025
 ---
 
-![](img/slash-introducing.png)
+![](/img/slash-introducing.png)
 
 I am very happy to introduce [reason-node](https://github.com/kennetpostigo/reason-node) to help make native programming in reason easy and familiar.
 
