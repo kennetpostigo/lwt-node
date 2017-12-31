@@ -14,14 +14,17 @@ const siteConfig = {
   tagline: "A Node.js-like API for ReasonML",
   url: "https://kennetpostigo.github.io/reason-node" /* your website url */,
   editUrl: "https://github.com/kennetpostigo/reason-node/tree/master/docs/",
+  translationRecruitingLink: "https://crowdin.com/project/reason-node",
   baseUrl: "/reason-node/" /* base url for your project */,
   organizationName: "kennetpostigo",
   projectName: "reason-node",
   headerLinks: [
-    { doc: "installation", label: "Docs" },
-    { doc: "doc4", label: "API" },
+    { doc: "whatWhy", label: "Docs" },
     { page: "help", label: "Help" },
-    { blog: true, label: "Blog" }
+    { blog: true, label: "Blog" },
+    { languages: true },
+    // { search: true },
+    { href: "https://github.com/kennetpostigo/reason-node", label: "GitHub" }
   ],
   users,
   /* path to images for header/footer */
@@ -40,6 +43,10 @@ const siteConfig = {
   scripts: ["https://buttons.github.io/buttons.js"],
   // You may provide arbitrary config keys to be used as needed by your template.
   repoUrl: "https://github.com/kennetpostigo/reason-node"
+  // algolia: {
+  //   apiKey: "a7cfb79b829d08c14bd06ae075f9baac", // This is temporary, sorry for copy and paste
+  //   indexName: "esy" // This is temporary, sorry for copy and paste
+  // }
 };
 
 module.exports = resaurus(siteConfig);
