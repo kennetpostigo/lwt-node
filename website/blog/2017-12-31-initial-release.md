@@ -5,7 +5,7 @@ authorURL: http://twitter.com/kennetpostigo
 authorFBID: 1370308025
 ---
 
-![](/img/slash-introducing.png)
+![](img/slash-introducing.png)
 
 I am very happy to introduce [reason-node](https://github.com/kennetpostigo/reason-node) to help make native programming in reason easy and familiar.
 
@@ -20,11 +20,11 @@ It's very early for `reason-node` and much of the API still needs to be fleshed 
 
 `reason-node` has a strong value proposition for teams at companies that have adopted [reason](reasonml.github.io) and use [node.js](nodejs.org) – you get to keep the familiar node.js API, drop the start-up costs, gain a great type-system, and take advantage ocaml-opts performance. To make things better, organizing functions in the same manner as node.js does (path, fs, http, etc.) make it easier to find what you are looking for compared to the stdlib and hopefully we can provide prettier, clearer documentation with examples.
 
-### `How Does it work?`
+### How Does it work?
 
 `reason-node` for the most part is a wrapper around the stdlib for the sync portions and lwt for the async portions. However there are some missing portions that aren't accounted for (path, http, etc.) in the stdlib or lwt. In those cases they are implemented seperately.
 
-### `Getting up and running`
+### Getting up and running
 
 It's simple and fast to hit the ground running:
 
