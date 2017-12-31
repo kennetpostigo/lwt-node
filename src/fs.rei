@@ -36,6 +36,8 @@ let accessSync: (~path: string, ~mode: syncAccessPerm) => unit;
     Fs.appendFile has yet to be implemented.
     Please open a Work-In-Progress pull request if you are interested in contributing.
     We will help answer questions and push you in the right direction.
+
+    Repo URL: https://github.com/kennetpostigo/reason-node
   |}
 ]
 let appendFile: (~file: 'a, ~data: 'b, ~options: 'c, ~callback: 'd) => unit;
@@ -45,6 +47,8 @@ let appendFile: (~file: 'a, ~data: 'b, ~options: 'c, ~callback: 'd) => unit;
     Fs.appendFileSync has yet to be implemented.
     Please open a Work-In-Progress pull request if you are interested in contributing.
     We will help answer questions and push you in the right direction.
+
+    Repo URL: https://github.com/kennetpostigo/reason-node
   |}
 ]
 let appendFileSync: (~file: 'a, ~data: 'b, ~options: 'c) => unit;
@@ -68,6 +72,8 @@ let closeSync: (~fd: syncFileDescr) => unit;
     Fs.createReadStream has yet to be implemented.
     Please open a Work-In-Progress pull request if you are interested in contributing.
     We will help answer questions and push you in the right direction.
+
+    Repo URL: https://github.com/kennetpostigo/reason-node
   |}
 ]
 let createReadStream: (~path: string, ~options: 'a) => unit;
@@ -77,6 +83,8 @@ let createReadStream: (~path: string, ~options: 'a) => unit;
     Fs.createWriteStream has yet to be implemented.
     Please open a Work-In-Progress pull request if you are interested in contributing.
     We will help answer questions and push you in the right direction.
+
+    Repo URL: https://github.com/kennetpostigo/reason-node
   |}
 ]
 let createWriteStream: (~path: string, ~options: 'a) => unit;
@@ -98,6 +106,8 @@ let fdatasync: (~fd: asyncFileDescr, ~callback: fsErr => 'a) => unit;
     Fs.fdatasyncSync has yet to be implemented.
     Please open a Work-In-Progress pull request if you are interested in contributing.
     We will help answer questions and push you in the right direction.
+
+    Repo URL: https://github.com/kennetpostigo/reason-node
   |}
 ]
 let fdatasyncSync: (~fd: syncFileDescr) => unit;
@@ -114,6 +124,8 @@ let fsync: (~fd: asyncFileDescr, ~callback: fsErr => 'a) => unit;
     Fs.fsyncSync has yet to be implemented.
     Please open a Work-In-Progress pull request if you are interested in contributing.
     We will help answer questions and push you in the right direction.
+
+    Repo URL: https://github.com/kennetpostigo/reason-node
   |}
 ]
 let fsyncSync: (~fd: syncFileDescr) => unit;
@@ -128,6 +140,8 @@ let ftruncateSync: (~fd: syncFileDescr, ~len: int) => unit;
     Fs.futimes has yet to be implemented.
     Please open a Work-In-Progress pull request if you are interested in contributing.
     We will help answer questions and push you in the right direction.
+
+    Repo URL: https://github.com/kennetpostigo/reason-node
   |}
 ]
 let futimes:
@@ -138,6 +152,8 @@ let futimes:
     Fs.futimesSync has yet to be implemented.
     Please open a Work-In-Progress pull request if you are interested in contributing.
     We will help answer questions and push you in the right direction.
+
+    Repo URL: https://github.com/kennetpostigo/reason-node
   |}
 ]
 let futimesSync: (~fd: syncFileDescr, ~atime: 'a, ~mtime: 'b) => unit;
@@ -147,6 +163,8 @@ let futimesSync: (~fd: syncFileDescr, ~atime: 'a, ~mtime: 'b) => unit;
     Fs.lchmod has yet to be implemented.
     Please open a Work-In-Progress pull request if you are interested in contributing.
     We will help answer questions and push you in the right direction.
+
+    Repo URL: https://github.com/kennetpostigo/reason-node
   |}
 ]
 let lchmod: (~path: string, ~mode: 'a, ~callback: fsErr => 'b) => unit;
@@ -156,6 +174,8 @@ let lchmod: (~path: string, ~mode: 'a, ~callback: fsErr => 'b) => unit;
     Fs.lchmodSync has yet to be implemented.
     Please open a Work-In-Progress pull request if you are interested in contributing.
     We will help answer questions and push you in the right direction.
+
+    Repo URL: https://github.com/kennetpostigo/reason-node
   |}
 ]
 let lchmodSync: (~path: string, ~mode: 'a) => unit;
@@ -165,6 +185,8 @@ let lchmodSync: (~path: string, ~mode: 'a) => unit;
     Fs.lchown has yet to be implemented.
     Please open a Work-In-Progress pull request if you are interested in contributing.
     We will help answer questions and push you in the right direction.
+
+    Repo URL: https://github.com/kennetpostigo/reason-node
   |}
 ]
 let lchown:
@@ -175,6 +197,8 @@ let lchown:
     Fs.lchownSync has yet to be implemented.
     Please open a Work-In-Progress pull request if you are interested in contributing.
     We will help answer questions and push you in the right direction.
+
+    Repo URL: https://github.com/kennetpostigo/reason-node
   |}
 ]
 let lchownSync: (~path: string, ~uid: int, ~gid: int) => unit;
@@ -199,6 +223,8 @@ let mkdirSync: (~path: string, ~mode: syncFilePerm) => unit;
     Fs.mkdTemp has yet to be implemented.
     Please open a Work-In-Progress pull request if you are interested in contributing.
     We will help answer questions and push you in the right direction.
+
+    Repo URL: https://github.com/kennetpostigo/reason-node
   |}
 ]
 let mkdtemp: (~prefix: 'a, ~options: 'b, ~callback: fsErr => 'c) => unit;
@@ -208,6 +234,8 @@ let mkdtemp: (~prefix: 'a, ~options: 'b, ~callback: fsErr => 'c) => unit;
     Fs.mkdTempSync has yet to be implemented.
     Please open a Work-In-Progress pull request if you are interested in contributing.
     We will help answer questions and push you in the right direction.
+
+    Repo URL: https://github.com/kennetpostigo/reason-node
   |}
 ]
 let mkdtempSync: (~prefix: 'a, ~options: 'b) => unit;
@@ -248,6 +276,8 @@ let readdirSync: (~path: syncDirHandle) => string;
     Fs.readFile has yet to be implemented.
     Please open a Work-In-Progress pull request if you are interested in contributing.
     We will help answer questions and push you in the right direction.
+
+    Repo URL: https://github.com/kennetpostigo/reason-node
   |}
 ]
 let readFile: (~path: string, ~options: 'a, ~callback: fsErr => 'b) => unit;
@@ -257,6 +287,8 @@ let readFile: (~path: string, ~options: 'a, ~callback: fsErr => 'b) => unit;
     Fs.readFileSync has yet to be implemented.
     Please open a Work-In-Progress pull request if you are interested in contributing.
     We will help answer questions and push you in the right direction.
+
+    Repo URL: https://github.com/kennetpostigo/reason-node
   |}
 ]
 let readFileSync: (~path: 'a, ~options: 'b) => unit;
@@ -271,6 +303,8 @@ let readLinkSync: (~path: string) => string;
     Fs.realpath has yet to be implemented.
     Please open a Work-In-Progress pull request if you are interested in contributing.
     We will help answer questions and push you in the right direction.
+
+    Repo URL: https://github.com/kennetpostigo/reason-node
   |}
 ]
 let realpath: (~path: string, ~options: 'a, ~callback: fsErr => 'b) => unit;
@@ -280,6 +314,8 @@ let realpath: (~path: string, ~options: 'a, ~callback: fsErr => 'b) => unit;
     Fs.realpathSync has yet to be implemented.
     Please open a Work-In-Progress pull request if you are interested in contributing.
     We will help answer questions and push you in the right direction.
+
+    Repo URL: https://github.com/kennetpostigo/reason-node
   |}
 ]
 let realpathSync: (~path: 'a, ~options: 'b) => unit;
@@ -315,6 +351,8 @@ let unlinkSync: (~path: string) => unit;
     Fs.unwatchFile has yet to be implemented.
     Please open a Work-In-Progress pull request if you are interested in contributing.
     We will help answer questions and push you in the right direction.
+
+    Repo URL: https://github.com/kennetpostigo/reason-node
   |}
 ]
 let unwatchFile: (~filename: 'a, ~listener: 'b) => unit;
@@ -329,6 +367,8 @@ let utimesSync: (~path: string, ~atime: float, ~mtime: float) => unit;
     Fs.watch has yet to be implemented.
     Please open a Work-In-Progress pull request if you are interested in contributing.
     We will help answer questions and push you in the right direction.
+
+    Repo URL: https://github.com/kennetpostigo/reason-node
   |}
 ]
 let watch: (~filename: 'a, ~options: 'b, ~listener: 'c) => unit;
@@ -338,6 +378,8 @@ let watch: (~filename: 'a, ~options: 'b, ~listener: 'c) => unit;
     Fs.watchFile has yet to be implemented.
     Please open a Work-In-Progress pull request if you are interested in contributing.
     We will help answer questions and push you in the right direction.
+
+    Repo URL: https://github.com/kennetpostigo/reason-node
   |}
 ]
 let watchFile: (~filename: 'a, ~options: 'b, ~listener: 'c) => unit;
@@ -373,6 +415,8 @@ let writeStringSync:
     Fs.writeFile has yet to be implemented.
     Please open a Work-In-Progress pull request if you are interested in contributing.
     We will help answer questions and push you in the right direction.
+
+    Repo URL: https://github.com/kennetpostigo/reason-node
   |}
 ]
 let writeFile:
@@ -383,6 +427,8 @@ let writeFile:
     Fs.writeFileSync has yet to be implemented.
     Please open a Work-In-Progress pull request if you are interested in contributing.
     We will help answer questions and push you in the right direction.
+
+    Repo URL: https://github.com/kennetpostigo/reason-node
   |}
 ]
 let writeFileSync: (~file: 'a, ~data: 'b, ~options: 'c) => unit;

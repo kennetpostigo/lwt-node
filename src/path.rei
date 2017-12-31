@@ -32,6 +32,8 @@ let parse: (~path: string) => pathObject;
     Please open a pull request if you are interested in contributing,
     no code is needed, we will help answer questions and push you
     in the right direction.
+
+    Repo URL: https://github.com/kennetpostigo/reason-node
   |}
 ]
 let relative: (~from: string, ~_to: string) => unit;
