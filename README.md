@@ -1,18 +1,29 @@
-![reason-node](assets/reason-node.png)
+![reason-node](website/static/img/readme.png)
 
-[![Build Status](https://travis-ci.org/kennetpostigo/reason-node.svg?branch=master)](https://travis-ci.org/kennetpostigo/reason-node)
+[![version](https://img.shields.io/npm/v/reason-node.svg?style=flat-square)](http://npm.im/reason-node)
+[![downloads](https://img.shields.io/npm/dm/reason-node.svg?style=flat-square)](http://npm-stat.com/charts.html?package=reason-node)
+[![MIT License](https://img.shields.io/npm/l/reason-node.svg?style=flat-square)](http://opensource.org/licenses/MIT)
 
-reason-node is a monorepo that contains native implementation of nodejs modules in
-[reason](https://github.com/facebook/reason).
+<!-- [![Build Status](https://travis-ci.org/kennetpostigo/reason-node.svg?branch=master)](https://travis-ci.org/kennetpostigo/reason-node) -->
 
-## Modules
-[Path](https://github.com/kennetpostigo/reason-node/tree/master/docs/Path.md) - path utility module for working with file and directory paths.
+reason-node, a [reason](https://github.com/facebook/reason) implemention of the [node.js](https://github.com/nodejs/node) API.
 
-[Fs](https://github.com/kennetpostigo/reason-node/tree/master/docs/Fs.md) - fs module for file system I/O
+## Install
 
-[Process](https://github.com/kennetpostigo/reason-node/tree/master/docs/Process.md) - process module that provides information about, and control over, the current reason process.
+```bash
+yarn add reason-node
 
-[Http](https://github.com/kennetpostigo/reason-node/tree/master/docs/Http.md) - http module for creating servers
+npm install --save reason-node
+```
+
+## Usage
+
+See https://github.com/kennetpostigo/reason-node-starter
+
+## Documentation
+
+See https://kennetpostigo.github.io/reason-node
 
 ## License
+
 MIT

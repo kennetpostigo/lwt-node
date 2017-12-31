@@ -1,7 +1,7 @@
 {
-  "name": "native-node",
+  "name": "reason-node",
   "version": "0.0.0",
-  "description": "Native Node - a node.js like API for Native",
+  "description": "Reason Node - a node.js like API for Native",
   "license": "MIT",
   "esy": {
     "build": [["refmterr", "jbuilder", "build"]],
