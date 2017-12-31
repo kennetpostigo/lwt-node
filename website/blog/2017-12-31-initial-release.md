@@ -7,7 +7,7 @@ authorFBID: 1370308025
 
 ![](/img/slash-introducing.png)
 
-I am very happy to introduce [reason-node](https://github.com/kennetpostigo/reason-node) to help make native programming in easy and familiar.
+I am very happy to introduce [reason-node](https://github.com/kennetpostigo/reason-node) to help make native programming in reason easy and familiar.
 
 I created reason-node for the following reasons:
 
@@ -16,9 +16,9 @@ I created reason-node for the following reasons:
 3. OCaml native libraries either didn't have all the API's I was looking for, they used snake_case, or the documentation was lacking. So it was a bit frustrating to get started.
 4. Lastly, I really loved node.js API and have used it for several years, and i'm sure many others that are moving from javascript to reason would appreciate being able to translate over some of their node.js knowledge base.
 
-It's very early for `reason-node` and much of the API still needs to be fleshed out, so I'm hoping to get more of it out in the coming months, hopefully with the help of some contributors! Much of the next work is to make sure we provide the same defaults like file permissions, etc. and an HTTP module started.
+It's very early for `reason-node` and much of the API still needs to be fleshed out, so I'm hoping to get more of it out in the coming weeks/months, hopefully with the help of some contributors! Much of the next work is to make sure we provide the same defaults for example in FS, some functions that operate on folders and files, we should provide the same default file permissions, etc. and get an HTTP module started.
 
-`reason-node` has a strong value proposition for teams at companies that have adopted [reason](reasonml.github.io) and use [node.js](nodejs.org) – you get to keep the familiar node.js API, drop the start-up costs, gain a great type-system, and take advantage ocaml-opts performance. To make things better, organizing functions in the same manner as node.js does (path, fs, http, etc.) makes it easier to find what you are looking for compared to the stdlib and hopefully we can provide prettier, clearer documentation with examples.
+`reason-node` has a strong value proposition for teams at companies that have adopted [reason](reasonml.github.io) and use [node.js](nodejs.org) – you get to keep the familiar node.js API, drop the start-up costs, gain a great type-system, and take advantage ocaml-opts performance. To make things better, organizing functions in the same manner as node.js does (path, fs, http, etc.) make it easier to find what you are looking for compared to the stdlib and hopefully we can provide prettier, clearer documentation with examples.
 
 ### `How Does it work?`
 
@@ -28,7 +28,7 @@ It's very early for `reason-node` and much of the API still needs to be fleshed 
 
 It's simple and fast to hit the ground running:
 
-1. Check out the [installation instructions]
+1. Check out the [installation instructions](https://kennetpostigo.github.io/reason-node/docs/installation.html)
 2. clone the [starter project](https://github.com/kennetpostigo/reason-node-starter)
 
 ### Final Remarks
