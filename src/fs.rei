@@ -31,8 +31,22 @@ let access:
 
 let accessSync: (~path: string, ~mode: syncAccessPerm) => unit;
 
+[@ocaml.deprecated
+  {|
+    Fs.appendFile has yet to be implemented.
+    Please open a Work-In-Progress pull request if you are interested in contributing.
+    We will help answer questions and push you in the right direction.
+  |}
+]
 let appendFile: (~file: 'a, ~data: 'b, ~options: 'c, ~callback: 'd) => unit;
 
+[@ocaml.deprecated
+  {|
+    Fs.appendFileSync has yet to be implemented.
+    Please open a Work-In-Progress pull request if you are interested in contributing.
+    We will help answer questions and push you in the right direction.
+  |}
+]
 let appendFileSync: (~file: 'a, ~data: 'b, ~options: 'c) => unit;
 
 let chmod:
@@ -49,8 +63,22 @@ let close: (~fd: asyncFileDescr, ~callback: fsErr => 'a) => unit;
 
 let closeSync: (~fd: syncFileDescr) => unit;
 
+[@ocaml.deprecated
+  {|
+    Fs.createReadStream has yet to be implemented.
+    Please open a Work-In-Progress pull request if you are interested in contributing.
+    We will help answer questions and push you in the right direction.
+  |}
+]
 let createReadStream: (~path: string, ~options: 'a) => unit;
 
+[@ocaml.deprecated
+  {|
+    Fs.createWriteStream has yet to be implemented.
+    Please open a Work-In-Progress pull request if you are interested in contributing.
+    We will help answer questions and push you in the right direction.
+  |}
+]
 let createWriteStream: (~path: string, ~options: 'a) => unit;
 
 let fchmod:
@@ -65,6 +93,13 @@ let fchownSync: (~fd: syncFileDescr, ~uid: int, ~gid: int) => unit;
 
 let fdatasync: (~fd: asyncFileDescr, ~callback: fsErr => 'a) => unit;
 
+[@ocaml.deprecated
+  {|
+    Fs.fdatasyncSync has yet to be implemented.
+    Please open a Work-In-Progress pull request if you are interested in contributing.
+    We will help answer questions and push you in the right direction.
+  |}
+]
 let fdatasyncSync: (~fd: syncFileDescr) => unit;
 
 let fstat:
@@ -74,6 +109,13 @@ let fstatSync: (~fd: syncFileDescr) => syncStats;
 
 let fsync: (~fd: asyncFileDescr, ~callback: fsErr => 'a) => unit;
 
+[@ocaml.deprecated
+  {|
+    Fs.fsyncSync has yet to be implemented.
+    Please open a Work-In-Progress pull request if you are interested in contributing.
+    We will help answer questions and push you in the right direction.
+  |}
+]
 let fsyncSync: (~fd: syncFileDescr) => unit;
 
 let ftruncate:
@@ -81,18 +123,60 @@ let ftruncate:
 
 let ftruncateSync: (~fd: syncFileDescr, ~len: int) => unit;
 
+[@ocaml.deprecated
+  {|
+    Fs.futimes has yet to be implemented.
+    Please open a Work-In-Progress pull request if you are interested in contributing.
+    We will help answer questions and push you in the right direction.
+  |}
+]
 let futimes:
   (~fd: asyncFileDescr, ~atime: 'a, ~mtime: 'b, ~callback: fsErr => 'a) => unit;
 
+[@ocaml.deprecated
+  {|
+    Fs.futimesSync has yet to be implemented.
+    Please open a Work-In-Progress pull request if you are interested in contributing.
+    We will help answer questions and push you in the right direction.
+  |}
+]
 let futimesSync: (~fd: syncFileDescr, ~atime: 'a, ~mtime: 'b) => unit;
 
+[@ocaml.deprecated
+  {|
+    Fs.lchmod has yet to be implemented.
+    Please open a Work-In-Progress pull request if you are interested in contributing.
+    We will help answer questions and push you in the right direction.
+  |}
+]
 let lchmod: (~path: string, ~mode: 'a, ~callback: fsErr => 'b) => unit;
 
+[@ocaml.deprecated
+  {|
+    Fs.lchmodSync has yet to be implemented.
+    Please open a Work-In-Progress pull request if you are interested in contributing.
+    We will help answer questions and push you in the right direction.
+  |}
+]
 let lchmodSync: (~path: string, ~mode: 'a) => unit;
 
+[@ocaml.deprecated
+  {|
+    Fs.lchown has yet to be implemented.
+    Please open a Work-In-Progress pull request if you are interested in contributing.
+    We will help answer questions and push you in the right direction.
+  |}
+]
 let lchown:
   (~path: string, ~uid: int, ~gid: int, ~callback: fsErr => 'a) => unit;
 
+[@ocaml.deprecated
+  {|
+    Fs.lchownSync has yet to be implemented.
+    Please open a Work-In-Progress pull request if you are interested in contributing.
+    We will help answer questions and push you in the right direction.
+  |}
+]
 let lchownSync: (~path: string, ~uid: int, ~gid: int) => unit;
 
 let link:
@@ -110,8 +194,22 @@ let mkdir:
 
 let mkdirSync: (~path: string, ~mode: syncFilePerm) => unit;
 
+[@ocaml.deprecated
+  {|
+    Fs.mkdTemp has yet to be implemented.
+    Please open a Work-In-Progress pull request if you are interested in contributing.
+    We will help answer questions and push you in the right direction.
+  |}
+]
 let mkdtemp: (~prefix: 'a, ~options: 'b, ~callback: fsErr => 'c) => unit;
 
+[@ocaml.deprecated
+  {|
+    Fs.mkdTempSync has yet to be implemented.
+    Please open a Work-In-Progress pull request if you are interested in contributing.
+    We will help answer questions and push you in the right direction.
+  |}
+]
 let mkdtempSync: (~prefix: 'a, ~options: 'b) => unit;
 
 let _open:
@@ -145,8 +243,22 @@ let readdir:
 
 let readdirSync: (~path: syncDirHandle) => string;
 
+[@ocaml.deprecated
+  {|
+    Fs.readFile has yet to be implemented.
+    Please open a Work-In-Progress pull request if you are interested in contributing.
+    We will help answer questions and push you in the right direction.
+  |}
+]
 let readFile: (~path: string, ~options: 'a, ~callback: fsErr => 'b) => unit;
 
+[@ocaml.deprecated
+  {|
+    Fs.readFileSync has yet to be implemented.
+    Please open a Work-In-Progress pull request if you are interested in contributing.
+    We will help answer questions and push you in the right direction.
+  |}
+]
 let readFileSync: (~path: 'a, ~options: 'b) => unit;
 
 let readLink:
@@ -154,8 +266,22 @@ let readLink:
 
 let readLinkSync: (~path: string) => string;
 
+[@ocaml.deprecated
+  {|
+    Fs.realpath has yet to be implemented.
+    Please open a Work-In-Progress pull request if you are interested in contributing.
+    We will help answer questions and push you in the right direction.
+  |}
+]
 let realpath: (~path: string, ~options: 'a, ~callback: fsErr => 'b) => unit;
 
+[@ocaml.deprecated
+  {|
+    Fs.realpathSync has yet to be implemented.
+    Please open a Work-In-Progress pull request if you are interested in contributing.
+    We will help answer questions and push you in the right direction.
+  |}
+]
 let realpathSync: (~path: 'a, ~options: 'b) => unit;
 
 let rename:
@@ -184,6 +310,13 @@ let unlink: (~path: string, ~callback: fsErr => 'a) => unit;
 
 let unlinkSync: (~path: string) => unit;
 
+[@ocaml.deprecated
+  {|
+    Fs.unwatchFile has yet to be implemented.
+    Please open a Work-In-Progress pull request if you are interested in contributing.
+    We will help answer questions and push you in the right direction.
+  |}
+]
 let unwatchFile: (~filename: 'a, ~listener: 'b) => unit;
 
 let utimes:
@@ -191,8 +324,22 @@ let utimes:
 
 let utimesSync: (~path: string, ~atime: float, ~mtime: float) => unit;
 
+[@ocaml.deprecated
+  {|
+    Fs.watch has yet to be implemented.
+    Please open a Work-In-Progress pull request if you are interested in contributing.
+    We will help answer questions and push you in the right direction.
+  |}
+]
 let watch: (~filename: 'a, ~options: 'b, ~listener: 'c) => unit;
 
+[@ocaml.deprecated
+  {|
+    Fs.watchFile has yet to be implemented.
+    Please open a Work-In-Progress pull request if you are interested in contributing.
+    We will help answer questions and push you in the right direction.
+  |}
+]
 let watchFile: (~filename: 'a, ~options: 'b, ~listener: 'c) => unit;
 
 let write:
@@ -221,7 +368,21 @@ let writeString:
 let writeStringSync:
   (~fd: syncFileDescr, ~string: string, ~offset: int, ~length: int) => int;
 
+[@ocaml.deprecated
+  {|
+    Fs.writeFile has yet to be implemented.
+    Please open a Work-In-Progress pull request if you are interested in contributing.
+    We will help answer questions and push you in the right direction.
+  |}
+]
 let writeFile:
   (~file: 'a, ~data: 'b, ~options: 'c, ~callback: fsErr => 'd) => unit;
 
+[@ocaml.deprecated
+  {|
+    Fs.writeFileSync has yet to be implemented.
+    Please open a Work-In-Progress pull request if you are interested in contributing.
+    We will help answer questions and push you in the right direction.
+  |}
+]
 let writeFileSync: (~file: 'a, ~data: 'b, ~options: 'c) => unit;

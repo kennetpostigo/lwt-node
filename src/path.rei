@@ -26,6 +26,14 @@ let normalize: (~path: string) => string;
 
 let parse: (~path: string) => pathObject;
 
-let relative: (~from: string, ~_to: string) => string;
+[@ocaml.deprecated
+  {|
+    Path.relative has yet to be implemented.
+    Please open a pull request if you are interested in contributing,
+    no code is needed, we will help answer questions and push you
+    in the right direction.
+  |}
+]
+let relative: (~from: string, ~_to: string) => unit;
 
 let resolve: (~paths: list(string)) => string;

@@ -5,7 +5,7 @@ let basename = (~ext="", ~path) => {
   switch extLength {
   | 0 => path
   | _ => String.sub(path, 0, pathLength)
-  }
+  };
 };
 
 let delimeter = ":";
@@ -17,7 +17,7 @@ let dirname = (~path) => Filename.dirname(path);
 let extname = (~path: string) => {
   let pathLength = String.length(path);
   let dot = String.rindex(path, '.');
-  String.sub(path, dot, pathLength - dot)
+  String.sub(path, dot, pathLength - dot);
 };
 
 type pathObject = {
@@ -30,10 +30,11 @@ type pathObject = {
 
 let format = (~pathObject) =>
   switch pathObject {
-  | {dir: Some(dir), root: Some(root), base: Some(base), _} => dir ++ (sep ++ base)
+  | {dir: Some(dir), root: Some(root), base: Some(base), _} =>
+    dir ++ sep ++ base
   | {dir: None, root: Some(root), base: Some(base), _} => root ++ base
   | {dir: None, root: Some(root), base: None, name: Some(name), ext: Some(ext)} =>
-    root ++ (name ++ ext)
+    root ++ name ++ ext
   | _ => "Missing Necessary Information to construct a path string."
   };
 
@@ -55,12 +56,12 @@ let join = (~paths) => {
       (acc, curr) => {
         let accLength = String.length(acc);
         accLength > 0 && (acc.[accLength - 1] == '/' || curr.[0] == '/') ?
-          acc ++ curr : acc ++ (sep ++ curr)
+          acc ++ curr : acc ++ sep ++ curr;
       },
       "",
       paths
     );
-  normalize(~path=joinedPaths)
+  normalize(~path=joinedPaths);
 };
 
 let resolve = (~paths) => {
@@ -70,7 +71,7 @@ let resolve = (~paths) => {
     e ?
       {
         keepJoining := false;
-        rePath := path ++ (sep ++ rePath^)
+        rePath := path ++ sep ++ rePath^;
       } :
       (
         switch path {
@@ -78,22 +79,25 @@ let resolve = (~paths) => {
         | "./" => ()
         | "/" =>
           keepJoining := false;
-          rePath := String.length(rePath^) == 0 ? path : path ++ (sep ++ rePath^)
+          rePath := String.length(rePath^) == 0 ? path : path ++ sep ++ rePath^;
         | _ =>
           switch path.[0] {
           | '/' =>
-            rePath := String.length(rePath^) == 0 ? path : path ++ (sep ++ rePath^);
-            keepJoining := false
-          | _ => rePath := String.length(rePath^) == 0 ? path : path ++ (sep ++ rePath^)
+            rePath :=
+              String.length(rePath^) == 0 ? path : path ++ sep ++ rePath^;
+            keepJoining := false;
+          | _ =>
+            rePath :=
+              String.length(rePath^) == 0 ? path : path ++ sep ++ rePath^
           }
         }
       );
   RenodeUtils.iterPathUntil(~condition=keepJoining, ~list=paths, ~f=onPath);
-  rePath := rePath^.[0] == '/' ? rePath^ : Sys.getcwd() ++ (sep ++ rePath^);
-  normalize(~path=rePath^)
+  rePath := rePath^.[0] == '/' ? rePath^ : Sys.getcwd() ++ sep ++ rePath^;
+  normalize(~path=rePath^);
 };
 
-let relative = (~from, ~_to) => "";
+let relative = (~from, ~_to) => ();
 
 let parse = (~path) => {
   let root = path.[0] == '/' ? Some("/") : None;
@@ -101,7 +105,8 @@ let parse = (~path) => {
   let base = ref(None);
   let name = ref(None);
   let ext = ref(None);
-  let endsInSlash = String.sub(path, String.length(path) - 1, 1) == "/" ? true : false;
+  let endsInSlash =
+    String.sub(path, String.length(path) - 1, 1) == "/" ? true : false;
   let p = endsInSlash ? String.sub(path, 0, String.length(path) - 1) : path;
   let hasSlash = String.contains(p, '/');
   let hasDot = String.contains(p, '.');
@@ -111,24 +116,48 @@ let parse = (~path) => {
       {
         dir :=
           pathLength == 1 ?
-            None : Some(String.sub(p, 0, String.rindex_from(p, pathLength - 1, '/')));
+            None :
+            Some(String.sub(p, 0, String.rindex_from(p, pathLength - 1, '/')));
         base :=
-          Some(String.sub(p, String.rindex(p, '/') + 1, pathLength - (String.rindex(p, '/') + 1)));
+          Some(
+            String.sub(
+              p,
+              String.rindex(p, '/') + 1,
+              pathLength - (String.rindex(p, '/') + 1)
+            )
+          );
         name :=
-          Some(String.sub(p, String.rindex(p, '/') + 1, pathLength - String.rindex(p, '.') - 1));
-        ext := Some(extname(p))
+          Some(
+            String.sub(
+              p,
+              String.rindex(p, '/') + 1,
+              pathLength - String.rindex(p, '.') - 1
+            )
+          );
+        ext := Some(extname(p));
       } :
       {
         dir :=
           pathLength == 1 ?
-            None : Some(String.sub(p, 0, String.rindex_from(p, pathLength - 1, '/')));
+            None :
+            Some(String.sub(p, 0, String.rindex_from(p, pathLength - 1, '/')));
         base :=
-          Some(String.sub(p, String.rindex(p, '/') + 1, pathLength - (String.rindex(p, '/') + 1)));
+          Some(
+            String.sub(
+              p,
+              String.rindex(p, '/') + 1,
+              pathLength - (String.rindex(p, '/') + 1)
+            )
+          );
         name :=
           Some(
-            String.sub(path, String.rindex(p, '/') + 1, pathLength - (String.rindex(p, '/') + 1))
+            String.sub(
+              path,
+              String.rindex(p, '/') + 1,
+              pathLength - (String.rindex(p, '/') + 1)
+            )
           );
-        ext := None
+        ext := None;
       } :
     hasDot ?
       {
@@ -136,13 +165,13 @@ let parse = (~path) => {
         dir := None;
         base := Some(p);
         ext := pathLength === 1 && p.[0] == '.' ? None : Some(extname(p));
-        name := Some(String.sub(p, 0, pathLength - dotIndex))
+        name := Some(String.sub(p, 0, pathLength - dotIndex));
       } :
       {
         dir := path == "/" ? Some(path) : None;
         base := p == "" ? None : Some(p);
         name := p == "" ? None : Some(p);
-        ext := None
+        ext := None;
       };
-  {root, dir: dir^, base: base^, ext: ext^, name: name^}
+  {root, dir: dir^, base: base^, ext: ext^, name: name^};
 };

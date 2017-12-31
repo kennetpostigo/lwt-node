@@ -21,7 +21,7 @@ let delimeter: string;
   ";" for Windows
   ":" for Unix
 */
-let addDelimeterToPath = (path, val) => path ++ Path.delimeter ++ val;  
+let addDelimeterToPath = (path, value) => path ++ Path.delimeter ++ value;  
 ```
 
 ---
@@ -81,7 +81,7 @@ let dirname: (~path: string) => string;
 #### Usage
 
 ```reason
-let myDir = path.dirname("/foo/bar/baz/quux"); // "/foo/bar/baz"
+let myDir = Path.dirname("/foo/bar/baz/quux"); // "/foo/bar/baz"
 ```
 
 ---
