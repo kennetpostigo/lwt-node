@@ -8,13 +8,13 @@ let argv0 = Sys.argv[0];
 
 let channel = ();
 
-let chdir = (directory) => Sys.chdir(directory);
+let chdir = (~directory) => Sys.chdir(directory);
 
 let config = ();
 
 let connected = ();
 
-let cpuUsage = (previousValue) => (); /* let env = Sys.getenv (); */
+let cpuUsage = (~previousValue) => (); /* let env = Sys.getenv (); */
 
 let cwd = Sys.getcwd();
 
@@ -36,7 +36,7 @@ let getgroups = Unix.getgroups();
 
 let getuid = Unix.getuid();
 
-let hrtime = (time) => ();
+let hrtime = time => ();
 
 let initgroups = (user, extra_group) => Unix.initgroups(user, extra_group);
 
@@ -56,15 +56,15 @@ let release = ();
 
 let send = (message, sendHandle, options, callback) => ();
 
-let setegid = (id) => ();
+let setegid = id => ();
 
-let seteuid = (id) => ();
+let seteuid = id => ();
 
-let setgid = (id) => Unix.setgid(id);
+let setgid = id => Unix.setgid(id);
 
-let setgroups = (group) => Unix.setgroups(group);
+let setgroups = group => Unix.setgroups(group);
 
-let setuid = (id) => Unix.setuid(id);
+let setuid = id => Unix.setuid(id);
 
 let stderr = ();
 
@@ -74,7 +74,7 @@ let stdout = ();
 
 let title = ();
 
-let unmask = (mask) => ();
+let unmask = mask => ();
 
 let uptime = () => ();
 
