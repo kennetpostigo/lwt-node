@@ -253,7 +253,13 @@ let relative: (~from: string, ~_to: string) => string;
 
 #### Usage
 
-**\*Needs to be implemented\***
+**\*Path.relative needs to be implemented\***
+
+Please open a pull request if you are interested in contributing,
+no code is needed, we will help answer questions and push you
+in the right direction.
+
+Repo URL: https://github.com/kennetpostigo/reason-node
 
 ```reason
 
