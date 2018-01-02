@@ -4,7 +4,7 @@ title: Path
 sidebar_label: Path
 ---
 
-## `Path.delimeter`
+### `Path.delimeter`
 
 When used will return the platform specific path delimeter.
 
@@ -26,7 +26,7 @@ let addDelimeterToPath = (path, value) => path ++ Path.delimeter ++ value;
 
 ---
 
-## `Path.sep`
+### `Path.sep`
 
 Provides the platform-specific path segment separator. Either `/` on unix or `\` on windows.
 
@@ -48,7 +48,7 @@ let addSepToEnd= (path) => path ++ Path.sep;
 
 ---
 
-## `Path.basename(ext?, path)`
+### `Path.basename(ext?, path)`
 
 Will return the last portion of a path, `basename` takes two arguments, a file extension that is optional, and path that is mandatory to pass.
 
@@ -68,7 +68,7 @@ let basenameWithExt = Path.basename(".html", "/foo/bar/baz/quux.html"); // "quux
 
 ---
 
-## `Path.dirname(path)`
+### `Path.dirname(path)`
 
 returns the directory name of a `path`, similar to the Unix `dirname` command.
 
@@ -86,7 +86,7 @@ let myDir = Path.dirname("/foo/bar/baz/quux"); // "/foo/bar/baz"
 
 ---
 
-## `Path.extname(path)`
+### `Path.extname(path)`
 
 returns the extension of the `path` from the last occurence of the `.` charachter to end of string in the last portion of the path.
 
@@ -104,7 +104,7 @@ let myFileExt = Path.extname("foo/bar/lol.html"); // ".html"
 
 ---
 
-## `Path.format(pathObject)`
+### `Path.format(pathObject)`
 
 returns a path string from an object. This is the opposite of `path.parse`. When providing properties to the `pathObject` remember that there are combinations where one property has priority over another:
 
@@ -142,7 +142,7 @@ let fromPathObject = Path.format(myPathObject); // "/home/user/dir/file.txt"
 
 ---
 
-## `Path.isAbsolute(path)`
+### `Path.isAbsolute(path)`
 
 returns a boolean that determines if `path` is an absolute path. If the given `path` is a zero-length string, `false` will be returned.
 
@@ -162,7 +162,7 @@ let thisPathIsNotAbsolute = Path.isAbsolute("./foo/bar/index.html"); // false
 
 ---
 
-## `Path.join(paths)`
+### `Path.join(paths)`
 
 returns a string containing all the `paths` segments joined togther delimited by the seperator. Zero-length `path` segments are ignored. If the joined path string is a zero-length string then "." will be returned. representing the current working directory.
 
@@ -188,7 +188,7 @@ let unnormaliedPathToJoin = Path.join([
 
 ---
 
-## `Path.normalize(path)`
+### `Path.normalize(path)`
 
 returns a string of the normalized `path`, resolving `..` and `.` segments. When multiple delimeters are found they are replaced by a single delimeters. Trailing seperators are preserved.
 
@@ -206,7 +206,7 @@ let normalizeMyPath = Path.normalize("./foo/bar/////baz//qux/.."); // "foo/bar/b
 
 ---
 
-## `Path.parse(path)`
+### `Path.parse(path)`
 
 returns an record whose fields represent a significant elements of the `path`. The returned record will have the following properties:
 
@@ -241,7 +241,7 @@ let parseMyPath = Path.parse("/home/user/dir/file.name/")
 
 ---
 
-## `Path.relative(from, to)`
+### `Path.relative(from, to)`
 
 returns the relative path `from` to `to`. If `from` and `to` each resolve to the same path after calling `resolve` on each, a zero-length string is returned. If a zero-length string is passed as from or to, the current working directory will be used instead of the zero-length strings.
 
@@ -267,7 +267,7 @@ Repo URL: https://github.com/kennetpostigo/reason-node
 
 ---
 
-## `Path.resolve(paths)`
+### `Path.resolve(paths)`
 
 returns a string that resolves a sequence of paths or path segments into an an absolute path. The given sequence is processed from right to ledt, with each subsequent path prepended until an absolute path is constructed.If after processing all given `path` segments an absolute path is not generated, the current working directory is used. The resulting path is normalized and trailing slashes are removed unless the path is resolved to the root directory. Zero-length `path` segments are ignored. If no path segments are passed, `resolve` will return the absolute path of the current working directory.
 
