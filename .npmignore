@@ -1,0 +1,56 @@
+# New additions that will make npm install longer
+/future.md
+/website
+/docs
+
+
+# from gitignore
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+lib
+node_modules
+build
+_build
+coverage
+bisect*.out
+.DS_Store
+_build/**
+*~
+*.cmi
+*.exe
+*.cmo
+*.cmx
+*.cma
+*.cmxa
+*.cmxs
+*.a
+*.o
+*.annot
+*.run
+*.opt
+*.native
+*.byte
+*.install
+pkg/META
+.merlin
+/node_modules/
