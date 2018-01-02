@@ -6,7 +6,6 @@
   "esy": {
     "build": [["refmterr", "jbuilder", "build"]],
     "install": ["esy-installer"],
-    "test": [["jbuilder", "runtest"]],
     "buildsInSource": "_build"
   },
   "dependencies": {
