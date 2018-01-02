@@ -28,9 +28,9 @@ let execArgv = ();
 
 let execPath = ();
 
-let exit = (~code=exitCode^) => exit(code);
-
 let exitCode = ref(0); /* this should be set by user */
+
+let exit = (~code=exitCode^) => exit(code);
 
 let getegid = () => Unix.getegid();
 

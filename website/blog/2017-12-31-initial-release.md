@@ -13,7 +13,7 @@ I created reason-node for the following reasons:
 
 1. Provide a way for reason developers to create native projects by emulating the node.js API that has been proven to be easy and intuitive.
 2. Performance is priceless, while there are [bucklescript bindings to node.js](https://github.com/reasonml-community/bs-node) you will still have to pay for the node.js startup and execution cost. `reason-node` stays closer to the metal thanks to ocaml-opt.
-3. OCaml native libraries either didn't have all the API's I was looking for, they used snake_case, or the documentation was lacking. So it was a bit frustrating to get started.
+3. OCaml stdlib and other libraries organized modules in a manner that was difficult to find what I was looking for.
 4. Lastly, I really loved node.js API and have used it for several years, and i'm sure many others that are moving from javascript to reason would appreciate being able to translate over some of their node.js knowledge base.
 
 It's very early for `reason-node` and much of the API still needs to be fleshed out, so I'm hoping to get more of it out in the coming weeks/months, hopefully with the help of some contributors! Much of the next work is to make sure we provide the same defaults for example provide the same default file permissions to functions in FS that node.js uses, and get an HTTP module started.
