@@ -2,7 +2,7 @@
 
 (executable
  ((name test)
-  (libraries (ReasonNode alcotest))))
+  (libraries (reason-node alcotest))))
 
 (alias
  ((name runtest)

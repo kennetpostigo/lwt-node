@@ -3,4 +3,4 @@
 (executable
  ((name example)
   (public_name examples)
-  (libraries (ReasonNode))))
+  (libraries (reason-node))))
