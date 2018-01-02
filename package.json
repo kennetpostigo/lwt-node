@@ -1,6 +1,6 @@
 {
   "name": "reason-node",
-  "version": "0.0.0",
+  "version": "0.0.0-beta",
   "description": "Reason Node - a node.js like API for Native",
   "license": "MIT",
   "esy": {
