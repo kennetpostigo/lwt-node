@@ -11,9 +11,7 @@ reason-node, a [reason](https://github.com/facebook/reason) implemention of the 
 ## Install
 
 ```bash
-yarn add reason-node
-
-npm install --save reason-node
+esy add reason-node
 ```
 
 ## Usage
