@@ -20,7 +20,7 @@
 <ol>
 <li>Provide a way for reason developers to create native projects by emulating the node.js API that has been proven to be easy and intuitive.</li>
 <li>Performance is priceless, while there are <a href="https://github.com/reasonml-community/bs-node">bucklescript bindings to node.js</a> you will still have to pay for the node.js startup and execution cost. <code>reason-node</code> stays closer to the metal thanks to ocaml-opt.</li>
-<li>OCaml native libraries either didn't have all the API's I was looking for, they used snake_case, or the documentation was lacking. So it was a bit frustrating to get started.</li>
+<li>OCaml stdlib and other libraries organized modules in a manner that was difficult to find what I was looking for.</li>
 <li>Lastly, I really loved node.js API and have used it for several years, and i'm sure many others that are moving from javascript to reason would appreciate being able to translate over some of their node.js knowledge base.</li>
 </ol>
 <p>It's very early for <code>reason-node</code> and much of the API still needs to be fleshed out, so I'm hoping to get more of it out in the coming weeks/months, hopefully with the help of some contributors! Much of the next work is to make sure we provide the same defaults for example provide the same default file permissions to functions in FS that node.js uses, and get an HTTP module started.</p>
