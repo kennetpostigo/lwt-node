@@ -1,9 +1,11 @@
 type t('a) = Lwt.t('a);
 
-let andThen: (Lwt.t('a), 'a => Lwt.t('b)) => Lwt.t('b);
+let andThen: (t('a), 'a => t('b)) => t('b);
 
-let catch: (unit => Lwt.t('a), exn => Lwt.t('a)) => Lwt.t('a);
+let catch: (unit => t('a), exn => t('a)) => t('a);
 
-let run: unit => unit;
+let resolved: 'a => t('a);
+
+let run: 'a => unit;
 
 let stop: unit => unit;

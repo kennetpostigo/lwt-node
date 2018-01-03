@@ -4,6 +4,8 @@ let andThen = Lwt.bind;
 
 let catch = Lwt.catch;
 
+let resolved = Lwt.return;
+
 let (until_done, signal_done) = Lwt.wait();
 
 let run = () => Lwt_main.run(until_done);
