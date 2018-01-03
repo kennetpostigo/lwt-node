@@ -138,9 +138,9 @@ let symlink = (~target, ~path) => Lwt_unix.symlink(target, path);
 
 let symlinkSync = (~target, ~path) => Unix.symlink(target, path);
 
-let truncate = (~path, ~len) => Lwt_unix.truncate(path, len);
+let truncate = (~len=0, path) => Lwt_unix.truncate(path, len);
 
-let truncateSync = (~path, ~len) => Unix.truncate(path, len);
+let truncateSync = (~len=0, path) => Unix.truncate(path, len);
 
 let unlink = path => Lwt_unix.unlink(path);
 

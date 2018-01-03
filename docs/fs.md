@@ -1084,12 +1084,12 @@ let symlinkSync: (~target: string, ~path: string) => unit;
 
 ---
 
-### `Fs.truncate(path, len)`
+### `Fs.truncate(len, path)`
 
 #### Type Definition
 
 ```reason
-let truncate: (~path: string, ~len: int) => Node.t(unit);
+let truncate: (~len: int=?, string) => Node.t(unit);
 ```
 
 #### Usage
@@ -1100,12 +1100,12 @@ let truncate: (~path: string, ~len: int) => Node.t(unit);
 
 ---
 
-### `Fs.truncateSync(path,len)`
+### `Fs.truncateSync(len, path)`
 
 #### Type Definition
 
 ```reason
-let truncateSync: (~path: string, ~len: int) => unit;
+let truncateSync: (~len: int=?, string) => unit;
 ```
 
 #### Usage

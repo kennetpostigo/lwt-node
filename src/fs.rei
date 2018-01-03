@@ -304,9 +304,9 @@ let symlink: (~target: string, ~path: string) => Node.t(unit);
 
 let symlinkSync: (~target: string, ~path: string) => unit;
 
-let truncate: (~path: string, ~len: int) => Node.t(unit);
+let truncate: (~len: int=?, string) => Node.t(unit);
 
-let truncateSync: (~path: string, ~len: int) => unit;
+let truncateSync: (~len: int=?, string) => unit;
 
 let unlink: string => Node.t(unit);
 
