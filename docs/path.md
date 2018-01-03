@@ -55,7 +55,7 @@ Will return the last portion of a path, `basename` takes two arguments, a file e
 #### Type definition
 
 ```reason
-let basename: (~ext: string=?, ~path: string) => string;
+let basename: (~ext: string=?, string) => string;
 ```
 
 #### Usage
@@ -75,7 +75,7 @@ returns the directory name of a `path`, similar to the Unix `dirname` command.
 #### Type Definition
 
 ```reason
-let dirname: (~path: string) => string;
+let dirname: string => string;
 ```
 
 #### Usage
@@ -93,7 +93,7 @@ returns the extension of the `path` from the last occurence of the `.` charachte
 #### Type Definition
 
 ```reason
-let extname: (~path: string) => string;
+let extname: string => string;
 ```
 
 #### Usage
@@ -123,7 +123,7 @@ type pathObject = {
   ext: option(string)
 };
 
-let format: (~pathObject: pathObject) => string;
+let format: pathObject => string;
 ```
 
 #### Usage
@@ -149,7 +149,7 @@ returns a boolean that determines if `path` is an absolute path. If the given `p
 #### Type Definition
 
 ```reason
-let isAbsolute: (~path: string) => bool;
+let isAbsolute: string => bool;
 ```
 
 #### Usage
@@ -169,7 +169,7 @@ returns a string containing all the `paths` segments joined togther delimited by
 #### Type Definition
 
 ```reason
-let join: (~paths: list(string)) => string;
+let join: list(string) => string;
 ```
 
 #### Usage
@@ -195,7 +195,7 @@ returns a string of the normalized `path`, resolving `..` and `.` segments. When
 #### Type Definition
 
 ```reason
-let normalize: (~path: string) => string;
+let normalize: string => string;
 ```
 
 #### Usage
@@ -221,7 +221,7 @@ type pathObject = {
   ext: option(string)
 };
 
-let parse: (~path: string) => pathObject;
+let parse: string => pathObject;
 ```
 
 #### Usage
@@ -248,7 +248,7 @@ returns the relative path `from` to `to`. If `from` and `to` each resolve to the
 #### Type Definition
 
 ```reason
-let relative: (~from: string, ~_to: string) => string;
+let relative: (~from: string, ~_to: string) => unit;
 ```
 
 #### Usage
@@ -274,7 +274,7 @@ returns a string that resolves a sequence of paths or path segments into an an a
 #### Type Definition
 
 ```reason
-let resolve: (~paths: list(string)) => string;
+let resolve: list(string) => string;
 ```
 
 #### Usage
