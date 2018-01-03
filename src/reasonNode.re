@@ -1,7 +1,9 @@
-module Path = Path;
-
 module Fs = Fs;
 
-module RenodeUtils = RenodeUtils;
-
 module Node = Node;
+
+module Path = Path;
+
+module Process = Process;
+
+module RenodeUtils = RenodeUtils;
