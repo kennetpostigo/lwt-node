@@ -1,4 +1,4 @@
-let basename = (~ext="", ~path) => {
+let basename = (~ext="", path) => {
   let path = Filename.basename(path);
   let extLength = String.length(ext);
   let pathLength = String.length(path) - extLength;
@@ -16,9 +16,9 @@ let delimeter =
 
 let sep = Filename.dir_sep;
 
-let dirname = (~path) => Filename.dirname(path);
+let dirname = path => Filename.dirname(path);
 
-let extname = (~path: string) => {
+let extname = path => {
   let pathLength = String.length(path);
   let dot = String.rindex(path, '.');
   String.sub(path, dot, pathLength - dot);
@@ -32,7 +32,7 @@ type pathObject = {
   ext: option(string)
 };
 
-let format = (~pathObject) =>
+let format = pathObject =>
   switch pathObject {
   | {dir: Some(dir), root: Some(root), base: Some(base), _} =>
     dir ++ sep ++ base
@@ -42,9 +42,9 @@ let format = (~pathObject) =>
   | _ => "Missing Necessary Information to construct a path string."
   };
 
-let isAbsolute = (~path) => ! Filename.is_relative(path);
+let isAbsolute = path => ! Filename.is_relative(path);
 
-let normalize = (~path) =>
+let normalize = path =>
   RenodeUtils.handleDotDot(
     ~path=
       RenodeUtils.removeDuplicateForwardSlash(
@@ -54,7 +54,7 @@ let normalize = (~path) =>
     ~newPath=""
   );
 
-let join = (~paths) => {
+let join = paths => {
   let joinedPaths =
     List.fold_left(
       (acc, curr) => {
@@ -65,10 +65,10 @@ let join = (~paths) => {
       "",
       paths
     );
-  normalize(~path=joinedPaths);
+  normalize(joinedPaths);
 };
 
-let resolve = (~paths) => {
+let resolve = paths => {
   let keepJoining = ref(true);
   let rePath = ref("");
   let onPath = (path, index, e) =>
@@ -98,12 +98,12 @@ let resolve = (~paths) => {
       );
   RenodeUtils.iterPathUntil(~condition=keepJoining, ~list=paths, ~f=onPath);
   rePath := rePath^.[0] == '/' ? rePath^ : Sys.getcwd() ++ sep ++ rePath^;
-  normalize(~path=rePath^);
+  normalize(rePath^);
 };
 
 let relative = (~from, ~_to) => ();
 
-let parse = (~path) => {
+let parse = path => {
   let root = path.[0] == '/' ? Some("/") : None;
   let dir = ref(None);
   let base = ref(None);

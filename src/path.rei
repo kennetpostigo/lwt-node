@@ -1,12 +1,12 @@
-let basename: (~ext: string=?, ~path: string) => string;
+let basename: (~ext: string=?, string) => string;
 
 let delimeter: string;
 
 let sep: string;
 
-let dirname: (~path: string) => string;
+let dirname: string => string;
 
-let extname: (~path: string) => string;
+let extname: string => string;
 
 type pathObject = {
   dir: option(string),
@@ -16,15 +16,15 @@ type pathObject = {
   ext: option(string)
 };
 
-let format: (~pathObject: pathObject) => string;
+let format: pathObject => string;
 
-let isAbsolute: (~path: string) => bool;
+let isAbsolute: string => bool;
 
-let join: (~paths: list(string)) => string;
+let join: list(string) => string;
 
-let normalize: (~path: string) => string;
+let normalize: string => string;
 
-let parse: (~path: string) => pathObject;
+let parse: string => pathObject;
 
 [@ocaml.deprecated
   {|
@@ -38,4 +38,4 @@ let parse: (~path: string) => pathObject;
 ]
 let relative: (~from: string, ~_to: string) => unit;
 
-let resolve: (~paths: list(string)) => string;
+let resolve: list(string) => string;

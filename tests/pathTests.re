@@ -60,7 +60,7 @@ let basenameExt = () =>
   Alcotest.(check(string))(
     "Path.basename with ext arg",
     "quux",
-    Path.basename(~ext=".html", ~path="/foo/bar/baz/asdf/quux.html")
+    Path.basename(~ext=".html", "/foo/bar/baz/asdf/quux.html")
   );
 
 let delimeter = () =>
