@@ -1,11 +1,5 @@
-build:
-	jbuilder build
-
-run: build
-	./_build/install/default/bin/examples
-
 test:
-	jbuilder runtest
+	jbuilder runtest 
 
 .PHONY: coverage
 coverage: clean
