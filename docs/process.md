@@ -548,12 +548,12 @@ Repo URL: https://github.com/kennetpostigo/reason-node
 
 ---
 
-### `Process.nextTick(callback, args)`
+### `Process.nextTick(,args)`
 
 #### Type Definition
 
 ```reason
-let nextTick: (~callback: 'a, ~args: 'b) => unit;
+let nextTick: 'a => unit;
 ```
 
 #### Usage
@@ -636,12 +636,12 @@ Repo URL: https://github.com/kennetpostigo/reason-node
 
 ---
 
-### `Process.send(message, sendHandle, options, callback)`
+### `Process.send(message, sendHandle, options)`
 
 #### Type Definition
 
 ```reason
-let send: (~message: 'a, ~sendHandle: 'b, ~options: 'c, ~callback: 'd) => unit;
+let send: (~message: 'a, ~sendHandle: 'b, ~options: 'c) => unit;
 ```
 
 #### Usage

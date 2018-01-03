@@ -4,12 +4,12 @@ title: Fs
 sidebar_label: Fs
 ---
 
-### `Fs.access(path, mode, callback)`
+### `Fs.access(mode, path)`
 
 #### Type Definition
 
 ```reason
-let access: (~path: string, ~mode: asyncAccessPerm, ~callback: fsErr => 'a) => unit;
+let access: (~mode: accessPermission=?, string) => Node.t(unit);
 ```
 
 #### Usage
@@ -20,12 +20,12 @@ let access: (~path: string, ~mode: asyncAccessPerm, ~callback: fsErr => 'a) => u
 
 ---
 
-### `Fs.accessSync(path, mode)`
+### `Fs.accessSync(mode, path)`
 
 #### Type Definition
 
 ```reason
-let accessSync: (~path: string, ~mode: syncAccessPerm) => unit;
+let accessSync: (~mode: accessPermission=?, string) => unit;
 ```
 
 #### Usage
@@ -36,12 +36,12 @@ let accessSync: (~path: string, ~mode: syncAccessPerm) => unit;
 
 ---
 
-### `Fs.appendFile(file, data, options, callback)`
+### `Fs.appendFile(file, data, options)`
 
 #### Type Definition
 
 ```reason
-let appendFile: (~file: 'a, ~data: 'b, ~options: 'c, ~callback: 'd) => unit;
+let appendFile: (~file: 'a, ~data: 'b, ~options: 'c) => unit;
 ```
 
 #### Usage
@@ -84,12 +84,12 @@ Repo URL: https://github.com/kennetpostigo/reason-node
 
 ---
 
-### `Fs.chmod(path, mode, callback)`
+### `Fs.chmod(path, mode)`
 
 #### Type Definition
 
 ```reason
-let chmod: (~path: string, ~mode: asyncFilePerm, ~callback: fsErr => 'a) => unit;
+let chmod: (~path: string, ~mode: asyncFilePerm) => Node.t(unit);
 ```
 
 #### Usage
@@ -116,12 +116,12 @@ let chmodSync: (~path: string, ~mode: syncFilePerm) => unit;
 
 ---
 
-### `Fs.chown(path, uid, gid, callback)`
+### `Fs.chown(path, uid, gid)`
 
 #### Type Definition
 
 ```reason
-let chown: (~path: string, ~uid: int, ~gid: int, ~callback: fsErr => 'a) => unit;
+let chown: (~path: string, ~uid: int, ~gid: int) => Node.t(unit);
 ```
 
 #### Usage
@@ -148,12 +148,12 @@ let chownSync: (~path: string, ~uid: int, ~gid: int) => unit;
 
 ---
 
-### `Fs.close(fd, callback)`
+### `Fs.close(fd)`
 
 #### Type Definition
 
 ```reason
-let close: (~fd: asyncFileDescr, ~callback: fsErr => 'a) => unit;
+let close: asyncFileDescr => Node.t(unit);
 ```
 
 #### Usage
@@ -169,7 +169,7 @@ let close: (~fd: asyncFileDescr, ~callback: fsErr => 'a) => unit;
 #### Type Definition
 
 ```reason
-let closeSync: (~fd: syncFileDescr) => unit;
+let closeSync: syncFileDescr => unit;
 ```
 
 #### Usage
@@ -230,12 +230,12 @@ Repo URL: https://github.com/kennetpostigo/reason-node
 
 <!-- ### `Fs.exists(path, callback)` ### `Fs.existsSync(path)` -->
 
-### `Fs.fchmod(fd, mode, callback)`
+### `Fs.fchmod(fd, mode)`
 
 #### Type Definition
 
 ```reason
-let fchmod: (~fd: asyncFileDescr, ~mode: asyncFilePerm, ~callback: fsErr => 'a) => unit;
+let fchmod: (~fd: asyncFileDescr, ~mode: asyncFilePerm) => Node.t(unit);
 ```
 
 #### Usage
@@ -262,12 +262,12 @@ let fchmodSync: (~fd: syncFileDescr, ~mode: syncFilePerm) => unit;
 
 ---
 
-### `Fs.fchown(fd, uid, gid, callback)`
+### `Fs.fchown(fd, uid, gid)`
 
 #### Type Definition
 
 ```reason
-let fchown: (~fd: asyncFileDescr, ~uid: int, ~gid: int, ~callback: fsErr => 'a) => unit;
+let fchown: (~fd: asyncFileDescr, ~uid: int, ~gid: int) => Node.t(unit);
 ```
 
 #### Usage
@@ -294,12 +294,12 @@ let fchownSync: (~fd: syncFileDescr, ~uid: int, ~gid: int) => unit;
 
 ---
 
-### `Fs.fdatasync(fd, callback)`
+### `Fs.fdatasync(fd)`
 
 #### Type Definition
 
 ```reason
-let fdatasync: (~fd: asyncFileDescr, ~callback: fsErr => 'a) => unit;
+let fdatasync: asyncFileDescr => Node.t(unit);
 ```
 
 #### Usage
@@ -334,12 +334,12 @@ Repo URL: https://github.com/kennetpostigo/reason-node
 
 ---
 
-### `Fs.fstat(fd, callback)`
+### `Fs.fstat(fd)`
 
 #### Type Definition
 
 ```reason
-let fstat: (~fd: asyncFileDescr, ~callback: (fsErr, option(asyncStats)) => 'a) => unit;
+let fstat: asyncFileDescr => Node.t(asyncStats);
 ```
 
 #### Usage
@@ -355,7 +355,7 @@ let fstat: (~fd: asyncFileDescr, ~callback: (fsErr, option(asyncStats)) => 'a) =
 #### Type Definition
 
 ```reason
-let fstatSync: (~fd: syncFileDescr) => syncStats;
+let fstatSync: syncFileDescr => syncStats;
 ```
 
 #### Usage
@@ -366,12 +366,12 @@ let fstatSync: (~fd: syncFileDescr) => syncStats;
 
 ---
 
-### `Fs.fsync(fd, callback)`
+### `Fs.fsync(fd)`
 
 #### Type Definition
 
 ```reason
-let fsync: (~fd: asyncFileDescr, ~callback: fsErr => 'a) => unit;
+let fsync: asyncFileDescr => Node.t(unit);
 ```
 
 #### Usage
@@ -387,7 +387,7 @@ let fsync: (~fd: asyncFileDescr, ~callback: fsErr => 'a) => unit;
 #### Type Definition
 
 ```reason
-
+let fsyncSync: syncFileDescr => unit;
 ```
 
 #### Usage
@@ -406,12 +406,12 @@ Repo URL: https://github.com/kennetpostigo/reason-node
 
 ---
 
-### `Fs.ftruncate(fd, len, callback)`
+### `Fs.ftruncate(len, fd)`
 
 #### Type Definition
 
 ```reason
-let ftruncate: (~fd: asyncFileDescr, ~len: int, ~callback: fsErr => 'a) => unit;
+let ftruncate: (~len: int=?, Lwt_unix.file_descr) => Node.t(unit);
 ```
 
 #### Usage
@@ -422,12 +422,12 @@ let ftruncate: (~fd: asyncFileDescr, ~len: int, ~callback: fsErr => 'a) => unit;
 
 ---
 
-### `Fs.ftruncateSync(fd, len)`
+### `Fs.ftruncateSync(len, fd)`
 
 #### Type Definition
 
 ```reason
-let ftruncateSync: (~fd: syncFileDescr, ~len: int) => unit;
+let ftruncateSync: (~len: int=?, Unix.file_descr) => unit;
 ```
 
 #### Usage
@@ -438,12 +438,12 @@ let ftruncateSync: (~fd: syncFileDescr, ~len: int) => unit;
 
 ---
 
-### `Fs.futimes(fd, atime, mtime, callback)`
+### `Fs.futimes(fd, atime, mtime)`
 
 #### Type Definition
 
 ```reason
-
+let futimes: (~fd: asyncFileDescr, ~atime: 'a, ~mtime: 'b) => unit;
 ```
 
 #### Usage
@@ -467,7 +467,7 @@ Repo URL: https://github.com/kennetpostigo/reason-node
 #### Type Definition
 
 ```reason
-
+let futimesSync: (~fd: syncFileDescr, ~atime: 'a, ~mtime: 'b) => unit;
 ```
 
 #### Usage
@@ -486,12 +486,12 @@ Repo URL: https://github.com/kennetpostigo/reason-node
 
 ---
 
-### `Fs.lchmod(path, mode, callback)`
+### `Fs.lchmod(path, mode)`
 
 #### Type Definition
 
 ```reason
-
+let lchmod: (~path: string, ~mode: 'a) => unit;
 ```
 
 #### Usage
@@ -510,12 +510,12 @@ Repo URL: https://github.com/kennetpostigo/reason-node
 
 ---
 
-### `Fs.lchmodSync path mode`
+### `Fs.lchmodSync(path, mode)`
 
 #### Type Definition
 
 ```reason
-
+let lchmodSync: (~path: string, ~mode: 'a) => unit;
 ```
 
 #### Usage
@@ -534,12 +534,12 @@ Repo URL: https://github.com/kennetpostigo/reason-node
 
 ---
 
-### `Fs.lchown path uid gid callback`
+### `Fs.lchown(path, uid, gid)`
 
 #### Type Definition
 
 ```reason
-
+let lchown: (~path: string, ~uid: int, ~gid: int) => unit;
 ```
 
 #### Usage
@@ -563,7 +563,7 @@ Repo URL: https://github.com/kennetpostigo/reason-node
 #### Type Definition
 
 ```reason
-
+let lchownSync: (~path: string, ~uid: int, ~gid: int) => unit;
 ```
 
 #### Usage
@@ -582,12 +582,12 @@ Repo URL: https://github.com/kennetpostigo/reason-node
 
 ---
 
-### `Fs.link(existingPath, newPath, callback)`
+### `Fs.link(existingPath, newPath)`
 
 #### Type Definition
 
 ```reason
-let link: (~existingPath: string, ~newPath: string, ~callback: fsErr => 'a) => unit;
+let link: (~existingPath: string, ~newPath: string) => Node.t(unit);
 ```
 
 #### Usage
@@ -614,12 +614,12 @@ let linkSync: (~existingPath: string, ~newPath: string) => unit;
 
 ---
 
-### `Fs.lstat(path, callback)`
+### `Fs.lstat(path)`
 
 #### Type Definition
 
 ```reason
-let lstat: (~path: string, ~callback: (fsErr, option(asyncStats)) => 'a) => unit;
+let lstat: string => Node.t(asyncStats);
 ```
 
 #### Usage
@@ -635,7 +635,7 @@ let lstat: (~path: string, ~callback: (fsErr, option(asyncStats)) => 'a) => unit
 #### Type Definition
 
 ```reason
-let lstatSync: (~path: string) => unit;
+let lstatSync: string => syncStats;
 ```
 
 #### Usage
@@ -646,12 +646,12 @@ let lstatSync: (~path: string) => unit;
 
 ---
 
-### `Fs.mkdir(path, mode, callback)`
+### `Fs.mkdir(mode, path)`
 
 #### Type Definition
 
 ```reason
-let mkdir: (~path: string, ~mode: asyncFilePerm, ~callback: fsErr => 'a) => unit;
+let mkdir: (~mode: Lwt_unix.file_perm=?, string) => Node.t(unit);
 ```
 
 #### Usage
@@ -662,12 +662,12 @@ let mkdir: (~path: string, ~mode: asyncFilePerm, ~callback: fsErr => 'a) => unit
 
 ---
 
-### `Fs.mkdirSync(path, mode)`
+### `Fs.mkdirSync(mode, path)`
 
 #### Type Definition
 
 ```reason
-let mkdirSync: (~path: string, ~mode: syncFilePerm) => unit;
+let mkdirSync: (~mode: syncFilePerm=?, string) => unit;
 ```
 
 #### Usage
@@ -678,12 +678,12 @@ let mkdirSync: (~path: string, ~mode: syncFilePerm) => unit;
 
 ---
 
-### `Fs.mkdtemp(prefix, options, callback)`
+### `Fs.mkdtemp(prefix, options)`
 
 #### Type Definition
 
 ```reason
-
+let mkdtemp: (~prefix: 'a, ~options: 'b) => unit;
 ```
 
 #### Usage
@@ -707,7 +707,7 @@ Repo URL: https://github.com/kennetpostigo/reason-node
 #### Type Definition
 
 ```reason
-
+let mkdtempSync: (~prefix: 'a, ~options: 'b) => unit;
 ```
 
 #### Usage
@@ -726,19 +726,14 @@ Repo URL: https://github.com/kennetpostigo/reason-node
 
 ---
 
-### `Fs._open(path, flags, mode, callback)`
+### `Fs._open(flags, mode, path)`
 
 #### Type Definition
 
 ```reason
 let _open:
-  (
-    ~path: string,
-    ~flags: list(asyncOpenFlag),
-    ~mode: asyncFilePerm,
-    ~callback: (fsErr, option(asyncFileDescr)) => 'a
-  ) =>
-  unit;
+  (~flags: list(asyncOpenFlag), ~mode: asyncFilePerm=?, string) =>
+  Node.t(asyncFileDescr);
 ```
 
 #### Usage
@@ -749,12 +744,13 @@ let _open:
 
 ---
 
-### `Fs.openSync(path, flags, mode)`
+### `Fs.openSync(flags, mode, path)`
 
 #### Type Definition
 
 ```reason
-let openSync: (~path: string, ~flags: list(syncOpenFlag), ~mode: syncFilePerm) => syncFileDescr;
+let openSync:
+  (~flags: list(syncOpenFlag), ~mode: syncFilePerm=?, string) => syncFileDescr;
 ```
 
 #### Usage
@@ -765,20 +761,14 @@ let openSync: (~path: string, ~flags: list(syncOpenFlag), ~mode: syncFilePerm) =
 
 ---
 
-### `Fs.read(fd, buffer, offset, length, position, callback)`
+### `Fs.read(fd, buffer, offset, length)`
 
 #### Type Definition
 
 ```reason
 let read:
-  (
-    ~fd: asyncFileDescr,
-    ~buffer: bytes,
-    ~offset: int,
-    ~length: int,
-    ~callback: (fsErr, option(int)) => 'a
-  ) =>
-  unit;
+  (~fd: asyncFileDescr, ~buffer: bytes, ~offset: int, ~length: int) =>
+  Node.t(int);
 ```
 
 #### Usage
@@ -789,12 +779,13 @@ let read:
 
 ---
 
-### `Fs.readSync(fd, buffer, offset, length, position)`
+### `Fs.readSync(fd, buffer, offset, length)`
 
 #### Type Definition
 
 ```reason
-let readSync: (~fd: syncFileDescr, ~buffer: bytes, ~offset: int, ~length: int) => int;
+let readSync:
+  (~fd: syncFileDescr, ~buffer: bytes, ~offset: int, ~length: int) => int;
 ```
 
 #### Usage
@@ -805,12 +796,12 @@ let readSync: (~fd: syncFileDescr, ~buffer: bytes, ~offset: int, ~length: int) =
 
 ---
 
-### `Fs.readdir(path, options, callback)`
+### `Fs.readdir(path)`
 
 #### Type Definition
 
 ```reason
-let readdir: (~path: asyncDirHandle, ~callback: (fsErr, option(string)) => 'a) => unit;
+let readdir: asyncDirHandle => Node.t(string);
 ```
 
 #### Usage
@@ -821,12 +812,12 @@ let readdir: (~path: asyncDirHandle, ~callback: (fsErr, option(string)) => 'a) =
 
 ---
 
-### `Fs.readdirSync(path, options)`
+### `Fs.readdirSync(path)`
 
 #### Type Definition
 
 ```reason
-let readdirSync: (~path: syncDirHandle) => string;
+let readdirSync: syncDirHandle => string;
 ```
 
 #### Usage
@@ -837,12 +828,12 @@ let readdirSync: (~path: syncDirHandle) => string;
 
 ---
 
-### `Fs.readFile(file, options, callback)`
+### `Fs.readFile(file, options)`
 
 #### Type Definition
 
 ```reason
-
+let readFile: (~path: string, ~options: 'a) => unit;
 ```
 
 #### Usage
@@ -866,7 +857,7 @@ Repo URL: https://github.com/kennetpostigo/reason-node
 #### Type Definition
 
 ```reason
-
+let readFileSync: (~path: 'a, ~options: 'b) => unit;
 ```
 
 #### Usage
@@ -885,12 +876,12 @@ Repo URL: https://github.com/kennetpostigo/reason-node
 
 ---
 
-### `Fs.readlink(path, options, callback)`
+### `Fs.readlink(path)`
 
 #### Type Definition
 
 ```reason
-let readLink: (~path: string, ~callback: (fsErr, option(string)) => 'a) => unit;
+let readLink: string => Node.t(string);
 ```
 
 #### Usage
@@ -901,12 +892,12 @@ let readLink: (~path: string, ~callback: (fsErr, option(string)) => 'a) => unit;
 
 ---
 
-### `Fs.readlinkSync(path, options)`
+### `Fs.readlinkSync(path)`
 
 #### Type Definition
 
 ```reason
-let readLinkSync: (~path: string) => string;
+let readLinkSync: string => string;
 ```
 
 #### Usage
@@ -917,12 +908,12 @@ let readLinkSync: (~path: string) => string;
 
 ---
 
-### `Fs.realpath(path, options, callback)`
+### `Fs.realpath(path, options)`
 
 #### Type Definition
 
 ```reason
-
+let realpath: (~path: string, ~options: 'a) => unit;
 ```
 
 #### Usage
@@ -946,7 +937,7 @@ Repo URL: https://github.com/kennetpostigo/reason-node
 #### Type Definition
 
 ```reason
-
+let realpathSync: (~path: 'a, ~options: 'b) => unit;
 ```
 
 #### Usage
@@ -965,12 +956,12 @@ Repo URL: https://github.com/kennetpostigo/reason-node
 
 ---
 
-### `Fs.rename(oldPath, newPath, callback)`
+### `Fs.rename(oldPath, newPath)`
 
 #### Type Definition
 
 ```reason
-let rename: (~oldPath: string, ~newPath: string, ~callback: fsErr => 'a) => unit;
+let rename: (~oldPath: string, ~newPath: string) => Node.t(unit);
 ```
 
 #### Usage
@@ -997,12 +988,12 @@ let renameSync: (~oldPath: string, ~newPath: string) => unit;
 
 ---
 
-### `Fs.rmdir(path, callback)`
+### `Fs.rmdir(path)`
 
 #### Type Definition
 
 ```reason
-let rmdir: (~path: string, ~callback: fsErr => 'a) => unit;
+let rmdir: string => Node.t(unit);
 ```
 
 #### Usage
@@ -1018,7 +1009,7 @@ let rmdir: (~path: string, ~callback: fsErr => 'a) => unit;
 #### Type Definition
 
 ```reason
-let rmdirSync: (~path: string) => unit;
+let rmdirSync: string => unit;
 ```
 
 #### Usage
@@ -1029,12 +1020,12 @@ let rmdirSync: (~path: string) => unit;
 
 ---
 
-### `Fs.stat(path, callback)`
+### `Fs.stat(path)`
 
 #### Type Definition
 
 ```reason
-let stat: (~path: string, ~callback: (fsErr, option(asyncStats)) => 'a) => unit;
+let stat: string => Node.t(asyncStats);
 ```
 
 #### Usage
@@ -1050,7 +1041,7 @@ let stat: (~path: string, ~callback: (fsErr, option(asyncStats)) => 'a) => unit;
 #### Type Definition
 
 ```reason
-let statSync: (~path: string) => syncStats;
+let statSync: string => syncStats;
 ```
 
 #### Usage
@@ -1061,12 +1052,12 @@ let statSync: (~path: string) => syncStats;
 
 ---
 
-### `Fs.symlink(target, path, type, callback)`
+### `Fs.symlink(target, path)`
 
 #### Type Definition
 
 ```reason
-let symlink: (~target: string, ~path: string, ~callback: fsErr => 'a) => unit;
+let symlink: (~target: string, ~path: string) => Node.t(unit);
 ```
 
 #### Usage
@@ -1077,7 +1068,7 @@ let symlink: (~target: string, ~path: string, ~callback: fsErr => 'a) => unit;
 
 ---
 
-### `Fs.symlinkSync(target, path, type)`
+### `Fs.symlinkSync(target, path)`
 
 #### Type Definition
 
@@ -1093,12 +1084,12 @@ let symlinkSync: (~target: string, ~path: string) => unit;
 
 ---
 
-### `Fs.truncate(path, len, callback)`
+### `Fs.truncate(path, len)`
 
 #### Type Definition
 
 ```reason
-let truncate: (~path: string, ~len: int, ~callback: fsErr => 'a) => unit;
+let truncate: (~path: string, ~len: int) => Node.t(unit);
 ```
 
 #### Usage
@@ -1125,12 +1116,12 @@ let truncateSync: (~path: string, ~len: int) => unit;
 
 ---
 
-### `Fs.unlink(path, callback)`
+### `Fs.unlink(path)`
 
 #### Type Definition
 
 ```reason
-let unlink: (~path: string, ~callback: fsErr => 'a) => unit;
+let unlink: string => Node.t(unit);
 ```
 
 #### Usage
@@ -1146,7 +1137,7 @@ let unlink: (~path: string, ~callback: fsErr => 'a) => unit;
 #### Type Definition
 
 ```reason
-let unlinkSync: (~path: string) => unit;
+let unlinkSync: string => unit;
 ```
 
 #### Usage
@@ -1162,7 +1153,7 @@ let unlinkSync: (~path: string) => unit;
 #### Type Definition
 
 ```reason
-
+let unwatchFile: (~filename: 'a, ~listener: 'b) => unit;
 ```
 
 #### Usage
@@ -1181,19 +1172,12 @@ Repo URL: https://github.com/kennetpostigo/reason-node
 
 ---
 
-### `Fs.utimes(path, atime, mtime, callback)`
+### `Fs.utimes(path, atime, mtime)`
 
 #### Type Definition
 
 ```reason
-let utimes:
-  (
-    ~path: string,
-    ~atime: float,
-    ~mtime: float,
-    ~callback: fsErr => 'a
-  ) =>
-  unit;
+let utimes: (~path: string, ~atime: float, ~mtime: float) => Node.t(unit);
 ```
 
 #### Usage
@@ -1225,7 +1209,7 @@ let utimesSync: (~path: string, ~atime: float, ~mtime: float) => unit;
 #### Type Definition
 
 ```reason
-
+let watch: (~filename: 'a, ~options: 'b, ~listener: 'c) => unit;
 ```
 
 #### Usage
@@ -1249,7 +1233,7 @@ Repo URL: https://github.com/kennetpostigo/reason-node
 #### Type Definition
 
 ```reason
-
+let watchFile: (~filename: 'a, ~options: 'b, ~listener: 'c) => unit;
 ```
 
 #### Usage
@@ -1268,20 +1252,14 @@ Repo URL: https://github.com/kennetpostigo/reason-node
 
 ---
 
-### `Fs.write(fd, buffer, offset, length, callback)`
+### `Fs.write(fd, buffer, offset, length)`
 
 #### Type Definition
 
 ```reason
 let write:
-  (
-    ~fd: asyncFileDescr,
-    ~buffer: bytes,
-    ~offset: int,
-    ~length: int,
-    ~callback: (fsErr, option(int)) => 'a
-  ) =>
-  unit;
+  (~fd: asyncFileDescr, ~buffer: bytes, ~offset: int, ~length: int) =>
+  Node.t(int);
 ```
 
 #### Usage
@@ -1297,7 +1275,8 @@ let write:
 #### Type Definition
 
 ```reason
-let writeSync: (~fd: syncFileDescr, ~buffer: bytes, ~offset: int, ~length: int) => int;
+let writeSync:
+  (~fd: syncFileDescr, ~buffer: bytes, ~offset: int, ~length: int) => int;
 ```
 
 #### Usage
@@ -1308,20 +1287,14 @@ let writeSync: (~fd: syncFileDescr, ~buffer: bytes, ~offset: int, ~length: int) 
 
 ---
 
-### `Fs.writeString(fd, string, offset, length, callback)`
+### `Fs.writeString(fd, string, offset, length)`
 
 #### Type Definition
 
 ```reason
 let writeString:
-  (
-    ~fd: asyncFileDescr,
-    ~string: string,
-    ~offset: int,
-    ~length: int,
-    ~callback: (fsErr, option(int)) => 'a
-  ) =>
-  unit;
+  (~fd: asyncFileDescr, ~string: string, ~offset: int, ~length: int) =>
+  Node.t(int);
 ```
 
 #### Usage
@@ -1337,7 +1310,8 @@ let writeString:
 #### Type Definition
 
 ```reason
-let writeStringSync: (~fd: syncFileDescr, ~string: string, ~offset: int, ~length: int) => int;
+let writeStringSync:
+  (~fd: syncFileDescr, ~string: string, ~offset: int, ~length: int) => int;
 ```
 
 #### Usage
@@ -1348,12 +1322,12 @@ let writeStringSync: (~fd: syncFileDescr, ~string: string, ~offset: int, ~length
 
 ---
 
-### `Fs.writeFile(file, data, options, callback)`
+### `Fs.writeFile(file, data, options)`
 
 #### Type Definition
 
 ```reason
-
+let writeFile: (~file: 'a, ~data: 'b, ~options: 'c) => unit;
 ```
 
 #### Usage
@@ -1377,7 +1351,7 @@ Repo URL: https://github.com/kennetpostigo/reason-node
 #### Type Definition
 
 ```reason
-
+let writeFileSync: (~file: 'a, ~data: 'b, ~options: 'c) => unit;
 ```
 
 #### Usage
