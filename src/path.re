@@ -8,7 +8,11 @@ let basename = (~ext="", ~path) => {
   };
 };
 
-let delimeter = ":";
+let delimeter =
+  switch Filename.dir_sep {
+  | "\\" => ";"
+  | _ => ":"
+  };
 
 let sep = Filename.dir_sep;
 
