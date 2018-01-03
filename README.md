@@ -22,6 +22,8 @@ See https://github.com/kennetpostigo/reason-node-starter
 
 See https://kennetpostigo.github.io/reason-node
 
+Missing or yet to be implemented API's are documented with compile-time warnings, are noted in the documentation and are listed in [Future.md](https://github.com/kennetpostigo/reason-node/blob/master/Future.md). If you'd like to help contribute, please open a pull-request, no code needed! We'll try to help steer you in the right direction!
+
 ## License
 
 MIT
