@@ -1,7 +1,3 @@
-type fsErr =
-  | Ok
-  | Err(Unix.error);
-
 type asyncFileDescr = Lwt_unix.file_descr;
 
 type syncFileDescr = Unix.file_descr;
@@ -10,9 +6,7 @@ type asyncFilePerm = Lwt_unix.file_perm;
 
 type syncFilePerm = Unix.file_perm;
 
-type asyncAccessPerm = Lwt_unix.access_permission;
-
-type syncAccessPerm = Unix.access_permission;
+type accessPermission = Unix.access_permission = | R_OK | W_OK | X_OK | F_OK;
 
 type asyncStats = Lwt_unix.stats;
 
@@ -26,10 +20,9 @@ type asyncOpenFlag = Lwt_unix.open_flag;
 
 type syncOpenFlag = Unix.open_flag;
 
-let access:
-  (~path: string, ~mode: asyncAccessPerm, ~callback: fsErr => 'a) => unit;
+let access: (~mode: accessPermission=?, string) => Node.t(unit);
 
-let accessSync: (~path: string, ~mode: syncAccessPerm) => unit;
+let accessSync: (~mode: accessPermission=?, string) => unit;
 
 [@ocaml.deprecated
   {|
@@ -40,7 +33,7 @@ let accessSync: (~path: string, ~mode: syncAccessPerm) => unit;
     Repo URL: https://github.com/kennetpostigo/reason-node
   |}
 ]
-let appendFile: (~file: 'a, ~data: 'b, ~options: 'c, ~callback: 'd) => unit;
+let appendFile: (~file: 'a, ~data: 'b, ~options: 'c) => unit;
 
 [@ocaml.deprecated
   {|
@@ -53,19 +46,17 @@ let appendFile: (~file: 'a, ~data: 'b, ~options: 'c, ~callback: 'd) => unit;
 ]
 let appendFileSync: (~file: 'a, ~data: 'b, ~options: 'c) => unit;
 
-let chmod:
-  (~path: string, ~mode: asyncFilePerm, ~callback: fsErr => 'a) => unit;
+let chmod: (~path: string, ~mode: asyncFilePerm) => Node.t(unit);
 
 let chmodSync: (~path: string, ~mode: syncFilePerm) => unit;
 
-let chown:
-  (~path: string, ~uid: int, ~gid: int, ~callback: fsErr => 'a) => unit;
+let chown: (~path: string, ~uid: int, ~gid: int) => Node.t(unit);
 
 let chownSync: (~path: string, ~uid: int, ~gid: int) => unit;
 
-let close: (~fd: asyncFileDescr, ~callback: fsErr => 'a) => unit;
+let close: asyncFileDescr => Node.t(unit);
 
-let closeSync: (~fd: syncFileDescr) => unit;
+let closeSync: syncFileDescr => unit;
 
 [@ocaml.deprecated
   {|
@@ -89,17 +80,15 @@ let createReadStream: (~path: string, ~options: 'a) => unit;
 ]
 let createWriteStream: (~path: string, ~options: 'a) => unit;
 
-let fchmod:
-  (~fd: asyncFileDescr, ~mode: asyncFilePerm, ~callback: fsErr => 'a) => unit;
+let fchmod: (~fd: asyncFileDescr, ~mode: asyncFilePerm) => Node.t(unit);
 
 let fchmodSync: (~fd: syncFileDescr, ~mode: syncFilePerm) => unit;
 
-let fchown:
-  (~fd: asyncFileDescr, ~uid: int, ~gid: int, ~callback: fsErr => 'a) => unit;
+let fchown: (~fd: asyncFileDescr, ~uid: int, ~gid: int) => Node.t(unit);
 
 let fchownSync: (~fd: syncFileDescr, ~uid: int, ~gid: int) => unit;
 
-let fdatasync: (~fd: asyncFileDescr, ~callback: fsErr => 'a) => unit;
+let fdatasync: asyncFileDescr => Node.t(unit);
 
 [@ocaml.deprecated
   {|
@@ -110,14 +99,13 @@ let fdatasync: (~fd: asyncFileDescr, ~callback: fsErr => 'a) => unit;
     Repo URL: https://github.com/kennetpostigo/reason-node
   |}
 ]
-let fdatasyncSync: (~fd: syncFileDescr) => unit;
+let fdatasyncSync: syncFileDescr => unit;
 
-let fstat:
-  (~fd: asyncFileDescr, ~callback: (fsErr, option(asyncStats)) => 'a) => unit;
+let fstat: asyncFileDescr => Node.t(asyncStats);
 
-let fstatSync: (~fd: syncFileDescr) => syncStats;
+let fstatSync: syncFileDescr => syncStats;
 
-let fsync: (~fd: asyncFileDescr, ~callback: fsErr => 'a) => unit;
+let fsync: asyncFileDescr => Node.t(unit);
 
 [@ocaml.deprecated
   {|
@@ -128,12 +116,11 @@ let fsync: (~fd: asyncFileDescr, ~callback: fsErr => 'a) => unit;
     Repo URL: https://github.com/kennetpostigo/reason-node
   |}
 ]
-let fsyncSync: (~fd: syncFileDescr) => unit;
+let fsyncSync: syncFileDescr => unit;
 
-let ftruncate:
-  (~fd: asyncFileDescr, ~len: int, ~callback: fsErr => 'a) => unit;
+let ftruncate: (~len: int=?, Lwt_unix.file_descr) => Node.t(unit);
 
-let ftruncateSync: (~fd: syncFileDescr, ~len: int) => unit;
+let ftruncateSync: (~len: int=?, Unix.file_descr) => unit;
 
 [@ocaml.deprecated
   {|
@@ -144,8 +131,7 @@ let ftruncateSync: (~fd: syncFileDescr, ~len: int) => unit;
     Repo URL: https://github.com/kennetpostigo/reason-node
   |}
 ]
-let futimes:
-  (~fd: asyncFileDescr, ~atime: 'a, ~mtime: 'b, ~callback: fsErr => 'a) => unit;
+let futimes: (~fd: asyncFileDescr, ~atime: 'a, ~mtime: 'b) => unit;
 
 [@ocaml.deprecated
   {|
@@ -167,7 +153,7 @@ let futimesSync: (~fd: syncFileDescr, ~atime: 'a, ~mtime: 'b) => unit;
     Repo URL: https://github.com/kennetpostigo/reason-node
   |}
 ]
-let lchmod: (~path: string, ~mode: 'a, ~callback: fsErr => 'b) => unit;
+let lchmod: (~path: string, ~mode: 'a) => unit;
 
 [@ocaml.deprecated
   {|
@@ -189,8 +175,7 @@ let lchmodSync: (~path: string, ~mode: 'a) => unit;
     Repo URL: https://github.com/kennetpostigo/reason-node
   |}
 ]
-let lchown:
-  (~path: string, ~uid: int, ~gid: int, ~callback: fsErr => 'a) => unit;
+let lchown: (~path: string, ~uid: int, ~gid: int) => unit;
 
 [@ocaml.deprecated
   {|
@@ -203,20 +188,17 @@ let lchown:
 ]
 let lchownSync: (~path: string, ~uid: int, ~gid: int) => unit;
 
-let link:
-  (~existingPath: string, ~newPath: string, ~callback: fsErr => 'a) => unit;
+let link: (~existingPath: string, ~newPath: string) => Node.t(unit);
 
 let linkSync: (~existingPath: string, ~newPath: string) => unit;
 
-let lstat:
-  (~path: string, ~callback: (fsErr, option(asyncStats)) => 'a) => unit;
+let lstat: string => Node.t(asyncStats);
 
-let lstatSync: (~path: string) => syncStats;
+let lstatSync: string => syncStats;
 
-let mkdir:
-  (~path: string, ~mode: asyncFilePerm, ~callback: fsErr => 'a) => unit;
+let mkdir: (~mode: Lwt_unix.file_perm=?, string) => Node.t(unit);
 
-let mkdirSync: (~path: string, ~mode: syncFilePerm) => unit;
+let mkdirSync: (~mode: syncFilePerm=?, string) => unit;
 
 [@ocaml.deprecated
   {|
@@ -227,7 +209,7 @@ let mkdirSync: (~path: string, ~mode: syncFilePerm) => unit;
     Repo URL: https://github.com/kennetpostigo/reason-node
   |}
 ]
-let mkdtemp: (~prefix: 'a, ~options: 'b, ~callback: fsErr => 'c) => unit;
+let mkdtemp: (~prefix: 'a, ~options: 'b) => unit;
 
 [@ocaml.deprecated
   {|
@@ -241,35 +223,22 @@ let mkdtemp: (~prefix: 'a, ~options: 'b, ~callback: fsErr => 'c) => unit;
 let mkdtempSync: (~prefix: 'a, ~options: 'b) => unit;
 
 let _open:
-  (
-    ~path: string,
-    ~flags: list(asyncOpenFlag),
-    ~mode: asyncFilePerm,
-    ~callback: (fsErr, option(asyncFileDescr)) => 'a
-  ) =>
-  unit;
+  (~flags: list(asyncOpenFlag), ~mode: asyncFilePerm=?, string) =>
+  Node.t(asyncFileDescr);
 
 let openSync:
-  (~path: string, ~flags: list(syncOpenFlag), ~mode: syncFilePerm) =>
-  syncFileDescr;
+  (~flags: list(syncOpenFlag), ~mode: syncFilePerm=?, string) => syncFileDescr;
 
 let read:
-  (
-    ~fd: asyncFileDescr,
-    ~buffer: bytes,
-    ~offset: int,
-    ~length: int,
-    ~callback: (fsErr, option(int)) => 'a
-  ) =>
-  unit;
+  (~fd: asyncFileDescr, ~buffer: bytes, ~offset: int, ~length: int) =>
+  Node.t(int);
 
 let readSync:
   (~fd: syncFileDescr, ~buffer: bytes, ~offset: int, ~length: int) => int;
 
-let readdir:
-  (~path: asyncDirHandle, ~callback: (fsErr, option(string)) => 'a) => unit;
+let readdir: asyncDirHandle => Node.t(string);
 
-let readdirSync: (~path: syncDirHandle) => string;
+let readdirSync: syncDirHandle => string;
 
 [@ocaml.deprecated
   {|
@@ -280,7 +249,7 @@ let readdirSync: (~path: syncDirHandle) => string;
     Repo URL: https://github.com/kennetpostigo/reason-node
   |}
 ]
-let readFile: (~path: string, ~options: 'a, ~callback: fsErr => 'b) => unit;
+let readFile: (~path: string, ~options: 'a) => unit;
 
 [@ocaml.deprecated
   {|
@@ -293,10 +262,9 @@ let readFile: (~path: string, ~options: 'a, ~callback: fsErr => 'b) => unit;
 ]
 let readFileSync: (~path: 'a, ~options: 'b) => unit;
 
-let readLink:
-  (~path: string, ~callback: (fsErr, option(string)) => 'a) => unit;
+let readLink: string => Node.t(string);
 
-let readLinkSync: (~path: string) => string;
+let readLinkSync: string => string;
 
 [@ocaml.deprecated
   {|
@@ -307,7 +275,7 @@ let readLinkSync: (~path: string) => string;
     Repo URL: https://github.com/kennetpostigo/reason-node
   |}
 ]
-let realpath: (~path: string, ~options: 'a, ~callback: fsErr => 'b) => unit;
+let realpath: (~path: string, ~options: 'a) => unit;
 
 [@ocaml.deprecated
   {|
@@ -320,31 +288,29 @@ let realpath: (~path: string, ~options: 'a, ~callback: fsErr => 'b) => unit;
 ]
 let realpathSync: (~path: 'a, ~options: 'b) => unit;
 
-let rename:
-  (~oldPath: string, ~newPath: string, ~callback: fsErr => 'a) => unit;
+let rename: (~oldPath: string, ~newPath: string) => Node.t(unit);
 
 let renameSync: (~oldPath: string, ~newPath: string) => unit;
 
-let rmdir: (~path: string, ~callback: fsErr => 'a) => unit;
+let rmdir: string => Node.t(unit);
 
-let rmdirSync: (~path: string) => unit;
+let rmdirSync: string => unit;
 
-let stat:
-  (~path: string, ~callback: (fsErr, option(asyncStats)) => 'a) => unit;
+let stat: string => Node.t(asyncStats);
 
-let statSync: (~path: string) => syncStats;
+let statSync: string => syncStats;
 
-let symlink: (~target: string, ~path: string, ~callback: fsErr => 'a) => unit;
+let symlink: (~target: string, ~path: string) => Node.t(unit);
 
 let symlinkSync: (~target: string, ~path: string) => unit;
 
-let truncate: (~path: string, ~len: int, ~callback: fsErr => 'a) => unit;
+let truncate: (~path: string, ~len: int) => Node.t(unit);
 
 let truncateSync: (~path: string, ~len: int) => unit;
 
-let unlink: (~path: string, ~callback: fsErr => 'a) => unit;
+let unlink: string => Node.t(unit);
 
-let unlinkSync: (~path: string) => unit;
+let unlinkSync: string => unit;
 
 [@ocaml.deprecated
   {|
@@ -357,8 +323,7 @@ let unlinkSync: (~path: string) => unit;
 ]
 let unwatchFile: (~filename: 'a, ~listener: 'b) => unit;
 
-let utimes:
-  (~path: string, ~atime: float, ~mtime: float, ~callback: fsErr => 'a) => unit;
+let utimes: (~path: string, ~atime: float, ~mtime: float) => Node.t(unit);
 
 let utimesSync: (~path: string, ~atime: float, ~mtime: float) => unit;
 
@@ -385,27 +350,15 @@ let watch: (~filename: 'a, ~options: 'b, ~listener: 'c) => unit;
 let watchFile: (~filename: 'a, ~options: 'b, ~listener: 'c) => unit;
 
 let write:
-  (
-    ~fd: asyncFileDescr,
-    ~buffer: bytes,
-    ~offset: int,
-    ~length: int,
-    ~callback: (fsErr, option(int)) => 'a
-  ) =>
-  unit;
+  (~fd: asyncFileDescr, ~buffer: bytes, ~offset: int, ~length: int) =>
+  Node.t(int);
 
 let writeSync:
   (~fd: syncFileDescr, ~buffer: bytes, ~offset: int, ~length: int) => int;
 
 let writeString:
-  (
-    ~fd: asyncFileDescr,
-    ~string: string,
-    ~offset: int,
-    ~length: int,
-    ~callback: (fsErr, option(int)) => 'a
-  ) =>
-  unit;
+  (~fd: asyncFileDescr, ~string: string, ~offset: int, ~length: int) =>
+  Node.t(int);
 
 let writeStringSync:
   (~fd: syncFileDescr, ~string: string, ~offset: int, ~length: int) => int;
@@ -419,8 +372,7 @@ let writeStringSync:
     Repo URL: https://github.com/kennetpostigo/reason-node
   |}
 ]
-let writeFile:
-  (~file: 'a, ~data: 'b, ~options: 'c, ~callback: fsErr => 'd) => unit;
+let writeFile: (~file: 'a, ~data: 'b, ~options: 'c) => unit;
 
 [@ocaml.deprecated
   {|

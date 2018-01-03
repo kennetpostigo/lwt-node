@@ -1,7 +1,3 @@
-type fsErr =
-  | Ok
-  | Err(Unix.error);
-
 type asyncFileDescr = Lwt_unix.file_descr;
 
 type syncFileDescr = Unix.file_descr;
@@ -10,9 +6,7 @@ type asyncFilePerm = Lwt_unix.file_perm;
 
 type syncFilePerm = Unix.file_perm;
 
-type asyncAccessPerm = Lwt_unix.access_permission;
-
-type syncAccessPerm = Unix.access_permission;
+type accessPermission = Unix.access_permission = | R_OK | W_OK | X_OK | F_OK;
 
 type asyncStats = Lwt_unix.stats;
 
@@ -26,446 +20,135 @@ type asyncOpenFlag = Lwt_unix.open_flag;
 
 type syncOpenFlag = Unix.open_flag;
 
-let access = (~path, ~mode, ~callback) =>
-  Lwt.on_any(
-    Lwt_unix.access(path, [mode]),
-    (_) => {
-      callback(Ok);
-      ();
-    },
-    fun
-    | Unix.Unix_error(e, _, _) => {
-        callback(Err(e));
-        ();
-      }
-    | exn => ()
-  );
+let access = (~mode=F_OK, path) => Lwt_unix.access(path, [mode]);
 
-let accessSync = (~path, ~mode) => Unix.access(path, [mode]);
+let accessSync = (~mode=F_OK, path) => Unix.access(path, [mode]);
 
-let appendFile = (~file, ~data, ~options, ~callback) => ();
+let appendFile = (~file, ~data, ~options) => ();
 
 let appendFileSync = (~file, ~data, ~options) => ();
 
-let chmod = (~path, ~mode, ~callback) =>
-  Lwt.on_any(
-    Lwt_unix.chmod(path, mode),
-    (_) => {
-      callback(Ok);
-      ();
-    },
-    fun
-    | Unix.Unix_error(e, _, _) => {
-        callback(Err(e));
-        ();
-      }
-    | exn => ()
-  );
+let chmod = (~path, ~mode) => Lwt_unix.chmod(path, mode);
 
 let chmodSync = (~path, ~mode) => Unix.chmod(path, mode);
 
-let chown = (~path, ~uid, ~gid, ~callback) =>
-  Lwt.on_any(
-    Lwt_unix.chown(path, uid, gid),
-    (_) => {
-      callback(Ok);
-      ();
-    },
-    fun
-    | Unix.Unix_error(e, _, _) => {
-        callback(Err(e));
-        ();
-      }
-    | exn => ()
-  );
+let chown = (~path, ~uid, ~gid) => Lwt_unix.chown(path, uid, gid);
 
 let chownSync = (~path, ~uid, ~gid) => Unix.chown(path, uid, gid);
 
-let close = (~fd, ~callback) =>
-  Lwt.on_any(
-    Lwt_unix.close(fd),
-    (_) => {
-      callback(Ok);
-      ();
-    },
-    fun
-    | Unix.Unix_error(e, _, _) => {
-        callback(Err(e));
-        ();
-      }
-    | exn => ()
-  );
+let close = fd => Lwt_unix.close(fd);
 
-let closeSync = (~fd) => Unix.close(fd);
+let closeSync = fd => Unix.close(fd);
 
 let createReadStream = (~path, ~options) => ();
 
 let createWriteStream = (~path, ~options) => ();
 
-let fchmod = (~fd, ~mode, ~callback) =>
-  Lwt.on_any(
-    Lwt_unix.fchmod(fd, mode),
-    (_) => {
-      callback(Ok);
-      ();
-    },
-    fun
-    | Unix.Unix_error(e, _, _) => {
-        callback(Err(e));
-        ();
-      }
-    | exn => ()
-  );
+let fchmod = (~fd, ~mode) => Lwt_unix.fchmod(fd, mode);
 
 let fchmodSync = (~fd, ~mode) => Unix.fchmod(fd, mode);
 
-let fchown = (~fd, ~uid, ~gid, ~callback) =>
-  Lwt.on_any(
-    Lwt_unix.fchown(fd, uid, gid),
-    (_) => {
-      callback(Ok);
-      ();
-    },
-    fun
-    | Unix.Unix_error(e, _, _) => {
-        callback(Err(e));
-        ();
-      }
-    | exn => ()
-  );
+let fchown = (~fd, ~uid, ~gid) => Lwt_unix.fchown(fd, uid, gid);
 
 let fchownSync = (~fd, ~uid, ~gid) => Unix.fchown(fd, uid, gid);
 
-let fdatasync = (~fd, ~callback) =>
-  Lwt.on_any(
-    Lwt_unix.fdatasync(fd),
-    (_) => {
-      callback(Ok);
-      ();
-    },
-    fun
-    | Unix.Unix_error(e, _, _) => {
-        callback(Err(e));
-        ();
-      }
-    | exn => ()
-  );
+let fdatasync = fd => Lwt_unix.fdatasync(fd);
 
-let fdatasyncSync = (~fd) => ();
+let fdatasyncSync = fd => ();
 
-let fstat = (~fd, ~callback) =>
-  Lwt.on_any(
-    Lwt_unix.fstat(fd),
-    stats => {
-      callback(Ok, Some(stats));
-      ();
-    },
-    fun
-    | Unix.Unix_error(e, _, _) => {
-        callback(Err(e), None);
-        ();
-      }
-    | exn => ()
-  );
+let fstat = fd => Lwt_unix.fstat(fd);
 
-let fstatSync = (~fd) => Unix.fstat(fd);
+let fstatSync = fd => Unix.fstat(fd);
 
-let fsync = (~fd, ~callback) =>
-  Lwt.on_any(
-    Lwt_unix.fsync(fd),
-    (_) => {
-      callback(Ok);
-      ();
-    },
-    fun
-    | Unix.Unix_error(error_code, _, _) => {
-        callback(Err(error_code));
-        ();
-      }
-    | exn => ()
-  );
+let fsync = fd => Lwt_unix.fsync(fd);
 
-let fsyncSync = (~fd) => ();
+let fsyncSync = fd => ();
 
-let ftruncate = (~fd, ~len, ~callback) =>
-  Lwt.on_any(
-    Lwt_unix.ftruncate(fd, len),
-    (_) => {
-      callback(Ok);
-      ();
-    },
-    fun
-    | Unix.Unix_error(error_code, _, _) => {
-        callback(Err(error_code));
-        ();
-      }
-    | exn => ()
-  );
+let ftruncate = (~len=0, fd) => Lwt_unix.ftruncate(fd, len);
 
-let ftruncateSync = (~fd, ~len) => Unix.ftruncate(fd, len);
+let ftruncateSync = (~len=0, fd) => Unix.ftruncate(fd, len);
 
-let futimes = (~fd, ~atime, ~mtime, ~callback) => ();
+let futimes = (~fd, ~atime, ~mtime) => ();
 
 let futimesSync = (~fd, ~atime, ~mtime) => ();
 
-let lchmod = (~path, ~mode, ~callback) => ();
+let lchmod = (~path, ~mode) => ();
 
 let lchmodSync = (~path, ~mode) => ();
 
-let lchown = (~path, ~uid, ~gid, ~callback) => ();
+let lchown = (~path, ~uid, ~gid) => ();
 
 let lchownSync = (~path, ~uid, ~gid) => ();
 
-let link = (~existingPath, ~newPath, ~callback) =>
-  Lwt.on_any(
-    Lwt_unix.link(existingPath, newPath),
-    (_) => {
-      callback(Ok);
-      ();
-    },
-    fun
-    | Unix.Unix_error(error_code, _, _) => {
-        callback(Err(error_code));
-        ();
-      }
-    | exn => ()
-  );
+let link = (~existingPath, ~newPath) => Lwt_unix.link(existingPath, newPath);
 
 let linkSync = (~existingPath, ~newPath) => Unix.link(existingPath, newPath);
 
-let lstat = (~path, ~callback) =>
-  Lwt.on_any(
-    Lwt_unix.lstat(path),
-    stats => {
-      callback(Ok, Some(stats));
-      ();
-    },
-    fun
-    | Unix.Unix_error(e, _, _) => {
-        callback(Err(e), None);
-        ();
-      }
-    | exn => ()
-  );
+let lstat = path => Lwt_unix.lstat(path);
 
-let lstatSync = (~path) => Unix.lstat(path);
+let lstatSync = path => Unix.lstat(path);
 
-let mkdir = (~path, ~mode, ~callback) =>
-  Lwt.on_any(
-    Lwt_unix.mkdir(path, mode),
-    (_) => {
-      callback(Ok);
-      ();
-    },
-    fun
-    | Unix.Unix_error(e, _, _) => {
-        callback(Err(e));
-        ();
-      }
-    | exn => ()
-  );
+let mkdir = (~mode=511, path) => Lwt_unix.mkdir(path, mode);
 
-let mkdirSync = (~path, ~mode) => Unix.mkdir(path, mode);
+let mkdirSync = (~mode=511, path) => Unix.mkdir(path, mode);
 
-let mkdtemp = (~prefix, ~options, ~callback) => ();
+let mkdtemp = (~prefix, ~options) => ();
 
 let mkdtempSync = (~prefix, ~options) => ();
 
-let _open = (~path, ~flags, ~mode, ~callback) =>
-  Lwt.on_any(
-    Lwt_unix.openfile(path, flags, mode),
-    fd => {
-      callback(Ok, Some(fd));
-      ();
-    },
-    fun
-    | Unix.Unix_error(e, _, _) => {
-        callback(Err(e), None);
-        ();
-      }
-    | exn => ()
-  );
+let _open = (~flags, ~mode=438, path) => Lwt_unix.openfile(path, flags, mode);
 
-let openSync = (~path, ~flags, ~mode) => Unix.openfile(path, flags, mode);
+let openSync = (~flags, ~mode=438, path) => Unix.openfile(path, flags, mode);
 
-let read = (~fd, ~buffer, ~offset, ~length, ~callback) =>
-  Lwt.on_any(
-    Lwt_unix.read(fd, buffer, offset, length),
-    buff => {
-      callback(Ok, Some(buff));
-      ();
-    },
-    fun
-    | Unix.Unix_error(e, _, _) => {
-        callback(Err(e), None);
-        ();
-      }
-    | exn => ()
-  );
+let read = (~fd, ~buffer, ~offset, ~length) =>
+  Lwt_unix.read(fd, buffer, offset, length);
 
 let readSync = (~fd, ~buffer, ~offset, ~length) =>
   Unix.read(fd, buffer, offset, length);
 
-let readdir = (~path, ~callback) =>
-  Lwt.on_any(
-    Lwt_unix.readdir(path),
-    nextEntry => {
-      callback(Ok, Some(nextEntry));
-      ();
-    },
-    fun
-    | Unix.Unix_error(error_code, _, _) => {
-        callback(Err(error_code), None);
-        ();
-      }
-    | exn => ()
-  );
+let readdir = path => Lwt_unix.readdir(path);
 
-let readdirSync = (~path) => Unix.readdir(path);
+let readdirSync = path => Unix.readdir(path);
 
-let readFile = (~path, ~options, ~callback) => ();
+let readFile = (~path, ~options) => ();
 
 let readFileSync = (~path, ~options) => ();
 
-let readLink = (~path, ~callback) =>
-  Lwt.on_any(
-    Lwt_unix.readlink(path),
-    contents => {
-      callback(Ok, Some(contents));
-      ();
-    },
-    fun
-    | Unix.Unix_error(error_code, _, _) => {
-        callback(Err(error_code), None);
-        ();
-      }
-    | exn => ()
-  );
+let readLink = path => Lwt_unix.readlink(path);
 
-let readLinkSync = (~path) => Unix.readlink(path);
+let readLinkSync = path => Unix.readlink(path);
 
-let realpath = (~path, ~options, ~callback) => ();
+let realpath = (~path, ~options) => ();
 
 let realpathSync = (~path, ~options) => ();
 
-let rename = (~oldPath, ~newPath, ~callback) =>
-  Lwt.on_any(
-    Lwt_unix.rename(oldPath, newPath),
-    (_) => {
-      callback(Ok);
-      ();
-    },
-    fun
-    | Unix.Unix_error(error_code, _, _) => {
-        callback(Err(error_code));
-        ();
-      }
-    | exn => ()
-  );
+let rename = (~oldPath, ~newPath) => Lwt_unix.rename(oldPath, newPath);
 
 let renameSync = (~oldPath, ~newPath) => Unix.rename(oldPath, newPath);
 
-let rmdir = (~path, ~callback) =>
-  Lwt.on_any(
-    Lwt_unix.rmdir(path),
-    (_) => {
-      callback(Ok);
-      ();
-    },
-    fun
-    | Unix.Unix_error(error_code, _, _) => {
-        callback(Err(error_code));
-        ();
-      }
-    | exn => ()
-  );
+let rmdir = path => Lwt_unix.rmdir(path);
 
-let rmdirSync = (~path) => Unix.rmdir(path);
+let rmdirSync = path => Unix.rmdir(path);
 
-let stat = (~path, ~callback) =>
-  Lwt.on_any(
-    Lwt_unix.stat(path),
-    stats => {
-      callback(Ok, Some(stats));
-      ();
-    },
-    fun
-    | Unix.Unix_error(error_code, _, _) => {
-        callback(Err(error_code), None);
-        ();
-      }
-    | exn => ()
-  );
+let stat = path => Lwt_unix.stat(path);
 
-let statSync = (~path) => Unix.stat(path);
+let statSync = path => Unix.stat(path);
 
-let symlink = (~target, ~path, ~callback) =>
-  Lwt.on_any(
-    Lwt_unix.symlink(target, path),
-    (_) => {
-      callback(Ok);
-      ();
-    },
-    fun
-    | Unix.Unix_error(error_code, _, _) => {
-        callback(Err(error_code));
-        ();
-      }
-    | exn => ()
-  );
+let symlink = (~target, ~path) => Lwt_unix.symlink(target, path);
 
 let symlinkSync = (~target, ~path) => Unix.symlink(target, path);
 
-let truncate = (~path, ~len, ~callback) =>
-  Lwt.on_any(
-    Lwt_unix.truncate(path, len),
-    (_) => {
-      callback(Ok);
-      ();
-    },
-    fun
-    | Unix.Unix_error(error_code, _, _) => {
-        callback(Err(error_code));
-        ();
-      }
-    | exn => ()
-  );
+let truncate = (~path, ~len) => Lwt_unix.truncate(path, len);
 
 let truncateSync = (~path, ~len) => Unix.truncate(path, len);
 
-let unlink = (~path, ~callback) =>
-  Lwt.on_any(
-    Lwt_unix.unlink(path),
-    (_) => {
-      callback(Ok);
-      ();
-    },
-    fun
-    | Unix.Unix_error(error_code, _, _) => {
-        callback(Err(error_code));
-        ();
-      }
-    | exn => ()
-  );
+let unlink = path => Lwt_unix.unlink(path);
 
-let unlinkSync = (~path) => Unix.unlink(path);
+let unlinkSync = path => Unix.unlink(path);
 
 let unwatchFile = (~filename, ~listener) => ();
 
-let utimes = (~path, ~atime, ~mtime, ~callback) =>
-  Lwt.on_any(
-    Lwt_unix.utimes(path, atime, mtime),
-    (_) => {
-      callback(Ok);
-      ();
-    },
-    fun
-    | Unix.Unix_error(error_code, _, _) => {
-        callback(Err(error_code));
-        ();
-      }
-    | exn => ()
-  );
+let utimes = (~path, ~atime, ~mtime) => Lwt_unix.utimes(path, atime, mtime);
 
 let utimesSync = (~path, ~atime, ~mtime) => Unix.utimes(path, atime, mtime);
 
@@ -473,42 +156,18 @@ let watch = (~filename, ~options, ~listener) => ();
 
 let watchFile = (~filename, ~options, ~listener) => ();
 
-let write = (~fd, ~buffer, ~offset, ~length, ~callback) =>
-  Lwt.on_any(
-    Lwt_unix.write(fd, buffer, offset, length),
-    buff => {
-      callback(Ok, Some(buff));
-      ();
-    },
-    fun
-    | Unix.Unix_error(error_code, _, _) => {
-        callback(Err(error_code), None);
-        ();
-      }
-    | exn => ()
-  );
+let write = (~fd, ~buffer, ~offset, ~length) =>
+  Lwt_unix.write(fd, buffer, offset, length);
 
 let writeSync = (~fd, ~buffer, ~offset, ~length) =>
   Unix.write(fd, buffer, offset, length);
 
-let writeString = (~fd, ~string, ~offset, ~length, ~callback) =>
-  Lwt.on_any(
-    Lwt_unix.write_string(fd, string, offset, length),
-    str => {
-      callback(Ok, Some(str));
-      ();
-    },
-    fun
-    | Unix.Unix_error(error_code, _, _) => {
-        callback(Err(error_code), None);
-        ();
-      }
-    | exn => ()
-  );
+let writeString = (~fd, ~string, ~offset, ~length) =>
+  Lwt_unix.write_string(fd, string, offset, length);
 
 let writeStringSync = (~fd, ~string, ~offset, ~length) =>
   Unix.write_substring(fd, string, offset, length);
 
-let writeFile = (~file, ~data, ~options, ~callback) => ();
+let writeFile = (~file, ~data, ~options) => ();
 
 let writeFileSync = (~file, ~data, ~options) => ();
