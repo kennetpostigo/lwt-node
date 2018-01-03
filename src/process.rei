@@ -202,7 +202,7 @@ let memoryUsage: unit;
     Repo URL: https://github.com/kennetpostigo/reason-node
   |}
 ]
-let nextTick: (~callback: 'a, ~args: 'b) => unit;
+let nextTick: 'a => unit;
 
 let pid: int;
 
@@ -240,7 +240,7 @@ let release: unit;
     Repo URL: https://github.com/kennetpostigo/reason-node
   |}
 ]
-let send: (~message: 'a, ~sendHandle: 'b, ~options: 'c, ~callback: 'd) => unit;
+let send: (~message: 'a, ~sendHandle: 'b, ~options: 'c) => unit;
 
 [@ocaml.deprecated
   {|

@@ -52,7 +52,7 @@ let mainModule = ();
 
 let memoryUsage = ();
 
-let nextTick = (~callback, ~args) => ();
+let nextTick = args => ();
 
 let pid = Unix.getpid();
 
@@ -60,7 +60,7 @@ let platform = ();
 
 let release = ();
 
-let send = (~message, ~sendHandle, ~options, ~callback) => ();
+let send = (~message, ~sendHandle, ~options) => ();
 
 let setegid = id => ();
 
