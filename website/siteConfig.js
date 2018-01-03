@@ -23,7 +23,7 @@ const siteConfig = {
     { page: "help", label: "Help" },
     { blog: true, label: "Blog" },
     { languages: true },
-    // { search: true },
+    { search: true },
     { href: "https://github.com/kennetpostigo/reason-node", label: "GitHub" }
   ],
   users,
@@ -42,11 +42,11 @@ const siteConfig = {
   // projectName: 'test-site', // or set an env variable PROJECT_NAME
   scripts: ["https://buttons.github.io/buttons.js"],
   // You may provide arbitrary config keys to be used as needed by your template.
-  repoUrl: "https://github.com/kennetpostigo/reason-node"
-  // algolia: {
-  //   apiKey: "a7cfb79b829d08c14bd06ae075f9baac", // This is temporary, sorry for copy and paste
-  //   indexName: "esy" // This is temporary, sorry for copy and paste
-  // }
+  repoUrl: "https://github.com/kennetpostigo/reason-node",
+  algolia: {
+    apiKey: "e06120193f55f479c4ade444b75079a4", // This is temporary, sorry for copy and paste
+    indexName: "reason-node" // This is temporary, sorry for copy and paste
+  }
 };
 
 module.exports = resaurus(siteConfig);
