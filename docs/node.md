@@ -19,22 +19,11 @@ let run: unit => unit;
 ```reason
 open ReasonNode;
 
-Node.run(
-  {
-    Fs.mkdir(
-      "myDir",
-      511,
-      Fs.(
-        fun
-        | Ok => {
-            let x = 3 * 9;
-            prerr_endline("\n\n" ++ string_of_int(x) ++ "\n\n");
-          }
-        | Err(e) => prerr_endline("\n\n====ERR====\n\n")
-      )
-    );
-  }
-);
+Node.run({
+  let%lwt myDir = Fs.mkdir("myDir");
+  let%lwt myDir2 = Fs.mkdir("myDir2");
+  Node.resolved();
+});
 ```
 
 ---
@@ -52,24 +41,5 @@ let stop: unit => unit;
 #### Usage
 
 ```reason
-open ReasonNode;
 
-Node.run(
-  {
-    Fs.mkdir(
-      "myDir",
-      511,
-      Fs.(
-        fun
-        | Ok => {
-            let x = 3 * 9;
-            prerr_endline("\n\n" ++ string_of_int(x) ++ "\n\n");
-          }
-        | Err(e) => prerr_endline("\n\n====ERR====\n\n")
-      )
-    );
-
-    Node.stop();
-  }
-);
 ```
