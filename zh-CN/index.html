@@ -14,17 +14,13 @@
 </span></div></h2><div><span><p>The same Node.js API that you know and love, get started painlessly!</p>
 </span></div></div></div><div class="blockElement alignCenter threeByGridBlock"><div class="blockContent"><h2><div><span><p>Fun Types</p>
 </span></div></h2><div><span><p>Reason provides a nice and fun type system, making writing and refactoring your code easy and fun!</p>
-</span></div></div></div></div></div></div></div><div class="quickStart paddingBottom"><div><h2>Quick Start</h2><div><span><pre><code class="hljs css reason">open ReasonNode
+</span></div></div></div></div></div></div></div><div class="quickStart paddingBottom"><div><h2>Quick Start</h2><div><span><pre><code class="hljs css reason">open ReasonNode;
 
-Node.run(
-  Fs.mkdir(
-    <span class="hljs-string">"myDir"</span>, Fs.(
-      <span class="hljs-keyword">fun</span>
-      | <span class="hljs-type">Ok</span> =&gt; prerr_endline(<span class="hljs-string">"Dir Created!"</span>))
-      | <span class="hljs-type">Err</span>(e) =&gt; prerr_endline(<span class="hljs-string">"Something went wrong"</span>)
-    )
-  )
-);
+<span class="hljs-keyword">Node</span>.<span class="hljs-title">run</span>({
+  let%lwt myDir = Fs.mkdir(<span class="hljs-string">"myDir"</span>);
+  let%lwt myDir2 = Fs.mkdir(<span class="hljs-string">"myDir2"</span>);
+  <span class="hljs-keyword">Node</span>.<span class="hljs-title">resolved</span>();
+});
 </code></pre>
 </span></div></div></div></div></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
               var search = docsearch({
