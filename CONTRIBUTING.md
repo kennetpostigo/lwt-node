@@ -13,7 +13,7 @@ Hey! If you're here you probably want to help out! Thank you so much! Contributi
 
 **To contribute code, there are a few options:**
 
-* Implement a function from future.md that hasn't been implemented
+* Implement a function from [Future.md](https://github.com/kennetpostigo/reason-node/blob/master/Future.md) that hasn't been implemented
 * Claim an issue that fixes a bug
 * Add tests for existing modules
 
@@ -34,6 +34,10 @@ If you'd like to try your hand at adding other modules from node.js please open 
 * Include tests as much as possible for the new module you are adding.
 * Include corresponding interface file
 * Include Documentation for the new module
+
+## Project Overview
+
+`reason-node` for the most part is a wrapper around the stdlib for the sync portions and lwt for the async portions. However there are some missing portions that aren't accounted for (path, http, etc.) in the stdlib or lwt. In those cases they are implemented seperately.
 
 ### Thank you
 
