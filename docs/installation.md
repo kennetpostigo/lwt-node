@@ -17,7 +17,7 @@ In order to use `reason-node` you must have reason installed on your machine.
 
 If you don't have reason installed on your machine you have 2 options:
 
-**1.** Sandboxed and project based installations that share build artifacts and builds, for lightning fast installations and incremental builds. Install [esy](http://esy.sh/docs/en/getting-started.html) via yarn/npm:
+**1.** Sandboxed and project based installations that share build artifacts and builds, for lightning fast installations and incremental builds. Install [esy](https://github.com/esy/esy#install) via yarn/npm:
 
 ```bash
 yarn global add esy
