@@ -33,7 +33,7 @@ It's simple and fast to hit the ground running:
 
 ### Final Remarks
 
-I hope people with try it out, add a comment [here]() if you try it out and dislike a specific part of it or just completely hate it. If you're reading this and aren't familiar with reason, you should really check it out!
+I hope people with try it out, add a comment [here](https://github.com/kennetpostigo/reason-node/issues/new) if you try it out and dislike a specific part of it or just completely hate it. If you're reading this and aren't familiar with reason, you should really check it out!
 
 * [Reason](https://reasonml.github.io/)
 * Oh and theres react [ReasonReact](https://reasonml.github.io/reason-react)
