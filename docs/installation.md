@@ -4,11 +4,10 @@ title: Installation
 sidebar_label: Installation
 ---
 
-Install the library into your project with yarn/node:
+Install the library into your project with esy:
 
 ```bash
-yarn add reason-node
-npm install --save reason-node
+esy add reason-node
 ```
 
 In order to use `reason-node` you must have reason installed on your machine.
