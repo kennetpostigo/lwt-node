@@ -6,6 +6,10 @@ let catch = Lwt.catch;
 
 let resolved = Lwt.return;
 
+let fail = Lwt.fail;
+
+let cancel = Lwt.cancel;
+
 let (until_done, signal_done) = Lwt.wait();
 
 let run = app => Lwt_main.run(until_done);
