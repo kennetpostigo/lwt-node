@@ -43,3 +43,95 @@ let stop: unit => unit;
 ```reason
 
 ```
+
+---
+
+### `Node.andThen`
+
+Handle promise value
+
+#### Type definition
+
+```reason
+let andThen: (t('a), 'a => t('b)) => t('b);
+```
+
+#### Usage
+
+```reason
+
+```
+
+---
+
+### `Node.catch`
+
+Catch a promise that throws an exception
+
+#### Type definition
+
+```reason
+let catch: (unit => t('a), exn => t('a)) => t('a);
+```
+
+#### Usage
+
+```reason
+
+```
+
+---
+
+### `Node.resolved`
+
+Creates a resolved promise
+
+#### Type definition
+
+```reason
+let resolved: 'a => t('a);
+```
+
+#### Usage
+
+```reason
+
+```
+
+---
+
+### `Node.fail`
+
+Creates a rejected promise
+
+#### Type definition
+
+```reason
+let fail: exn => t('a);
+```
+
+#### Usage
+
+```reason
+
+```
+
+---
+
+### `Node.cancel`
+
+Canel a promise
+
+#### Type definition
+
+```reason
+let cancel: t('a) => unit;
+```
+
+#### Usage
+
+```reason
+
+```
+
+---
