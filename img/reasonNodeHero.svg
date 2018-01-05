@@ -6,17 +6,17 @@
 <g id="text and rect">
 <g id="Logo">
 <g id="Vector">
-<use xlink:href="#path0_stroke" transform="translate(-288 -311)" fill="#FF7070"/>
+<use xlink:href="#path0_stroke" transform="translate(-288 -311)" fill="#DB4D3F"/>
 </g>
 <g id="RE">
-<use xlink:href="#path1_fill" transform="translate(-264.325 -266.079)" fill="#FF7070"/>
+<use xlink:href="#path1_fill" transform="translate(-264.1 -266.079)" fill="#DB4D3F"/>
 </g>
 </g>
 <g id="Rectangle 2">
-<use xlink:href="#path2_fill" transform="translate(-38 -289)" fill="#C1C6D4"/>
+<use xlink:href="#path2_fill" transform="translate(-38 -289)" fill="#B7BCC9"/>
 </g>
 <g id="ReasonNode">
-<use xlink:href="#path3_fill" transform="translate(52 -260)" fill="#C1C6D4"/>
+<use xlink:href="#path3_fill" transform="translate(52 -260)" fill="#B7BCC9"/>
 </g>
 </g>
 </g>
