@@ -35,6 +35,12 @@ See [Contributing.md](https://github.com/kennetpostigo/reason-node/blob/master/C
 
 Missing or yet to be implemented API's are documented with compile-time warnings, are noted in the documentation and are listed in [Future.md](https://github.com/kennetpostigo/reason-node/blob/master/Future.md). If you'd like to help contribute, please open a pull-request, no code needed! We'll try to help steer you in the right direction!
 
+**building**
+
+1. Clone the project
+2. Run `esy install`
+3. Run `esy build`
+
 ## License
 
 MIT
