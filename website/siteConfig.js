@@ -31,11 +31,6 @@ const siteConfig = {
   headerIcon: "img/reasonNode.svg",
   footerIcon: "img/reasonNode.svg",
   favicon: "img/favicon.png",
-  /* colors for website */
-  colors: {
-    primaryColor: "#FF7070",
-    secondaryColor: "#ED5C5C"
-  },
   // This copyright info is used in /core/Footer.js and blog rss/atom feeds.
   copyright: "Copyright © " + new Date().getFullYear() + "Reason Training",
   // organizationName: 'deltice', // or set an env variable ORGANIZATION_NAME

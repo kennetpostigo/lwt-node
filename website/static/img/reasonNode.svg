@@ -1,13 +1,13 @@
 <svg width="179" height="207" viewBox="0 0 179 207" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <title>text and rect</title>
 <desc>Created using Figma</desc>
-<g id="Canvas" transform="translate(1382 962)">
+<g id="Canvas" transform="translate(-1506 737)">
 <g id="text and rect">
 <g id="Vector">
-<use xlink:href="#path0_stroke" transform="translate(-1375 -954)" fill="#FFFFFF"/>
+<use xlink:href="#path0_stroke" transform="translate(1513 -729)" fill="#FFFFFF"/>
 </g>
 <g id="RE">
-<use xlink:href="#path1_fill" transform="translate(-1352 -910)" fill="#FFFFFF"/>
+<use xlink:href="#path1_fill" transform="translate(1536 -685)" fill="#FFFFFF"/>
 </g>
 </g>
 </g>
