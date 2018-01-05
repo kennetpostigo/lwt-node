@@ -15,17 +15,13 @@
             nav.classList.toggle('docsSliderActive');
           };
         </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/kennetpostigo/reason-node/tree/master/docs/introExample.md" target="_blank">Edit</a><h1>Intro Example</h1></header><article><div><span><p>Here is a small overview of the <code>reason-node</code> API before we start. No worries if some of these are unfamiliar; the docs cover all of them.</p>
-<pre><code class="hljs css reason">open ReasonNode
+<pre><code class="hljs css reason">open ReasonNode;
 
-Node.run(
-  Fs.mkdir(
-    <span class="hljs-string">"myDir"</span>, Fs.(
-      <span class="hljs-keyword">fun</span>
-      | <span class="hljs-type">Ok</span> =&gt; prerr_endline(<span class="hljs-string">"Dir Created!"</span>))
-      | <span class="hljs-type">Err</span>(e) =&gt; prerr_endline(<span class="hljs-string">"Something went wrong"</span>)
-    )
-  )
-);
+<span class="hljs-keyword">Node</span>.<span class="hljs-title">run</span>({
+  let%lwt myDir = Fs.mkdir(<span class="hljs-string">"myDir"</span>);
+  let%lwt myDir2 = Fs.mkdir(<span class="hljs-string">"myDir2"</span>);
+  <span class="hljs-keyword">Node</span>.<span class="hljs-title">resolved</span>();
+});
 </code></pre>
 </span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="installation.html">← Installation</a><a class="docs-next button" href="fs.html">Fs →</a></div></div></div></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
               var search = docsearch({
