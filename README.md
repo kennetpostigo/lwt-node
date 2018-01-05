@@ -17,7 +17,7 @@ reason-node, a [reason](https://github.com/facebook/reason) implemention of the 
 
 ## Install
 
-Install the library into your project with yarn/node:
+Install the library into your project with esy:
 
 ```bash
 esy add reason-node
