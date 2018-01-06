@@ -88,7 +88,9 @@ let resolve = paths => {
         switch path {
         | ""
         | "./"
-        | ".\\" => ()
+        | ".\\" =>
+          keepJoining := false;
+          rePath := Sys.getcwd();
         | "/"
         | "\\" =>
           keepJoining := false;
@@ -102,7 +104,7 @@ let resolve = paths => {
             keepJoining := false;
           | _ =>
             rePath :=
-              String.length(rePath^) == 0 ? path : path ++ sep ++ rePath^
+              String.length(rePath^) == 0 ? path : path ++ sep ++ rePath^;
           }
         }
       );
@@ -111,7 +113,31 @@ let resolve = paths => {
   normalize(rePath^);
 };
 
-let relative = (~from, ~_to) => ();
+let relative = (~from, ~_to) => {
+  let pathFrom = String.length(from) > 0 ? normalize(from) : "";
+  let pathTo = String.length(_to) > 0 ? normalize(_to) : "";
+  let dirFrom = Filename.is_relative(pathFrom) ? resolve([pathFrom]) : pathFrom;
+  let dirTo = Filename.is_relative(pathTo) ? resolve([pathTo]) : pathTo;
+  if (dirFrom == dirTo) {
+    "";
+  } else {
+    let (fromDiff, toDiff) = RenodeUtils.removeCommonPath(dirFrom, dirTo);
+    RenodeUtils.getRelativePath(~path1=fromDiff, ~path2=toDiff, ~isFilePath=false);
+  }
+};
+
+let relativeFilePath = (~from, ~_to) => {
+  let pathFrom = String.length(from) > 0 ? normalize(from) : "";
+  let pathTo = String.length(_to) > 0 ? normalize(_to) : "";
+  let dirFrom = Filename.is_relative(pathFrom) ? resolve([pathFrom]) : pathFrom;
+  let dirTo = Filename.is_relative(pathTo) ? resolve([pathTo]) : pathTo;
+  if (dirFrom == dirTo) {
+    "";
+  } else {
+    let (fromDiff, toDiff) = RenodeUtils.removeCommonPath(dirFrom, dirTo);
+    RenodeUtils.getRelativePath(~path1=fromDiff, ~path2=toDiff, ~isFilePath=true);
+  }
+};
 
 let parse = path => {
   let root = path.[0] == charSep ? Some(sep) : None;

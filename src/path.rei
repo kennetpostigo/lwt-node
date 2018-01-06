@@ -26,16 +26,8 @@ let normalize: string => string;
 
 let parse: string => pathObject;
 
-[@ocaml.deprecated
-  {|
-    Path.relative has yet to be implemented.
-    Please open a pull request if you are interested in contributing,
-    no code is needed, we will help answer questions and push you
-    in the right direction.
+let relative: (~from: string, ~_to: string) => string;
 
-    Repo URL: https://github.com/kennetpostigo/lwt-node
-  |}
-]
-let relative: (~from: string, ~_to: string) => unit;
+let relativeFilePath: (~from: string, ~_to: string) => string;
 
 let resolve: list(string) => string;

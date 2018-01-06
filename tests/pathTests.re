@@ -146,6 +146,61 @@ let isNotAbsolute = () =>
     Path.isAbsolute("./foo/bar/index.html")
   );
 
+let relativeWithSamePath = () =>
+  Alcotest.(check(string))(
+    "Path.relative",
+    "",
+    Path.relative("bar/index.html", "bar/index.html")
+  );
+
+let relativeWithUNNormalizedPath = () =>
+  Alcotest.(check(string))(
+    "Path.relative",
+    "",
+    Path.relative("bar//index.html", "./bar/index.html")
+  );
+let relativeWithDifferentPath1 = () =>
+Alcotest.(check(string))(
+  "Path.relative",
+  "../../index.html",
+  Path.relative("bar/foo", "index.html")
+);
+
+let relativeFilePath = () =>
+Alcotest.(check(string))(
+  "Path.relative",
+  "../../index.html",
+  Path.relativeFilePath("bar/foo/index.html", "index.html")
+);
+
+let relativeWithDifferentPath2 = () =>
+Alcotest.(check(string))(
+  "Path.relative",
+  "../../index.html",
+  Path.relative("foo/bar/baz/foo", "foo/bar/index.html")
+);
+
+let relativeWithAbsolutePath = () =>
+Alcotest.(check(string))(
+  "Path.relative",
+  "../../aaa/index.html",
+  Path.relative("/foo/bar/baz/bbb", "/foo/bar/aaa/index.html")
+);
+
+let relativeWithEmptyPath = () =>
+Alcotest.(check(string))(
+  "Path.relative",
+  "index.html",
+  Path.relative("", "index.html")
+);
+
+let relativeWithBothPathEmpty = () =>
+Alcotest.(check(string))(
+  "Path.relative",
+  "",
+  Path.relative("", "")
+);
+
 let join = () =>
   Alcotest.(check(string))(
     "Path.join",
@@ -195,7 +250,14 @@ let resolvePath2 = () =>
     Path.resolve(["wwwroot", "static_files/png/", "../gif/image.gif"])
   );
 
-let parsePath0 = () =>
+  let resolvePath3 = () =>
+  Alcotest.(check(string))(
+    "Path.resolve 3",
+    Sys.getcwd(),
+    Path.resolve([""])
+  );
+
+  let parsePath0 = () =>
   Alcotest.(check(string))(
     "Path.parse 0",
     "{ root: Some(\"/\"), dir: Some(\"/home/user\"), base: Some(\"dir\"), ext: None, name: Some(\"dir\") }",
@@ -256,6 +318,12 @@ let pathTestSet = [
   ("Path.format with name and ext", `Slow, formatWithRootNameExt),
   ("Path.isAbsolute with abolute path", `Slow, isAbsolute),
   ("Path.isAbsolute with relative path", `Slow, isNotAbsolute),
+  ("Path.relative with same paths", `Slow, relativeWithSamePath),
+  ("Path.relative with different paths", `Slow, relativeWithDifferentPath1),
+  ("Path.relative with different long paths", `Slow, relativeWithDifferentPath2),
+  ("Path.relative with empty paths", `Slow, relativeWithEmptyPath),
+  ("Path.relative with both paths empty", `Slow, relativeWithBothPathEmpty),
+  ("Path.relativeFilePath", `Slow, relativeFilePath),
   ("Path.join", `Slow, join),
   ("Path.join up a directory", `Slow, joinUpADirectory),
   ("Path.join unormalized string", `Slow, joinUnormalizedString),

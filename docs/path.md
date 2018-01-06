@@ -243,26 +243,42 @@ let parseMyPath = Path.parse("/home/user/dir/file.name/")
 
 ### `Path.relative(from, to)`
 
-returns the relative path `from` to `to`. If `from` and `to` each resolve to the same path after calling `resolve` on each, a zero-length string is returned. If a zero-length string is passed as from or to, the current working directory will be used instead of the zero-length strings.
+returns the relative path `from` to `to`. If `from` and `to` each resolve to the same path after calling `resolve` on each, a zero-length string is returned. If a zero-length string is passed as from or to, the current working directory will be used instead of the zero-length strings. `From` here is expected to be path of a directory.
 
 #### Type Definition
 
 ```reason
-let relative: (~from: string, ~_to: string) => unit;
+let relative: (~from: string, ~_to: string) => string;
 ```
 
 #### Usage
 
-**\*Path.relative needs to be implemented\***
+```reason
+let relativePath = Path.relative("/home/user/dir", "user/foo/file.name")
+/*
+ ../file.name
+*/
+```
 
-Please open a pull request if you are interested in contributing,
-no code is needed, we will help answer questions and push you
-in the right direction.
+---
 
-Repo URL: https://github.com/kennetpostigo/lwt-node
+### `Path.relativeFilePath(from, to)`
+
+returns the relative path `from` to `to`. If `from` and `to` each resolve to the same path after calling `resolve` on each, a zero-length string is returned. If a zero-length string is passed as from or to, the current working directory will be used instead of the zero-length strings. `From` here is expected to be path of a file.
+
+#### Type Definition
 
 ```reason
+let relativeFilePath: (~from: string, ~_to: string) => string;
+```
 
+#### Usage
+
+```reason
+let relativePath = Path.relative("/home/user/dir/file.name", "user/foo/file.name")
+/*
+ ../file.name
+*/
 ```
 
 ---
