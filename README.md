@@ -17,7 +17,7 @@ reason-node, a [reason](https://github.com/facebook/reason) implemention of the 
 
 ## Install
 
-Firt you need to install [esy](https://github.com/esy/), Sandboxed and project based installations that share build artifacts and builds, for lightning fast installations and incremental builds:
+First you need to install [esy](https://github.com/esy/), Sandboxed and project based installations that share build artifacts and builds, for lightning fast installations and incremental builds:
 
 ```bash
 yarn global add esy
