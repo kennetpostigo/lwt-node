@@ -6,7 +6,7 @@ node_js:
   - "8"
   - "6"
 install:
-  - travis_retry npm install -g esy@latest
+  - travis_retry npm install -g esy@next
 script:
   - esy install
   - esy build
