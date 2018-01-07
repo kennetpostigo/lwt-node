@@ -39,6 +39,33 @@ If you'd like to try your hand at adding other modules from node.js please open 
 
 `reason-node` for the most part is a wrapper around the stdlib for the sync portions and lwt for the async portions. However there are some missing portions that aren't accounted for (path, http, etc.) in the stdlib or lwt. In those cases they are implemented seperately.
 
+## Building and testing from source
+
+**Install esy**
+
+```
+yarn global add esy@latest
+```
+
+**Install and build reason-node**
+Within the reason-node directory then run:
+
+```
+esy install
+
+esy build
+```
+
+**Run tests**
+
+```
+esy make test
+```
+
+**Running commands**
+If you want to run commands that work directly on the project, you must always prefex them with
+`esy x` in order to run the command in the sandboxed environment.
+
 ### Thank you
 
 If you've gotten here and you still want to contribute, thank you so much! Giving your time to help a project is no small sacrifice and we are thankful for all the time you put forth in making this project better.

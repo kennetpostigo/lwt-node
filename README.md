@@ -53,6 +53,16 @@ Missing or yet to be implemented API's are documented with compile-time warnings
 2. Run `esy install`
 3. Run `esy build`
 
+**testing**
+
+```
+esy make test
+```
+
+**Running commands**
+If you want to run commands that work directly on the project, you must always prefex them with
+`esy x` in order to run the command in the sandboxed environment.
+
 ## License
 
 MIT
