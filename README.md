@@ -10,8 +10,10 @@
   <a href="http://opensource.org/licenses/MIT">
     <img src="https://img.shields.io/npm/l/reason-node.svg?style=flat-square" />
   </a>
+  <a href="https://travis-ci.org/kennetpostigo/reason-node">
+    <img src="https://travis-ci.org/kennetpostigo/reason-node.svg?branch=master"/>
+  </a>
 </p>
-<!-- [![Build Status](https://travis-ci.org/kennetpostigo/reason-node.svg?branch=master)](https://travis-ci.org/kennetpostigo/reason-node) -->
 
 reason-node, a [reason](https://github.com/facebook/reason) implemention of the [node.js](https://github.com/nodejs/node) API.
 
