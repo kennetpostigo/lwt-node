@@ -4,14 +4,14 @@
   <a href="http://npm.im/reason-node">
     <img src="https://img.shields.io/npm/v/reason-node.svg?style=flat-square"/>
   </a>
+    <a href="https://travis-ci.org/kennetpostigo/reason-node">
+    <img src="https://travis-ci.org/kennetpostigo/reason-node.svg?branch=master"/>
+  </a>
   <a href="http://npm-stat.com/charts.html?package=reason-node">
     <img src="https://img.shields.io/npm/dm/reason-node.svg?style=flat-square"/>
   </a>
   <a href="http://opensource.org/licenses/MIT">
     <img src="https://img.shields.io/npm/l/reason-node.svg?style=flat-square" />
-  </a>
-  <a href="https://travis-ci.org/kennetpostigo/reason-node">
-    <img src="https://travis-ci.org/kennetpostigo/reason-node.svg?branch=master"/>
   </a>
 </p>
 
