@@ -14,7 +14,7 @@ const siteConfig = {
   tagline: "A Node.js-like API for ReasonML",
   url: "https://kennetpostigo.github.io/lwt-node" /* your website url */,
   editUrl: "https://github.com/kennetpostigo/lwt-node/tree/master/docs/",
-  translationRecruitingLink: "https://crowdin.com/project/lwt-node",
+  translationRecruitingLink: "https://crowdin.com/project/reason-node",
   baseUrl: "/lwt-node/" /* base url for your project */,
   organizationName: "kennetpostigo",
   projectName: "lwt-node",
