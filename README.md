@@ -65,6 +65,13 @@ esy make test
 If you want to run commands that work directly on the project, you must always prefex them with
 `esy x` in order to run the command in the sandboxed environment.
 
+## Attribution
+
+reason-node would not be possible without all the hard work from the maintainers
+and contributors of of lwt. reason-node is powered by lwt and the ocaml standard lib.
+Lwt provides a battle tested promise implementation and async operators. If you love reason-node
+I recommend showing love to the [lwt project](https://github.com/ocsigen/lwt).
+
 ## License
 
 MIT

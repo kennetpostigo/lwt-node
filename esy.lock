@@ -253,8 +253,8 @@
 
 "@opam/menhir@ >= 20170418.0.0  <= 20171013.0.0":
   version "20171013.0.0"
-  uid "69db2edf33e616a0fbf62aaa2b5bf518"
-  resolved "@opam/menhir@20171013.0.0-69db2edf33e616a0fbf62aaa2b5bf518.tgz"
+  uid "358990f51123ce9d3629e66b9ead67ee"
+  resolved "@opam/menhir@20171013.0.0-358990f51123ce9d3629e66b9ead67ee.tgz"
   dependencies:
     "@esy-ocaml/esy-installer" "^0.0.0"
     "@esy-ocaml/substs" "^0.0.1"
@@ -310,7 +310,7 @@
   peerDependencies:
     ocaml " >= 4.3.0"
 
-"@opam/ocamlfind@", "@opam/ocamlfind@ >= 1.5.0", "@opam/ocamlfind@ >= 1.5.2", "@opam/ocamlfind@ >= 1.5.3", "@opam/ocamlfind@ >= 1.6.1", "@opam/ocamlfind@ >= 1.7.2", "@opam/ocamlfind@ >= 1.7.3--1", "@opam/ocamlfind@*":
+"@opam/ocamlfind@ >= 1.5.0", "@opam/ocamlfind@ >= 1.5.2", "@opam/ocamlfind@ >= 1.5.3", "@opam/ocamlfind@ >= 1.6.1", "@opam/ocamlfind@ >= 1.7.2", "@opam/ocamlfind@ >= 1.7.3--1", "@opam/ocamlfind@*":
   version "1.7.3--1"
   uid "2e5446e160cfd1aae7944b2f7add39b7"
   resolved "@opam/ocamlfind@1.7.3--1-2e5446e160cfd1aae7944b2f7add39b7.tgz"
