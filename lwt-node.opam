@@ -1,15 +1,15 @@
 opam-version: "1.2"
-name: "reason-node"
+name: "lwt-node"
 version: "0.0.1"
 maintainer: "Kennet Postigo <kennetfpostigo@gmail.com>"
 authors: [
   "Kennet Postigo <kennetfpostigo@gmail.com>"
 ]
 license: "MIT"
-homepage: "https://github.com/kennetpostigo/reason-node"
-doc: "https://kennetpostigo.github.io/reason-node/"
-bug-reports: "https://github.com/kennetpostigo/reason-node/issues"
-dev-repo: "git://github.com/kennetpostigo/reason-node.git"
+homepage: "https://github.com/kennetpostigo/lwt-node"
+doc: "https://kennetpostigo.github.io/lwt-node/"
+bug-reports: "https://github.com/kennetpostigo/lwt-node/issues"
+dev-repo: "git://github.com/kennetpostigo/lwt-node.git"
 tags: [ "reason" "node" ]
 build: [
   ["jbuilder" "build" "-p" name "-j" jobs]

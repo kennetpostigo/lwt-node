@@ -10,21 +10,24 @@ const users = [
 ];
 
 const siteConfig = {
-  title: "Reason Node" /* title for your website */,
+  title: "lwt-node" /* title for your website */,
   tagline: "A Node.js-like API for ReasonML",
-  url: "https://kennetpostigo.github.io/reason-node" /* your website url */,
-  editUrl: "https://github.com/kennetpostigo/reason-node/tree/master/docs/",
-  translationRecruitingLink: "https://crowdin.com/project/reason-node",
-  baseUrl: "/reason-node/" /* base url for your project */,
+  url: "https://kennetpostigo.github.io/lwt-node" /* your website url */,
+  editUrl: "https://github.com/kennetpostigo/lwt-node/tree/master/docs/",
+  translationRecruitingLink: "https://crowdin.com/project/lwt-node",
+  baseUrl: "/lwt-node/" /* base url for your project */,
   organizationName: "kennetpostigo",
-  projectName: "reason-node",
+  projectName: "lwt-node",
   headerLinks: [
     { doc: "whatWhy", label: "Docs" },
     { page: "help", label: "Help" },
     { blog: true, label: "Blog" },
     { languages: true },
     { search: true },
-    { href: "https://github.com/kennetpostigo/reason-node", label: "GitHub" }
+    {
+      href: "https://github.com/kennetpostigo/lwt-node",
+      label: "GitHub"
+    }
   ],
   users,
   /* path to images for header/footer */
@@ -37,7 +40,7 @@ const siteConfig = {
   // projectName: 'test-site', // or set an env variable PROJECT_NAME
   scripts: ["https://buttons.github.io/buttons.js"],
   // You may provide arbitrary config keys to be used as needed by your template.
-  repoUrl: "https://github.com/kennetpostigo/reason-node",
+  repoUrl: "https://github.com/kennetpostigo/lwt-node",
   algolia: {
     apiKey: "e06120193f55f479c4ade444b75079a4", // This is temporary, sorry for copy and paste
     indexName: "reason-node" // This is temporary, sorry for copy and paste

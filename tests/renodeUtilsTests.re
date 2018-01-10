@@ -1,4 +1,4 @@
-open ReasonNode;
+open LwtNode;
 
 let resolveRelativePathNotRelative0 = () =>
   Alcotest.(check(string))(
@@ -246,27 +246,87 @@ let handleDuplicateSlash4 = () =>
   ); /* ===========   TESTS BEING RAN  =========== */
 
 let utilsTestSet = [
-  ("RenodeUtils.resolveRelativePath not relative0", `Slow, resolveRelativePathNotRelative0),
-  ("RenodeUtils.resolveRelativePath not relative1", `Slow, resolveRelativePathNotRelative1),
-  ("RenodeUtils.resolveRelativePath with relative1", `Slow, resolveRelativePathRelative1),
-  ("RenodeUtils.resolveRelativePath with relative2", `Slow, resolveRelativePathRelative2),
-  ("RenodeUtils.resolveRelativePath with relative3", `Slow, resolveRelativePathRelative3),
-  ("RenodeUtils.resolveRelativePath with relative4", `Slow, resolveRelativePathRelative4),
-  ("RenodeUtils.resolveRelativePath with relative5", `Slow, resolveRelativePathRelative5),
-  ("RenodeUtils.resolveRelativePath with relative6", `Slow, resolveRelativePathRelative6),
-  ("RenodeUtils.resolveRelativePath with relative7", `Slow, resolveRelativePathRelative7),
-  ("RenodeUtils.resolveRelativePath with relative8", `Slow, resolveRelativePathRelative8),
-  ("RenodeUtils.resolveRelativePath with relative9", `Slow, resolveRelativePathRelative9),
-  ("RenodeUtils.resolveRelativePath with relative10", `Slow, resolveRelativePathRelative10),
+  (
+    "RenodeUtils.resolveRelativePath not relative0",
+    `Slow,
+    resolveRelativePathNotRelative0
+  ),
+  (
+    "RenodeUtils.resolveRelativePath not relative1",
+    `Slow,
+    resolveRelativePathNotRelative1
+  ),
+  (
+    "RenodeUtils.resolveRelativePath with relative1",
+    `Slow,
+    resolveRelativePathRelative1
+  ),
+  (
+    "RenodeUtils.resolveRelativePath with relative2",
+    `Slow,
+    resolveRelativePathRelative2
+  ),
+  (
+    "RenodeUtils.resolveRelativePath with relative3",
+    `Slow,
+    resolveRelativePathRelative3
+  ),
+  (
+    "RenodeUtils.resolveRelativePath with relative4",
+    `Slow,
+    resolveRelativePathRelative4
+  ),
+  (
+    "RenodeUtils.resolveRelativePath with relative5",
+    `Slow,
+    resolveRelativePathRelative5
+  ),
+  (
+    "RenodeUtils.resolveRelativePath with relative6",
+    `Slow,
+    resolveRelativePathRelative6
+  ),
+  (
+    "RenodeUtils.resolveRelativePath with relative7",
+    `Slow,
+    resolveRelativePathRelative7
+  ),
+  (
+    "RenodeUtils.resolveRelativePath with relative8",
+    `Slow,
+    resolveRelativePathRelative8
+  ),
+  (
+    "RenodeUtils.resolveRelativePath with relative9",
+    `Slow,
+    resolveRelativePathRelative9
+  ),
+  (
+    "RenodeUtils.resolveRelativePath with relative10",
+    `Slow,
+    resolveRelativePathRelative10
+  ),
   ("RenodeUtils.handleDotDot no dots 0", `Slow, handleDotDotNoDots0),
   ("RenodeUtils.handleDotDot no dots 1", `Slow, handleDotDotNoDots1),
   ("RenodeUtils.handleDotDot no dots 2", `Slow, handleDotDotNoDots2),
   ("RenodeUtils.handleDotDot no dots 3", `Slow, handleDotDotNoDots3),
   ("RenodeUtils.handleDotDot single dots", `Slow, handleDotDotSingleDots),
-  ("RenodeUtils.handleDotDot folder dots beginning", `Slow, handleDotDotFolderDotsBeginning),
-  ("RenodeUtils.handleDotDot folder dots end", `Slow, handleDotDotFolderDotsEnd),
+  (
+    "RenodeUtils.handleDotDot folder dots beginning",
+    `Slow,
+    handleDotDotFolderDotsBeginning
+  ),
+  (
+    "RenodeUtils.handleDotDot folder dots end",
+    `Slow,
+    handleDotDotFolderDotsEnd
+  ),
   ("RenodeUtils.handleDotDot up a dir", `Slow, handleDotDotUpADirectory),
-  ("RenodeUtils.handleDotDot at current directory", `Slow, handleDotDotCurrentDirectory),
+  (
+    "RenodeUtils.handleDotDot at current directory",
+    `Slow,
+    handleDotDotCurrentDirectory
+  ),
   (
     "RenodeUtils.handleDotDot above current directory 0",
     `Slow,

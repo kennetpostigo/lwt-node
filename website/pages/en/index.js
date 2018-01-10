@@ -121,7 +121,7 @@ const pre = "```";
 const code = "`";
 
 const codeExample = `${pre}reason
-open ReasonNode;
+open LwtNode;
 
 Node.run({
   let%lwt myDir = Fs.mkdir("myDir");

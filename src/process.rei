@@ -5,7 +5,7 @@
     no code is needed, we will help answer questions and push you
     in the right direction.
 
-    Repo URL: https://github.com/kennetpostigo/reason-node
+    Repo URL: https://github.com/kennetpostigo/lwt-node
   |}
 ]
 let abort: unit;
@@ -17,7 +17,7 @@ let abort: unit;
     no code is needed, we will help answer questions and push you
     in the right direction.
 
-    Repo URL: https://github.com/kennetpostigo/reason-node
+    Repo URL: https://github.com/kennetpostigo/lwt-node
   |}
 ]
 let arch: unit;
@@ -33,7 +33,7 @@ let argv0: string;
     no code is needed, we will help answer questions and push you
     in the right direction.
 
-    Repo URL: https://github.com/kennetpostigo/reason-node
+    Repo URL: https://github.com/kennetpostigo/lwt-node
   |}
 ]
 let channel: unit;
@@ -47,7 +47,7 @@ let chdir: string => unit;
     no code is needed, we will help answer questions and push you
     in the right direction.
 
-    Repo URL: https://github.com/kennetpostigo/reason-node
+    Repo URL: https://github.com/kennetpostigo/lwt-node
   |}
 ]
 let config: unit;
@@ -59,7 +59,7 @@ let config: unit;
     no code is needed, we will help answer questions and push you
     in the right direction.
 
-    Repo URL: https://github.com/kennetpostigo/reason-node
+    Repo URL: https://github.com/kennetpostigo/lwt-node
   |}
 ]
 let connected: unit;
@@ -71,7 +71,7 @@ let connected: unit;
     no code is needed, we will help answer questions and push you
     in the right direction.
 
-    Repo URL: https://github.com/kennetpostigo/reason-node
+    Repo URL: https://github.com/kennetpostigo/lwt-node
   |}
 ]
 let cpuUsage: 'a => unit;
@@ -85,7 +85,7 @@ let cwd: string;
     no code is needed, we will help answer questions and push you
     in the right direction.
 
-    Repo URL: https://github.com/kennetpostigo/reason-node
+    Repo URL: https://github.com/kennetpostigo/lwt-node
   |}
 ]
 let disconnect: unit;
@@ -97,7 +97,7 @@ let disconnect: unit;
     no code is needed, we will help answer questions and push you
     in the right direction.
 
-    Repo URL: https://github.com/kennetpostigo/reason-node
+    Repo URL: https://github.com/kennetpostigo/lwt-node
   |}
 ]
 let emitWarning: unit;
@@ -109,7 +109,7 @@ let emitWarning: unit;
     no code is needed, we will help answer questions and push you
     in the right direction.
 
-    Repo URL: https://github.com/kennetpostigo/reason-node
+    Repo URL: https://github.com/kennetpostigo/lwt-node
   |}
 ]
 let env: unit;
@@ -121,7 +121,7 @@ let env: unit;
     no code is needed, we will help answer questions and push you
     in the right direction.
 
-    Repo URL: https://github.com/kennetpostigo/reason-node
+    Repo URL: https://github.com/kennetpostigo/lwt-node
   |}
 ]
 let execArgv: unit;
@@ -133,7 +133,7 @@ let execArgv: unit;
     no code is needed, we will help answer questions and push you
     in the right direction.
 
-    Repo URL: https://github.com/kennetpostigo/reason-node
+    Repo URL: https://github.com/kennetpostigo/lwt-node
   |}
 ]
 let execPath: unit;
@@ -159,7 +159,7 @@ let getuid: int;
     no code is needed, we will help answer questions and push you
     in the right direction.
 
-    Repo URL: https://github.com/kennetpostigo/reason-node
+    Repo URL: https://github.com/kennetpostigo/lwt-node
   |}
 ]
 let hrtime: 'a => unit;
@@ -175,7 +175,7 @@ let kill: (~pid: int, ~signal: int) => unit;
     no code is needed, we will help answer questions and push you
     in the right direction.
 
-    Repo URL: https://github.com/kennetpostigo/reason-node
+    Repo URL: https://github.com/kennetpostigo/lwt-node
   |}
 ]
 let mainModule: unit;
@@ -187,7 +187,7 @@ let mainModule: unit;
     no code is needed, we will help answer questions and push you
     in the right direction.
 
-    Repo URL: https://github.com/kennetpostigo/reason-node
+    Repo URL: https://github.com/kennetpostigo/lwt-node
   |}
 ]
 let memoryUsage: unit;
@@ -199,7 +199,7 @@ let memoryUsage: unit;
     no code is needed, we will help answer questions and push you
     in the right direction.
 
-    Repo URL: https://github.com/kennetpostigo/reason-node
+    Repo URL: https://github.com/kennetpostigo/lwt-node
   |}
 ]
 let nextTick: 'a => unit;
@@ -213,7 +213,7 @@ let pid: int;
     no code is needed, we will help answer questions and push you
     in the right direction.
 
-    Repo URL: https://github.com/kennetpostigo/reason-node
+    Repo URL: https://github.com/kennetpostigo/lwt-node
   |}
 ]
 let platform: unit;
@@ -225,7 +225,7 @@ let platform: unit;
     no code is needed, we will help answer questions and push you
     in the right direction.
 
-    Repo URL: https://github.com/kennetpostigo/reason-node
+    Repo URL: https://github.com/kennetpostigo/lwt-node
   |}
 ]
 let release: unit;
@@ -237,7 +237,7 @@ let release: unit;
     no code is needed, we will help answer questions and push you
     in the right direction.
 
-    Repo URL: https://github.com/kennetpostigo/reason-node
+    Repo URL: https://github.com/kennetpostigo/lwt-node
   |}
 ]
 let send: (~message: 'a, ~sendHandle: 'b, ~options: 'c) => unit;
@@ -249,7 +249,7 @@ let send: (~message: 'a, ~sendHandle: 'b, ~options: 'c) => unit;
     no code is needed, we will help answer questions and push you
     in the right direction.
 
-    Repo URL: https://github.com/kennetpostigo/reason-node
+    Repo URL: https://github.com/kennetpostigo/lwt-node
   |}
 ]
 let setegid: int => unit;
@@ -261,7 +261,7 @@ let setegid: int => unit;
     no code is needed, we will help answer questions and push you
     in the right direction.
 
-    Repo URL: https://github.com/kennetpostigo/reason-node
+    Repo URL: https://github.com/kennetpostigo/lwt-node
   |}
 ]
 let seteuid: int => unit;
@@ -279,7 +279,7 @@ let setuid: int => unit;
     no code is needed, we will help answer questions and push you
     in the right direction.
 
-    Repo URL: https://github.com/kennetpostigo/reason-node
+    Repo URL: https://github.com/kennetpostigo/lwt-node
   |}
 ]
 let stderr: unit;
@@ -291,7 +291,7 @@ let stderr: unit;
     no code is needed, we will help answer questions and push you
     in the right direction.
 
-    Repo URL: https://github.com/kennetpostigo/reason-node
+    Repo URL: https://github.com/kennetpostigo/lwt-node
   |}
 ]
 let stdin: unit;
@@ -303,7 +303,7 @@ let stdin: unit;
     no code is needed, we will help answer questions and push you
     in the right direction.
 
-    Repo URL: https://github.com/kennetpostigo/reason-node
+    Repo URL: https://github.com/kennetpostigo/lwt-node
   |}
 ]
 let stdout: unit;
@@ -315,7 +315,7 @@ let stdout: unit;
     no code is needed, we will help answer questions and push you
     in the right direction.
 
-    Repo URL: https://github.com/kennetpostigo/reason-node
+    Repo URL: https://github.com/kennetpostigo/lwt-node
   |}
 ]
 let title: unit;
@@ -327,7 +327,7 @@ let title: unit;
     no code is needed, we will help answer questions and push you
     in the right direction.
 
-    Repo URL: https://github.com/kennetpostigo/reason-node
+    Repo URL: https://github.com/kennetpostigo/lwt-node
   |}
 ]
 let unmask: 'a => unit;
@@ -339,7 +339,7 @@ let unmask: 'a => unit;
     no code is needed, we will help answer questions and push you
     in the right direction.
 
-    Repo URL: https://github.com/kennetpostigo/reason-node
+    Repo URL: https://github.com/kennetpostigo/lwt-node
   |}
 ]
 let uptime: unit => unit;
@@ -351,7 +351,7 @@ let uptime: unit => unit;
     no code is needed, we will help answer questions and push you
     in the right direction.
 
-    Repo URL: https://github.com/kennetpostigo/reason-node
+    Repo URL: https://github.com/kennetpostigo/lwt-node
   |}
 ]
 let version: unit;
@@ -363,7 +363,7 @@ let version: unit;
     no code is needed, we will help answer questions and push you
     in the right direction.
 
-    Repo URL: https://github.com/kennetpostigo/reason-node
+    Repo URL: https://github.com/kennetpostigo/lwt-node
   |}
 ]
 let versions: unit;

@@ -2,7 +2,7 @@
 
 ![](https://media.giphy.com/media/dzaUX7CAG0Ihi/giphy.gif)
 
-Hey! If you're here you probably want to help out! Thank you so much! Contributing to reason-node can mean many things:
+Hey! If you're here you probably want to help out! Thank you so much! Contributing to lwt-node can mean many things:
 
 * Ideas
 * Documentation additions or fixes
@@ -13,13 +13,13 @@ Hey! If you're here you probably want to help out! Thank you so much! Contributi
 
 **To contribute code, there are a few options:**
 
-* Implement a function from [Future.md](https://github.com/kennetpostigo/reason-node/blob/master/Future.md) that hasn't been implemented
+* Implement a function from [Future.md](https://github.com/kennetpostigo/lwt-node/blob/master/Future.md) that hasn't been implemented
 * Claim an issue that fixes a bug
 * Add tests for existing modules
 
 **Proposal**
 
-If you want to propose major changes to a module in reason-node (Path, Fs, etc.) open an issue prefixed with [proposal] and try to be thorough in explaining:
+If you want to propose major changes to a module in lwt-node (Path, Fs, etc.) open an issue prefixed with [proposal] and try to be thorough in explaining:
 
 * Pain points with existing module
 * The major change you want to make
@@ -37,7 +37,7 @@ If you'd like to try your hand at adding other modules from node.js please open 
 
 ## Project Overview
 
-`reason-node` for the most part is a wrapper around the stdlib for the sync portions and lwt for the async portions. However there are some missing portions that aren't accounted for (path, http, etc.) in the stdlib or lwt. In those cases they are implemented seperately.
+`lwt-node` for the most part is a wrapper around the stdlib for the sync portions and lwt for the async portions. However there are some missing portions that aren't accounted for (path, http, etc.) in the stdlib or lwt. In those cases they are implemented seperately.
 
 ## Building and testing from source
 
@@ -47,8 +47,8 @@ If you'd like to try your hand at adding other modules from node.js please open 
 yarn global add esy@latest
 ```
 
-**Install and build reason-node**
-Within the reason-node directory then run:
+**Install and build lwt-node**
+Within the lwt-node directory then run:
 
 ```
 esy install

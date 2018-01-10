@@ -4,10 +4,10 @@ title: Intro Example
 sidebar_label: Intro Example
 ---
 
-Here is a small overview of the `reason-node` API before we start. No worries if some of these are unfamiliar; the docs cover all of them.
+Here is a small overview of the `lwt-node` API before we start. No worries if some of these are unfamiliar; the docs cover all of them.
 
 ```reason
-open ReasonNode;
+open LwtNode;
 
 Node.run({
   let%lwt myDir = Fs.mkdir("myDir");

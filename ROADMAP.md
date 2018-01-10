@@ -1,6 +1,6 @@
 # Roadmap
 
-If you are interested in what is next for reason-node, you're in the right place!
+If you are interested in what is next for lwt-node, you're in the right place!
 
 ### Modules up next
 
@@ -11,5 +11,5 @@ If you are interested in what is next for reason-node, you're in the right place
 
 ## Goals
 
-* Get missing implementation of existing modules done (listed in (https://github.com/kennetpostigo/reason-node/blob/master/Future.md))
+* Get missing implementation of existing modules done (listed in (https://github.com/kennetpostigo/lwt-node/blob/master/Future.md))
 * Get http and stream major/most used portions of their API completed.

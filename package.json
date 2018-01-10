@@ -1,7 +1,7 @@
 {
-  "name": "reason-node",
+  "name": "lwt-node",
   "version": "0.1.0",
-  "description": "Reason Node - a node.js like API for Native",
+  "description": "Lwt Node - a node.js like API for Native",
   "license": "MIT",
   "esy": {
     "build": [["refmterr", "jbuilder", "build"]],

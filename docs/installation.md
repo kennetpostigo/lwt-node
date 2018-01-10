@@ -14,8 +14,8 @@ yarn global add esy
 npm install --global esy
 ```
 
-Then go ahead and add reason-node to your project with esy:
+Then go ahead and add lwt-node to your project with esy:
 
 ```bash
-esy add reason-node
+esy add lwt-node
 ```
