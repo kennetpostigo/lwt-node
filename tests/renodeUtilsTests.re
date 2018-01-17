@@ -84,7 +84,41 @@ let resolveRelativePathRelative10 = () =>
     RenodeUtils.resolveRelativePaths("foo/bar./baz/", "")
   );
 
-let handleDotDotNoDots0 = () =>
+let removeCommonPathPath1 = () => 
+  Alcotest.(check(string))(
+    "RenodeUtils.removeCommonPath path1",
+    "baz/index.html",
+    {
+      let (path1, _) = RenodeUtils.removeCommonPath("/foo/bar/baz/index.html", "/foo/bar/index.html");
+      path1;
+    }
+  );
+
+  let removeCommonPathPath2 = () => 
+  Alcotest.(check(string))(
+    "RenodeUtils.removeCommonPath path2",
+    "index.html",
+    {
+      let (_, path2) = RenodeUtils.removeCommonPath("/foo/bar/baz/index.html", "/foo/bar/index.html");
+      path2;
+    }
+  );
+
+  let getRelativePath = () =>
+  Alcotest.(check(string))(
+    "RenodeUtils.getRelativePath",
+    "../../../../aaa/index.html",
+    RenodeUtils.getRelativePath("foo/bar/baz/bbb", "aaa/index.html", false)
+  );
+
+  let getRelativeFilePath = () =>
+  Alcotest.(check(string))(
+    "RenodeUtils.getRelativePath for small path",
+    "../../../index.html",
+    RenodeUtils.getRelativePath("foo/bar/baz/index.html", "index.html", true)
+  );
+
+  let handleDotDotNoDots0 = () =>
   Alcotest.(check(string))(
     "RenodeUtils.handleDotDot no dots 0",
     "foo/bar/baz",
@@ -306,6 +340,10 @@ let utilsTestSet = [
     `Slow,
     resolveRelativePathRelative10
   ),
+  ("RenodeUtils.getRelativePath relative paths for directory", `Slow, getRelativePath),
+  ("RenodeUtils.getRelativePath relative paths for file", `Slow, getRelativeFilePath),
+  ("RenodeUtils.removeCommonPath relative paths path one", `Slow, removeCommonPathPath1),
+  ("RenodeUtils.removeCommonPath relative paths path two", `Slow, removeCommonPathPath2),
   ("RenodeUtils.handleDotDot no dots 0", `Slow, handleDotDotNoDots0),
   ("RenodeUtils.handleDotDot no dots 1", `Slow, handleDotDotNoDots1),
   ("RenodeUtils.handleDotDot no dots 2", `Slow, handleDotDotNoDots2),

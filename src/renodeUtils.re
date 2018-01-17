@@ -6,6 +6,47 @@ let charSep =
   | _ => '/'
   };
 
+let rec removeCommonPath = (~path1, ~path2) => {
+  let subp1 = switch (String.index_from(path1, 1, charSep)) {
+    | index => String.sub(path1, 0, index)
+    | exception _ => path1
+  };
+  let subp2 = switch (String.index_from(path2, 1, charSep)) {
+    | index => String.sub(path2, 0, index)
+    | exception _ => path2
+  };
+  if (subp1 != "" && subp1 == subp2) {
+    let len = String.length(subp1);
+    let newp1 = String.sub(path1, len, String.length(path1) - len);
+    let newp2 = String.sub(path2, len, String.length(path2) - len);
+    removeCommonPath(~path1=newp1, ~path2=newp2);
+  } else {
+    let p1 = switch (String.get(path1, 0) == charSep) {
+      | true => String.sub(path1, 1, String.length(path1) - 1)
+      | false => path1
+      | exception _ => path1
+    };
+    let p2 = switch (String.get(path2, 0) == charSep) {
+      | true => String.sub(path2, 1, String.length(path2) - 1)
+      | false => path2
+      | exception _ => path2
+    };
+    (p1, p2);
+  }
+};
+
+let rec getRelativePath = (~path1, ~path2, ~isFilePath): string => {
+  switch (String.index_from(path1, 1, charSep)) {
+    | index => {
+        let len = String.length(String.sub(path1, 1, index));
+        let subPath1 = String.sub(path1, len, String.length(path1) - len);
+        getRelativePath(~path1=subPath1, ~path2=(".." ++ sep ++ path2), ~isFilePath=isFilePath);
+      }
+    | exception Not_found when (String.length(path1) > 0 && isFilePath == false) => (".." ++ sep ++ path2)
+    | exception _ => path2
+  };
+};
+
 let rec resolveRelativePaths = (~path, ~newPath) =>
   if (String.length(path) == 0) {
     newPath;
