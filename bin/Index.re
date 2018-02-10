@@ -1,8 +1,3 @@
 open LwtNode;
 
-Node.run(
-  {
-    Fs.mkdir("myDir");
-    Node.resolved()
-  }
-);
+Node.run(ignore(Fs.mkdir("myDir")));
