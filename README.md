@@ -7,9 +7,6 @@
     <a href="https://travis-ci.org/kennetpostigo/lwt-node">
     <img src="https://travis-ci.org/kennetpostigo/lwt-node.svg?branch=master"/>
   </a>
-  <a href="http://npm-stat.com/charts.html?package=lwt-node">
-    <img src="https://img.shields.io/npm/dm/lwt-node.svg?style=flat-square"/>
-  </a>
   <a href="http://opensource.org/licenses/MIT">
     <img src="https://img.shields.io/npm/l/lwt-node.svg?style=flat-square" />
   </a>

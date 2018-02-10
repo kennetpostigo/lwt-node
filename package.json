@@ -1,6 +1,6 @@
 {
   "name": "lwt-node",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Lwt Node - a node.js like API for Native",
   "license": "MIT",
   "esy": {
@@ -16,6 +16,9 @@
     "@opam/lwt": "3.2.0",
     "@opam/reason": "3.0.4",
     "refmterr": "3.0.4"
+  },
+  "resolutions": {
+    "**/@opam/result": "1.2.0"
   },
   "peerDependencies": {
     "ocaml": "4.6.1"
