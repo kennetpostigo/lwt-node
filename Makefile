@@ -1,6 +1,9 @@
 test:
 	jbuilder runtest 
 
+run: 
+	./_build/install/default/bin/Index
+
 .PHONY: coverage
 coverage: clean
 	BISECT_ENABLE=YES jbuilder build

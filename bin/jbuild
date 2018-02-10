@@ -1,0 +1,6 @@
+(jbuild_version 1)
+
+(executable
+ ((name Index)
+  (public_name Index)
+  (libraries (lwt-node))))
