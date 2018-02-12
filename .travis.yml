@@ -11,3 +11,5 @@ script:
   - esy install
   - esy build
   - esy make test
+cache:
+  - $HOME/.esy
