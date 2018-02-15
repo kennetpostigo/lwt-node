@@ -13,5 +13,5 @@ By leveraging `reason`'s great type system, expressive language features,
 * Safe and statically typed
 * Simple and lean
 
-The goal is to eventually reach feature partiy with the node.js API.
+The goal is to eventually reach feature parity with the node.js API.
 These will be filled in incrementally as the API is smoothed out.
